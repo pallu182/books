@@ -1,0 +1,114 @@
+<HTML>
+<HEAD>
+<TITLE>pod2usage - print usage messages from embedded pod docs in files</TITLE>
+<LINK REL="stylesheet" HREF="../Active.css" TYPE="text/css">
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;pod2usage - print usage messages from embedded pod docs in files</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#options and arguments">OPTIONS AND ARGUMENTS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<LI><A HREF="#see also">SEE ALSO</A></LI>
+	<LI><A HREF="#author">AUTHOR</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>pod2usage - print usage messages from embedded pod docs in files</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<DL>
+<DT><STRONG><A NAME="item_pod2usage"><STRONG>pod2usage</STRONG></A></STRONG><BR>
+<DD>
+[<STRONG>-help</STRONG>]
+[<STRONG>-man</STRONG>]
+[<STRONG>-exit</STRONG>&nbsp;<EM>exitval</EM>]
+[<STRONG>-output</STRONG>&nbsp;<EM>outfile</EM>]
+[<STRONG>-verbose</STRONG> <EM>level</EM>]
+[<STRONG>-pathlist</STRONG> <EM>dirlist</EM>]
+<EM>file</EM>
+<P></P></DL>
+<P>
+<HR>
+<H1><A NAME="options and arguments">OPTIONS AND ARGUMENTS</A></H1>
+<DL>
+<DT><STRONG><A NAME="item_%2Dhelp"><STRONG>-help</STRONG></A></STRONG><BR>
+<DD>
+Print a brief help message and exit.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dman"><STRONG>-man</STRONG></A></STRONG><BR>
+<DD>
+Print this command's manual page and exit.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dexit_exitval"><STRONG>-exit</STRONG> <EM>exitval</EM></A></STRONG><BR>
+<DD>
+The exit status value to return.
+<P></P>
+<DT><STRONG><A NAME="item_%2Doutput_outfile"><STRONG>-output</STRONG> <EM>outfile</EM></A></STRONG><BR>
+<DD>
+The output file to print to. If the special names ``-'' or ``&gt;&amp;1'' or ``&gt;&amp;STDOUT''
+are used then standard output is used. If ``&gt;&amp;2'' or ``&gt;&amp;STDERR'' is used then
+standard error is used.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dverbose_level"><STRONG>-verbose</STRONG> <EM>level</EM></A></STRONG><BR>
+<DD>
+The desired level of verbosity to use:
+<PRE>
+    1 : print SYNOPSIS only
+    2 : print SYNOPSIS sections and any OPTIONS/ARGUMENTS sections
+    3 : print the entire manpage (similar to running pod2text)</PRE>
+<P></P>
+<DT><STRONG><A NAME="item_%2Dpathlist_dirlist"><STRONG>-pathlist</STRONG> <EM>dirlist</EM></A></STRONG><BR>
+<DD>
+Specifies one or more directories to search for the input file if it
+was not supplied with an absolute path. Each directory path in the given
+list should be separated by a ':' on Unix (';' on MSWin32 and DOS).
+<P></P>
+<DT><STRONG><A NAME="item_file"><EM>file</EM></A></STRONG><BR>
+<DD>
+The pathname of a file containing pod documentation to be output in
+usage mesage format (defaults to standard input).
+<P></P></DL>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P><STRONG>pod2usage</STRONG> will read the given input file looking for pod
+documentation and will print the corresponding usage message.
+If no input file is specifed than standard input is read.</P>
+<P><STRONG>pod2usage</STRONG> invokes the <STRONG>pod2usage()</STRONG> function in the <STRONG>Pod::Usage</STRONG>
+module. Please see <A HREF="../lib/Pod/Usage.html#pod2usage()">pod2usage() in the Pod::Usage manpage</A>.</P>
+<P>
+<HR>
+<H1><A NAME="see also">SEE ALSO</A></H1>
+<P><A HREF="../lib/Pod/Usage.html">the Pod::Usage manpage</A>, <EM>pod2text(1)</EM></P>
+<P>
+<HR>
+<H1><A NAME="author">AUTHOR</A></H1>
+<P>Brad Appleton &lt;<A HREF="mailto:bradapp@enteract.com">bradapp@enteract.com</A>&gt;</P>
+<P>Based on code for <STRONG>pod2text(1)</STRONG> written by
+Tom Christiansen &lt;<A HREF="mailto:tchrist@mox.perl.com">tchrist@mox.perl.com</A>&gt;</P>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;pod2usage - print usage messages from embedded pod docs in files</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

@@ -1,0 +1,6 @@
+F BIND.PL;1                         	bind.pl
+F DBI.DAT;1                         	dbi.dat
+F INSERT.PL;1                       	insert.pl
+F META-DAT.PL;1                     	meta-data.pl
+F SELECT.PL;1                       	select.pl
+F SQL.PL;1                          	sql.pl

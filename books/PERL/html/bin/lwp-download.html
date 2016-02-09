@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<TITLE>lwp-download - fetch large files from the net</TITLE>
+<LINK REL="stylesheet" HREF="../Active.css" TYPE="text/css">
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;lwp-download - fetch large files from the net</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<LI><A HREF="#example">EXAMPLE</A></LI>
+	<LI><A HREF="#author">AUTHOR</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>lwp-download - fetch large files from the net</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<PRE>
+ lwp-download [-a] &lt;url&gt; [&lt;local file&gt;]</PRE>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P>The <EM>lwp-download</EM> program will down load the document specified by the URL
+given as the first command line argument to a local file.  The local
+filename used to save the document is guessed from the URL unless
+specified as the second command line argument.</P>
+<P>The <EM>lwp-download</EM> program is implemented using the <EM>libwww-perl</EM>
+library.  It is better suited to down load big files than the
+<EM>lwp-request</EM> program because it does not store the file in memory.
+Another benefit is that it will keep you updated about its progress
+and that you don't have much options to worry about.</P>
+<P>Use the <A HREF="../lib/Pod/perlrun.html#item_%2Da"><CODE>-a</CODE></A> option to save the file in text (ascii) mode.  Might make a
+difference on dosish systems.</P>
+<P>
+<HR>
+<H1><A NAME="example">EXAMPLE</A></H1>
+<P>Fetch the newest and greatest perl version:</P>
+<PRE>
+ $ lwp-download <A HREF="http://www.perl.com/CPAN/src/latest.tar.gz">http://www.perl.com/CPAN/src/latest.tar.gz</A>
+ Saving to 'latest.tar.gz'...
+ 1.47 MB received in 22 seconds (68.7 KB/sec)</PRE>
+<P>
+<HR>
+<H1><A NAME="author">AUTHOR</A></H1>
+<P>Gisle Aas &lt;<A HREF="mailto:gisle@aas.no">gisle@aas.no</A>&gt;</P>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;lwp-download - fetch large files from the net</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

@@ -1,0 +1,9 @@
+F MISC.;1                           	MISC
+F NAMED_PI.;1                       	named_pipe
+F PIPE_TO_.;1                       	pipe_to_self
+F SOCKET_T.;1                       	socket_tcp
+F SOCKET_T.000;1                    	socket_tcp_time
+F SOCKET_T.001;1                    	socket_tcp_threaded
+F SOCKET_U.;1                       	socket_udp
+F SOCKET_U.000;1                    	socket_unix
+F SYSV_IPC.;1                       	sysv_ipc

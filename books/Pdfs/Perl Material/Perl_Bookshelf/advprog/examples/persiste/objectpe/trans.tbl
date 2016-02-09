@@ -1,0 +1,6 @@
+D ADAPTOR                           	Adaptor
+F DBDEMO.PL;1                       	dbdemo.pl
+F DBDEMO_P.SAV;1                    	dbdemo.pl.save
+F EMPDB.CFG;1                       	empdb.cfg
+F EMPFILE.CFG;1                     	empfile.cfg
+F EMPFILE.DAT;1                     	empfile.dat

@@ -1,0 +1,1635 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<head>
+<title>ActivePerl FAQ - Using PPM to install modules</title>
+<link rel="STYLESHEET" href="../Active.css" type="text/css" media="screen">
+</head>
+
+<body>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#EAE2BB">
+<tr> 
+<td width="57"><a target=_blank href="http://www.ActiveState.com/ActivePerl/">
+<img src="../images/activeperl_logo.gif" width="57" height="48" border="0" alt="ActivePerl"></a></td>
+<td><div align="center" class="heading">ActivePerl User Guide</div></td>
+<td width="112"><a target=_blank  href="http://www.ActiveState.com">
+<img src="../images/AS_logo.gif" width="112" height="48" border="0"  alt="ActiveState" /></a></td>
+</tr>
+<tr>
+<td class="lineColour" colspan="3"></td>
+</tr>
+</table>
+
+<h1>Using PPM to install modules</h1>
+
+<ul>
+  <li><a class="doc" href="#NAME">NAME</a></li>
+  <li><a class="doc" href="#DESCRIPTION">DESCRIPTION</a>
+    <ul>
+      <li><a class="doc" href="#what_is_ppm">What is the PPM?</a></li>
+      <li><a class="doc" href="#how_do_i_install_ppm">How do I install PPM?</a></li>
+      <li><a class="doc" href="#running_ppm">How do I run PPM?</a></li>
+      <li><a class="doc" href="#using_ppm">How do I use PPM?</a></li>
+      <li><a class="doc" href="#ppm3_commands">PPM version 3 Commands</a></li>
+      <li><a class="doc" href="#ppm2_commands">PPM version 2 Commands</a></li>
+      <li><a class="doc" href="#repositories">Where are the package repositories?</a></li>
+      <li><a class="doc" href="#how_to_make_ppm_distribution">How do I make a PPM package?</a></li>
+      <li><a class="doc" href="#ppm_and_proxies">PPM, Proxies and Firewalls</a></li>
+    </ul>
+  </li>
+  <li><a class="doc" href="#AUTHOR_AND_COPYRIGHT">AUTHOR AND COPYRIGHT</a></li>
+</ul>
+
+<h2><a name="NAME">NAME</a></h2>
+<p>Using PPM to install modules</p>
+
+<h2><a name="DESCRIPTION">DESCRIPTION</a></h2>
+<p>How to install and upgrade modules using PPM</p>
+
+<h2><a name="what_is_ppm">What is the PPM?</a></h2>
+<p>The Programmer's Package Manager (PPM), formerly known as the Perl Package Manager,
+provides a command line interface for managing your modules and extensions (packages).
+PPM is used to access package repositories (or collections of packages on other machines),
+install and remove packages from your system, as well as update previously installed packages
+with the latest versions.
+
+<p>The PPM 3.0 release introduces a complete rewrite of PPM, featuring many
+<a class="doc" href="#ppm_commands"> additions and improvements</a>. To maintain compatibility
+and provide a smooth migration path, PPM3 will coexist with the current PPM.
+
+<h2><a name="how_do_i_install_ppm">How do I install PPM?</a></h2>
+<p>Both PPM versions 2 and PPM version 3 (PPM3) are installed when you install 
+ActivePerl.</p>
+
+<h2><a name="running_ppm">How do I run PPM?</a></h2>
+
+<p>Before you run PPM or PPM3, you must either be connected to the Internet or have access 
+to a local <a class="doc" href="#repositories">repository</a>, like a hard drive 
+or the <a class="doc" href="http://aspn.activestate.com/ASPN/Downloads/ActiveCD"> 
+ActiveState ActiveCD</a>. If your Internet connection is via a firewall or proxy, 
+you must set the environment variable "HTTP_proxy" to the name of the proxy 
+server. If your proxy server requires a username and password, use the environment 
+variables "HTTP_proxy_user" and "HTTP_proxy_pass". See <a class="doc" href="#ppm_and_proxies"> 
+PPM, Proxies and Firewalls</a> for more information.
+ 
+<p>To run PPM version 2, enter <code>ppm</code> in a command prompt window 
+(Windows), or <code>ppm3</code> at the shell prompt (Linux / Solaris).</p>
+
+<h2><a name="using_ppm">How do I use PPM?</h2></a>
+
+<p>Quick start: at the PPM3 command prompt, type 
+<a class="doc" href="#search"><code>search *</code></a>
+to get a listing of all available packages, then type <code>install
+&lt;package name&gt;</code>, where &lt;<code>package name</code>&gt; is the name of a
+package displayed by the <code>search</code> command. To list the packages you have previously
+installed using PPM3, use the <a class="doc" href="#query"><code>query *</code></a> command.
+
+<p>Those using PPM can type '<code>search</code>' to get a
+listing of all available packages, then type '<code>install &lt;packagename&gt;</code>',
+where <code>&lt;packagename&gt;</code> is the name of a package displayed by the
+'<code>search</code>' command. To list the packages you have previously
+installed using PPM, use the '<code>query</code>' command.</p>
+
+<blockquote>
+<p>Note to PPM users: If you find the listing of packages scrolls by too quickly, you may want to
+use the command '<code>set more &lt;number&gt;</code>' to pause the listing
+after &lt;number&gt; packages have been displayed. Use the '<code>set save</code>'
+command to save this configuration for future PPM sessions.</p>
+</blockquote>
+
+<p>The first time you run PPM or PPM3, the ActiveState package repository will be your default repository.
+If you change your default repository, that change will be saved. PPM3 users can can select a different
+repository with the <a class="doc" href="#repository"> repository</a> command. PPM users will use
+the '<code>set</code>' command. See
+<a class="doc" href="#repositories">Where are the package repositories?</a> below.
+
+<h2><a name="ppm3_commands">PPM version 3 Commands</a></h2>
+
+<p>Items in &lt;angle brackets&gt; are arguments that can be used with the commands, while items
+in [square brackets] are optional elements. PPM3 will recognize and accept shortened versions of the
+commands, as long as enough letters are typed to be recognized by PPM3. For example,
+"des" can be typed instead of "describe".
+
+<!-- to facilitate parsing of the command descriptions, each command has <PPM-HELP> tags, with the argument of "name" -->
+<PPM3-HELP name="describe">
+<h3><a name="describe">Describe</a></h3>
+<blockquote>
+<table>
+    <tr>
+	<td><p>describe</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Describes default/current package</td>
+    </tr>
+    <tr>
+	<td><p>describe &lt;number&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Describes package &lt;number&gt; in the current search set</td>
+    </tr>
+    <tr>
+	<td><p>describe &lt;range&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Describes packages in the given &lt;range&gt; from the current search set</td>
+    </tr>
+    <tr>
+	<td><p>describe &lt;name&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Describes named package</td>
+    </tr>
+    <tr>
+	<td><p>describe &lt;glob pattern&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Performs a new search using &lt;glob pattern&gt;</td>
+    </tr>
+</table>
+</blockquote>
+
+<p>When used, <code>describe</code> returns information about a package, including the name of the package,
+the author's name and a brief description (called an "Abstract") about the package. For example, when you enter:
+
+<pre>
+describe libnet
+</pre>
+
+<p>PPM3 will return:
+
+<pre>
+===============================
+Package 1
+    Name: libnet
+ Version: 1.07.03
+  Author: Graham Barr
+Abstract: Collection of Network protocol modules
+Implementations:
+	1.sun4-solaris-thread-multi
+	2.i686-linux-thread-multi
+	3.MSWIn32-x86-multi-thread
+===============================
+</pre>
+
+<p>When the <code>describe</code> command is called without arguments, it returns information about the first
+package in the current <a class="doc" href="#search">search</a>. If there is no default search set, you'll be
+prompted to use <a class="doc" href="#search">search</a> to find a package.
+
+<p>If <code>describe</code> is called with a numeric argument, that number is set as the default package
+and the information about that package is returned. If the number given doesn't exist, you'll be prompted
+to use <a class="doc" href="#search">search</a> to find a package. Also, you can use <code>describe</code> to give
+descriptions of several packages. For example:
+
+<pre>
+describe 4-7
+</pre>
+
+<p>will give you descriptions of packages 4 through 7, in the current search request. You can also enter:
+    
+<pre>
+describe 3-4,10
+</pre>
+
+<p>to get information on packages 3, 4 and 10.
+
+<p>When the <code>describe</code> command is given a name with a wildcard (such as "*" or "?")
+it executes the <code>search</code> command with the given argument. With this, you can type
+something like <code>describe Tk*</code> and the search will give you the name(s) of any packages
+that match your search parameters.
+
+<p>See Also:
+<a class="doc" href="#properties">Properties</a>
+</PPM3-HELP>
+
+<PPM3-HELP name="exit">
+<h3><a name="exit">Exit</a></h3>
+<blockquote>
+<table>
+    <tr>
+	<td><p>exit</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Exits the program</td>
+    </tr>
+</table>
+</blockquote>
+
+<p>When you leave the PPM3 environment, the current settings are saved.
+
+<p>See Also:
+	<a class="doc" href="#quit">Quit</a>
+</PPM3-HELP>
+
+<PPM3-HELP name="help">
+<h3><a name="help">Help</a></h3>
+
+<blockquote>
+<table>
+    <tr>
+	<td><p>help</td>
+	<td valign="top" align="left" width="10%"></td>
+        <td><p>lists available commands</td>
+    </tr>
+    <tr>
+	<td><p>help &lt;command&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>lists detailed help about a specific command</td>
+    </tr>
+</table>
+</blockquote>
+
+<p>The <code>help</code> command provides a brief description of the commands available
+within PPM3. For help on a specific command, enter <code>help</code> followed by the command.
+For example, enter <code>help settings</code> or <code>help set</code> for a detailed description of the
+<a class="doc" href="#settings">settings</a> command.
+
+<p>There are some extra help topics built into PPM3. They can be accessed within the PPM3 environment as follows:</p>
+
+<blockquote>
+<table> 
+    <tr>
+	<td align="left"><p>HELP COMMAND</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td align="left"><p>DESCRIPTION</td>
+	<td valign="top" align="left" width="10%"></td>
+    </tr>
+    <tr>    
+	<td colspan="4" bgcolor="#000000"></td>
+    </tr>
+    <tr>
+	<td><p>help ppm_migration</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>shows more details about the changes from previous versions of PPM</td>
+    </tr>
+    <tr>    
+	<td colspan="4" bgcolor="#000000"></td>
+    </tr>
+    <tr>
+	<td><p>help quickstart</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>an easy-to-follow guide to getting started with PPM3</td>
+    </tr>
+    <tr>    
+	<td colspan="4" bgcolor="#000000"></td>
+    </tr>
+    <tr>
+	<td><p>help prompt</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>provides a detailed explanation about the PPM3 prompt</td>
+    </tr>
+    <tr>    
+	<td colspan="4" bgcolor="#000000"></td>
+    </tr>
+    <tr>
+	<td><p>help queryformat</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>gives the user extra tips and hints about making effective searches/queries in PPM3</td>
+    </tr>
+    <tr>    
+	<td colspan="4" bgcolor="#000000"></td>
+    </tr>
+</table>
+</blockquote>
+</PPM3-HELP>
+
+<PPM3-HELP name="install">
+<h3><a name="install">Install</a></h3>
+
+<blockquote>
+<table>
+    <tr>
+	<td><p>install</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Installs default package<td>
+    </tr>
+    <tr>
+	<td><p>install &lt;number&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Installs packages by a specific number</td>
+    </tr>
+    <tr>
+	<td><p>install &lt;range&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Installs packages in the given numeric range &lt;range&gt;.</td>
+    </tr>
+    <tr>
+	<td><p>install &lt;name&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Installs named package</td>
+    </tr>
+</table>
+</blockquote>
+
+<p>The <code>install</code> command is used to install packages from the
+repository. You can install packages by name or number (the number is given by
+the repository or search request), or a default package can be established
+through use of the <code>describe</code> command. There is also a set of
+modifiers that can be used with the install command:</p>
+
+<pre>-force  -noforce
+-follow -nofollow</pre>
+
+<p>The <code>force</code> and <code>follow</code> commands determine how
+packages are installed:
+
+<blockquote>
+<table>
+    <tr>
+	<td align="left"><p>FORCE</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td align="left"><p>FOLLOW</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td align="left"><p>RESULT</td>
+    </tr>
+    <tr>    
+	<td colspan="5" bgcolor="#000000"></td>
+    </tr>
+    <tr>
+	<td><p>false</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>false</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Checks to see if the package is installed and if it is, PPM3 stops. If there are any missing prerequisites, the installation
+	will fail.</td>
+    </tr>
+    <tr>    
+	<td colspan="5" bgcolor="#000000"></td>
+    </tr>
+    <tr>
+	<td><p>false</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>true</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Checks to see if the package is installed and if it is, PPM3 stops. If there are any missing prerequisites, they
+	are automatically installed.</td>
+    </tr>
+    <tr>    
+	<td colspan="5" bgcolor="#000000"></td>
+    </tr>
+    <tr>
+	<td><p>true</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>false</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>If the package is installed, PPM3 will reinstall the package. If there are any missing prerequisites, the installation will fail. NOTE:
+	    This is the default setting when PPM3 is first installed.</td>
+    </tr>
+    <tr>    
+	<td colspan="5" bgcolor="#000000"></td>
+    </tr>
+    <tr>
+	<td><p>true</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>true</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>If the package is installed, PPM3 will reinstall the package. If there are any missing prerequisites, they
+	are automatically installed.</td>
+    </tr>
+    <tr>    
+	<td colspan="5" bgcolor="#000000"></td>
+    </tr>
+</table>
+</blockquote>
+
+<p>If you do not specify any options, install uses the default settings. Set or view the
+current defaults using the <a class="doc" href="#settings">settings</a> command. </p>
+
+<p>For example:</p>
+
+<pre>install foo</pre>
+
+<p>will install the package named "foo", using the default settings. You can over-ride the
+defaults with the install modifiers.</p>
+
+<p>For example:</p>
+
+<pre>install foo -force</pre>
+
+<p>will install the "foo" package, even if it has already been installed. If both <code>-force</code> and <code>-follow</code>
+are set to "true", all the prerequisites for any package you install will be installed. For example, the installation of a tk-related package,
+like "tk-ach" which is 8.4 kB will be preceded by the installation of Tk, which is 1.7 MB.
+
+<p>You can also install by package number. The numbering of the packages is based on the current repository or current search request.
+For example:
+    
+<pre>
+install 6
+</pre>
+
+<p>installs package number 6. You can install more than one package at one time:
+    
+<pre>
+install 3-5
+</pre>
+
+<p>installs packages 3, 4 and 5. You can also type <code>install 3-6,8</code> to receive packages 3,4,5,6 and 8.
+</PPM3-HELP>
+
+<PPM3-HELP name="profile">
+<h3><a name="profile">Profile</a></h3>
+<blockquote>
+<table>
+    <tr>
+	<td><p>profile</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>lists profiles available on the repository</td>
+    </tr>
+    <tr>
+        <td><p>profile &lt;number&gt;</td>
+        <td valign="top" align="left" width="10%"></td>
+        <td><p>switches to the given profile</td>
+    </tr>
+    <tr>
+	<td><p>profile add &lt;name&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>creates a new profile on the repository</td>
+    </tr>
+    <tr>
+	<td><p>profile del &lt;number&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>deletes the given profile</td>
+    </tr>
+    <!-- <tr>
+	<td><p>profile des &lt;number&gt;
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>describes the given profile (NOT IMPLEMENTED)</td>
+    </tr> -->
+    <tr>
+	<td><p>profile save</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>saves the client state to the current profile</td>
+    </tr>
+    <tr>
+	<td><p>profile restore</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>restores the current profile</td>
+    </tr>
+</table>
+</blockquote>
+
+<p>With profiles, package installation and management is easy to oversee. By
+using profiles, you can save your favorite perl packages in a single profile
+or group packages by function in different profiles. This also makes installation of
+packages easier, as you only need to access one or two profiles, instead of many
+individual packages.
+
+<p>Managing your profiles can be done through PPM3 or via the ActiveState Interactive website.
+<!-- need to add a url here, when it becomes available
+we also need the liscening information for PPM -->
+
+<p>Note: The <code>profile</code> commands are only available if the current repository is a PPM3 repository.</p>
+</PPM3-HELP>
+
+<PPM3-HELP name="properties">
+<h3><a name="properties">Properties</a></h3>
+
+<blockquote>
+<table> 
+    <tr>
+	<td><p>properties</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Describes default installed package</td>
+    </tr>
+    <tr>
+	<td><p>properties &lt;number&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Describes installed package &lt;number&gt;</td>
+    </tr>
+    <tr>
+        <td><p>properties &lt;package name&gt;</td>
+        <td valign="top" align="left" width="10%"></td>
+        <td><p>Describes named installed package</td>
+    </tr>
+    <tr>
+	<td><p>properties &lt;glob pattern&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Performs a new query using &lt;glob pattern&gt;</td>
+    </tr>
+</table>
+</blockquote>
+
+<p>Similar to the <a class="doc" href="#describe">describe</a> command,
+<code>properties</code> provides information on an installed package, but with
+more details than those available with <a class="doc"
+href="#describe">describe</a>.  In addition to the summary information,
+<code>properties</code> will display the installation date and a URL showing
+the location of the package within the repository.
+
+<p>Note: When <code>properties</code> is called with arguments including a
+wildcard, it prints a message telling you that it is about to forward the
+whole command-line to <a class="doc" href="#query">query</a>; then it does.
+With this, you can type "properties Tk*" or "prop Tk*".
+
+<p>For example, typing <code>properties libnet</code> will give you:
+<pre>
+    Name: libnet
+ Version: 1.07.03
+  Author: Graham Barr
+Abstract: Collection of Network protocol modules
+InstDate: Fri Oct  2 16:15:15 1998
+Location: http://ppm.ActiveState.com/cgibin/PPM/ppmserver.pl?urn:/PPMServer
+</pre>    
+<p>See Also:
+	<a class="doc" href="#describe">Describe</a>
+</PPM3-HELP>
+
+<PPM3-HELP name="quit">
+<h3><a name="quit">Quit</a></h3>
+
+<blockquote>
+<table>
+    <tr>
+	<td><p>Quit</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>exits the program.</td>
+    </tr>
+</table>
+</blockquote>
+<p><code>Quit</code> is another command used to close the PPM application. Like the <a class="doc" href="#exit">exit</a>
+command; when you close PPM3, the current settings will be saved.
+
+<p>See Also:
+	<a class="doc" href="#exit">Exit</a>
+</PPM3-HELP>
+
+<PPM3-HELP name="query">
+<h3><a name="query">Query</a></h3>
+
+<blockquote>
+<table>
+    <tr>
+	<td><p>query</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Displays list of previous queries</td>
+    </tr>
+    <tr>
+	<td><p>query &lt;number&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Displays results of previous query</td>
+    </tr>
+    <tr>
+	<td><p>query &lt;glob pattern&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Performs a new query using &lt;glob pattern&gt;</td>
+    </tr>
+    <tr>
+	<td><p>query *</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Displays a list of all installed packages</td>
+    </tr>
+</table>    
+</blockquote>
+
+<p>The <code>query</code> command displays either a list of all installed packages or a shortened list,
+based on the &lt;glob pattern&gt; entered. You can also check the list of past queries or the results of a past query.
+
+<p>Note: Depending on the value of "case-sensitivity", the query may or may not be case-sensitive.
+See "help settings" for how to affect the case sensitivity.
+
+<p>See Also:
+    <a class="doc" href="#settings">Settings</a>
+</PPM3-HELP>
+
+<PPM3-HELP name="remove">
+<h3><a name="remove">Remove</a></h3>
+
+<blockquote>
+<table>
+    <tr>
+	<td><p>remove</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Deletes default installed package</td>
+    </tr>
+    <tr>
+	<td><p>remove &lt;number&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Deletes a package by a specific number</td>
+    </tr>
+    <tr>
+	<td><p>remove &lt;range&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Deletes a &lt;range&gt; of packages</td>
+    </tr>
+    <tr>
+	<td><p>remove &lt;name&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Deletes a package by a specific name</td>
+    </tr>
+</table>
+</blockquote>
+
+<p>The <code>remove</code> command deletes packages from your current <A class="doc" href="#target">target</a>.
+Packages can be removed by package name or by their numerical listing. For example:
+
+<pre>
+remove XML-DOM
+</pre>
+
+<p>will delete the XML-DOM package from your target. Also, you can remove package by number:
+
+<pre>
+remove 6
+</pre>
+
+<p>and the 6th package in your current query will be removed. If you have no query requests established, you'll be required to
+use <a class="doc" href="#query">query</a> to find a package before you delete it. It's important to remember that removing
+packages also clears all previous query requests, since the numerical sequence stored in any query will no longer be true
+once package(s) have been removed.
+
+<p>Packages can also be removed in groups; for example:
+
+<pre>
+remove 4-7
+</pre>
+
+<p>will delete packages 4, 5, 6, and 7 from your target. You can also skip packages in the removal process:
+
+<pre>
+remove 3-5, 7
+</pre>
+
+<p>this will delete packages 3, 4, 5 and 7...but it will leave 6 intact. Remember to run a new query whenever
+you remove a package from your target.
+
+<p>Please note that wildcards like "*" or "?" cannot be used with the <code>remove</code> command.
+
+<p>See Also:
+	<a class="doc" href="#uninstall">Uninstall</a>
+</PPM3-HELP>
+
+<PPM3-HELP name="repository">
+<h3><a name="repository">Repository</a></h3>
+
+<blockquote>
+<table>
+    <tr>
+	<td><p>repository</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>displays all repositories</td>
+    </tr>
+    <tr>
+	<td><p>repository [set] &lt;number&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>sets the specified repository active</td>
+    </tr>
+    <tr>
+	<td><p>repository add [name] &lt;repository location&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>adds a new repository</td>
+    </tr>
+    <tr>
+	<td><p>repository del &lt;number&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>deletes the specified repository</td>
+    </tr>
+    <tr>
+	<td><p>repository describe [number]</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>displays the name, location and type of the specified (or
+	current) repository</td>
+    </tr>
+</table>
+</blockquote>
+
+<p>When used with no arguments, <code>repository</code> (or "<code>rep</code>") will list the 
+repositories currently within the PPM3 settings. The default repository is highlighted with a leading "*".
+
+<p>For example, when you enter:</p>
+
+<pre>rep</pre>
+
+<p>PPM3 will return something resembling this:</p>
+
+<pre>
+Repositories:
+* 1. ActiveCD.
+  2. ActiveState Package Repository
+</pre>
+
+<p>With the example above, entering <code>rep set 2</code> will make the
+second repository (ActiveState Package
+Repository) the active repository. Adding another repository is done like this:</p>
+
+<pre>rep add &lt;NAME&gt; &lt;LOCATION&gt;</pre>
+
+<p>for example:</p>
+
+<code>rep add TheoryX5 http://theoryx5.uwinnipeg.ca/cgi-bin/ppmserver?urn:/PPMServer</code>
+  
+<p>with "TheoryX5" being the name of the repository (for easy reference) and the location noted by
+the http location. If you were to enter <code>rep</code> again, you would see:</p>
+
+<pre>
+ppm&gt;rep
+Repositories:
+  1. ActiveCD
+* 2. ActiveState Package Repository
+  3. TheoryX5
+</pre>
+
+<p>If you wanted to remove the ActiveCD repository, you would type <code>rep del 1</code>,
+to remove the 1st repository. To get more information on a particular repository, type
+<code>res describe</code> to get information on the current repository or <code>res describe
+&lt;number&gt;</code> to get information on a specific repository.
+
+<p>For example:</p>
+
+<pre>rep describe 2</pre>
+
+<p>will return:</p>
+
+<pre>
+Describing Repository 2:
+    Name: ActiveState Package Repository
+Location: http://ppm.ActiveState.com/cgibin/PPM/ppmserver.pl?urn:/PPMServer
+    Type: PPMServer 2.00
+</pre>  
+</PPM3-HELP>
+
+<PPM3-HELP name="search">
+<h3><a name="search">Search</a></h3>
+
+<blockquote>
+<table>
+    <tr>
+	<td valign="top" align="left" width="20%"><p>search</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Displays list of previous searches</td>
+    </tr>
+    <tr>
+	<td><p>search &lt;number&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p> Displays results of search &lt;number&gt;</td>
+    </tr>
+    <tr>
+	<td><p>search &lt;glob pattern&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Performs a new search</td>
+    </tr>
+    <tr>
+	<td><p>search &lt;field&gt;=&lt;glob pattern&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Searches for all packages matching the field - the available fields are ABSTRACT, NAME or TITLE, AUTHOR and VERSION -
+	NAME is the default search setting</td>
+    </tr>
+    <tr>
+	<td><p>search *</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Searches for all packages in the current repository</td>
+    </tr>
+</table>
+</blockquote>
+
+<p><code>Search</code> is used to look through the repository for packages. With PPM, you can 
+perform powerful and detailed searches. Here are some examples:
+
+<blockquote>
+<table>
+    <tr valign="top">
+        <td align="left" width="20%"><p>COMMAND</p></td>
+        <td width="10%"></td>
+        <td align="left"><p>MEANING</p></td>
+        <td width="10%"></td>
+        <td width="30%" align="left"><p>SAMPLE RESULTS</p></td>
+    </tr>
+    <tr>
+        <td colspan="5" bgcolor="#000000"></td>
+    </tr>
+    <tr valign="top">
+        <td width="20%"><p><code>search CGI</code></p></td>
+        <td width="10%"></td>
+        <td><p>Search for 'CGI' anywhere in the name</p></td>
+        <td width="10%"></td>
+        <td><p><code>Apache-CGI<br>CGI-Application<br>CGI-ArgChecker</code></p></td>
+    </tr>
+    <tr>
+        <td colspan="5" bgcolor="#000000"></td>
+    </tr>
+    <tr valign="top">
+        <td width="20%"><p><code>search CGI*</code></p></td>
+        <td width="10%"></td>
+        <td><p>Search for 'CGI' at beginning of name</p></td>
+        <td width="10%"></td>
+        <td><p><code>CGI-Application<br>CGI-ArgChecker</code></p></td>
+    </tr>
+    <tr>
+        <td colspan="5" bgcolor="#000000"></td>
+    </tr>
+    <tr valign="top">
+        <td width="20%"><p><code>search AUTHOR=smith</code></p></td>
+        <td width="10%"></td>
+        <td><p>Search for all modules authored by someone with 'smith' in their name or email</p></td>
+        <td width="10%"></td>
+        <td><p><code>Apache-ProxyPass<br>Business-ISBN</code></p></td>
+    </tr>
+    <tr>
+        <td colspan="5" bgcolor="#000000"></td>
+    </tr>
+    <tr valign="top">
+        <td width="20%"><p><code>search ABSTRACT=compress</code></p></td>
+        <td width="10%"></td>
+        <td><p>Search for 'compress' anywhere in the abstract</p></td>
+        <td width="10%"></td>
+        <td><p><code>Apache-GzipChain<br>IO-Zlib</code></p></td>
+    </tr>
+    <tr>
+        <td colspan="5" bgcolor="#000000"></td>
+    </tr>
+    <tr valign="top">
+        <td width="20%"><p><code>search CGI or ABSTRACT=web</code></p></td>
+        <td width="10%"></td>
+        <td><p>Search for 'CGI' in the name, or 'web' in the abstract</p></td>
+        <td width="10%"></td>
+        <td><p><code>CGI-XMLForm<br>HTML-Clean</code></p></td>
+    </tr>      
+    <tr>
+        <td colspan="5" bgcolor="#000000"></td>
+    </tr>
+    <tr valign="top">
+        <td width="20%"><p><code>search XML and (parser or ABSTRACT=pars) and not XPath</code></p></td>
+        <td width="10%"></td>
+        <td><p>Search for 'XML' in the name and either 'parser' in the name or 'pars' in the abstract, but not with 'XPath' in the name</p></td>
+        <td width="10%"></td>
+        <td><p><code>XML-Node<br>XML-Parser-EasyTree</code></p></td>
+    </tr>      
+    <tr>
+        <td colspan="5" bgcolor="#000000"></td>
+    </tr>
+    <tr valign="top">
+        <td width="20%"><p><code>search Data::Grove</code></p></td>
+        <td width="10%"></td>
+        <td><p>PPM Server 3.0 repositories only: Search by module name, even if unrelated to the containing package</p></td>
+        <td width="10%"></td>
+        <td><p><code>libxml-perl</code></p></td>
+    </tr>      
+    <tr>
+        <td colspan="5" bgcolor="#000000"></td>
+    </tr>
+    <tr valign="top">
+        <td width="20%"><p><code>search *</code></p></td>
+        <td width="10%"></td>
+        <td><p>Browse all packages in the repository</p></td>
+        <td></td>
+        <td><p><code>Affix-Infix2Postfix<br>AI-Fuzzy<br>AI-NeuralNet-BackProp<br></code><em>[... 1700+ more]</em></p></td>
+    </tr>
+    <tr>
+        <td colspan="5" bgcolor="#000000"></td>
+    </tr>
+</table>
+</blockquote>
+
+<p>You can recall previous searches with the <code>search &lt;number&gt;</code> command, as PPM stores past searches.
+
+</PPM3-HELP>
+    
+<PPM3-HELP name="settings">
+<h3><a name="settings">Settings</a></h3>
+    
+<blockquote>    
+<table>
+    <tr>
+	<td><p>settings</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>displays current options</td>
+    </tr>
+    <tr>
+	<td><p>settings &lt;name&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>displays the current setting of the given &lt;name&gt;</td>
+    </tr>
+    <tr>
+	<td><p>settings &lt;name&gt; &lt;value&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>sets &lt;name&gt; to &lt;value&gt;</td>
+    </tr>
+</table>
+</blockquote>
+    
+<p>The settings command gives you access to the different options that PPM has available. This can
+ be modified to better suit your needs when using PPM.</p>
+
+<p>Available settings:</p>
+
+<blockquote>
+<table>
+    <tr>
+	<td align="left" width="15%"><p>NAME</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td align="left" width="08%"><p>VALUE</td>
+        <td valign="top" align="left" width="10%"></td>
+	<td align="left"><p>DESCRIPTION</td>
+    </tr>
+    <tr>    
+	<td colspan="5" bgcolor="#000000"></td>
+    </tr>
+    <tr>
+	<td><p>case-sensitivity</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>"0" or "1"</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>If set to "1", searches and queries are case-sensitive.</td>
+    </tr>
+    <tr>    
+	<td colspan="5" bgcolor="#000000"></td>
+    </tr>
+    <tr>
+	<td><p>download-chunksize</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>integer</td>
+        <td valign="top" align="left" width="10%"></td>
+	<td><p>If this is set to a positive, non-zero integer, PPM updates the status after each "integer"
+    of bytes transferred during an install or upgrade.</td>
+    </tr>
+    <tr>    
+	<td colspan="5" bgcolor="#000000"></td>
+    </tr>
+    <tr>
+	<td><p>follow-install</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>"0" or "1"</td>
+        <td valign="top" align="left" width="10%"></td>
+	<td><p>See <a class="doc" href="#install">install</a> for details.</td>
+    </tr>
+    <tr>    
+	<td colspan="5" bgcolor="#000000"></td>
+    </tr>
+    <tr>
+	<td><p>force-install</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>"0" or "1"</td>
+        <td valign="top" align="left" width="10%"></td>
+	<td><p>See <a class="doc" href="#install">install</a> for details.</td>
+    </tr>
+    <tr>    
+	<td colspan="5" bgcolor="#000000"></td>
+    </tr>
+    <tr>
+	<td><p>page-lines</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>integer</td>
+        <td valign="top" align="left" width="10%"></td>
+	<td><p>The number of lines to display per page. If a result has fewer than "page-lines", it will be printed
+    directly to the screen regardless of the "pager" setting.</td>
+    </tr>
+    <tr>    
+	<td colspan="5" bgcolor="#000000"></td>
+    </tr>
+    <tr>
+	<td><p>pager</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>path</td>
+        <td valign="top" align="left" width="10%"></td>
+	<td><p>The path to an external pager program used to page long displays. If left blank, the internal pager is used.</td>
+    </tr>
+    <tr>    
+	<td colspan="5" bgcolor="#000000"></td>
+    </tr>
+    <tr>
+	<td><p>prompt-context</td>
+	<td valign="top" align="left" width="10%"></td>    
+	<td><p>"0" or "1"</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>If "1", enables the prompt to change based on the current state of PPM, i.e. showing current target, query, etc.
+    </tr>
+    <tr>    
+	<td colspan="5" bgcolor="#000000"></td>
+    </tr>
+    <tr>
+	<td><p>prompt-slotsize</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>integer</td>
+        <td valign="top" align="left" width="10%"></td>
+	<td><p>If prompt-verbose is "1", this defines the width of each slot in the prompt. For instance, "4" means to
+    use 4 character-wide slots.</td>
+    </tr>
+    <tr>    
+	<td colspan="5" bgcolor="#000000"></td>
+    </tr>
+    <tr>
+	<td><p>prompt-verbose</td>
+        <td valign="top" align="left" width="10%"></td>
+	<td><p>"0" or "1"</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>If "0", uses numbers to represent the context in the prompt; much shorter. If prompt-context is set
+    to "0", there will be no visible difference in the prompt-verbose settings.</td>
+    </tr>
+    <tr>    
+	<td colspan="5" bgcolor="#000000"></td>
+    </tr>
+    <tr>
+	<td><p>sort-field</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>field</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>The field by which to sort search and query results. Valid fields are ABSTRACT, NAME or TITLE, AUTHOR and VERSION.
+    Note: these fields are case-sensitive.</td>
+    </tr>
+    <tr>    
+	<td colspan="5" bgcolor="#000000"></td>
+    </tr>
+    <tr>
+	<td><p>tempdir</td>
+        <td valign="top" align="left" width="10%"></td>
+	<td><p>path</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>A temporary directory into which packages are downloaded and expanded during "install" and "upgrade".</td>
+    </tr>
+    <tr>    
+	<td colspan="5" bgcolor="#000000"></td>
+    </tr>
+    <tr>
+	<td><p>trace-file</td>
+        <td valign="top" align="left" width="10%"></td>
+	<td><p>path</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>A file to which PPM will write tracing information.</td>
+    </tr>
+    <tr>    
+	<td colspan="5" bgcolor="#000000"></td>
+    </tr>
+    <tr>
+	<td><p>trace-level</td>
+        <td valign="top" align="left" width="10%"></td>
+	<td><p>integer</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>If 0 or negative, tracing is disabled. Any positive integer
+	results in tracing information. Higher numbers mean more tracing
+	information.</td>
+    </tr>
+    <tr>    
+	<td colspan="5" bgcolor="#000000"></td>
+    </tr>
+</table>
+</blockquote>
+    
+<p>PPM options: If you are looking for old options understood by previous version of PPM, please see
+ "help ppm_migration".
+
+<p>Note: When you assign a value, PPM saves its configuration. That means all values automatically
+persist across sessions. Also, setting names may be abbreviated to uniqueness. Instead of
+typing "case-sensitivity", you may type "case".
+</PPM3-HELP>
+    
+<PPM3-HELP name="target">
+<h3><a name="target">Target</a></h3>
+    
+<blockquote>
+<table>
+    <tr>
+	<td><p>target</td>
+	<td valign="top" align="left" width="10%"></td> 
+	<td><p>Displays a list of targets</td>
+    </tr>
+    <tr>
+	<td><p>target &lt;number&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Sets &lt;number&gt; as default target</td>
+    </tr>
+    <tr>
+	<td><p>target describe [number]</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Describes the given (or default) target</td>
+    </tr>
+    <tr>
+	<td><p>target set &lt;key&gt; &lt;val&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Sets the target's &lt;key&gt; to &lt;val&gt;</td>
+    </tr>
+</table>
+</blockquote>
+    
+<p>A target is a location where packages are installed, a directory where the packages you want
+ to install are placed when they're downloaded from the repository. For example, entering:</p>
+
+<pre>target</pre>
+
+<p>will return:</p>
+
+<pre>
+Targets:
+  1. ActivePerl 618
+* 2. ActivePerl 630
+</pre>
+
+<p>This shows us that we have 2 targets available to us and that the second target (ActivePerl 630) is
+currently the default, as noted by the asterisk. The ability to choose different targets allows
+ PPM to manage several installations of Perl from one command-line.</p>
+
+<p>Note: Currently, PPM only supports Perl but will be expanded for other languages in the near
+ future. You can have several versions of Perl on your system and each version will be
+ recognized as a unique target by PPM.
+</PPM3-HELP>
+
+<PPM3-HELP name="tree">
+<h3><a name="tree">Tree</a></h3>
+
+<blockquote>
+<table>
+    <tr>
+	<td><p>tree</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>displays the dependency-tree of the default package</td>
+    </tr>
+    <tr>
+	<td><p>tree &lt;number&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>displays the dependency-tree of the given &lt;number&gt;</td>
+    </tr>
+    <tr>
+	<td><p>tree &lt;range&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>displays a &lt;range&gt; of dependency trees</td>
+    </tr>
+    <tr>
+	<td><p>tree &lt;name&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>displays the dependency-tree of the named package</td>
+    </tr>
+</table>
+</blockquote>
+
+<p>The <code>tree</code> command is used to show the what is known as the "dependncy tree" of a given package. That is,
+a list of additional packages that are required to make a given package perform as expected. For example, entering:
+    
+<pre>
+tree SOAP-lite
+</pre>
+    
+<p>would return something that looks like this:
+    
+<pre>
+====================
+SOAP-Lite 0.46
+    |__MIME-tools 5.316
+    |   |__MailTools 1.15
+    |   \__IO-stringy 1.216
+    |
+    \__MIME-Lite 2.105
+====================
+</pre>
+
+<p>As we can see, SOAP-Lite would require 4 other packages to be installed with it.
+
+<p>When <code>tree</code> is called without a &lt;name&gt; or &lt;number&gt;, <code>tree</code> will return the
+dependency tree of the first package in the default search result. If there is no default search, you will be requested to
+use <a class="doc" href="#search">search</a> to find a package.
+</PPM3-HELP>
+
+<PPM3-HELP name="uninstall">
+<h3><a name="uninstall">Uninstall</a></h3>
+
+<blockquote>
+<table>
+    <tr>
+	<td><p>uninst</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Removes default installed package</td>
+    </tr>
+    <tr>
+	<td><p>uninst &lt;number&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Removes installed package &lt;number&gt;</td>
+    </tr>
+    <tr>
+	<td><p>uninst &lt;range&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Removes a &lt;range&gt; of installed packages</td>
+    </tr>
+    <tr>
+	<td><p>uninst &lt;name&gt;</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>Removes named installed package</td>
+    </tr>
+</table>
+</blockquote>
+    
+<p>Like the <a class="doc" href="#remove">remove</a> command, <code>uninstall</code> enables you to delete installed
+packages. This can be done by name or by the numerical listing of packages. Also like the remove command, uninstalling any
+packages will clear all previous query requests.
+    
+<p>See Also: <a class="doc" href="#remove">Remove</a>
+</PPM3-HELP>
+    
+<PPM3-HELP name="upgrade">
+<h3><a name="upgrade">Upgrade</a></h3>
+    
+<blockquote>
+<table>
+    <tr>
+	<td><p>upgrade [*]</td>
+        <td valign="top" align="left" width="10%"></td>
+	<td><p>Lists upgrades available for all installed packages</td>
+    </tr>
+    <tr>
+    	<td><p>upgrade &lt;number&gt;</td>
+        <td valign="top" align="left" width="10%"></td>
+	<td><p>Upgrades installed package &lt;number&gt;</td>
+    </tr>
+    <tr>
+    	<td><p>upgrade &lt;range&gt;</td>
+        <td valign="top" align="left" width="10%"></td>
+	<td><p>Upgrades a &lt;range&gt; of installed packages</td>
+    </tr>
+    <tr>
+	<td><p>upgrade &lt;package&gt;</td>
+        <td valign="top" align="left" width="10%"></td>
+	<td><p>Upgrades the named &lt;package&gt;</td>
+    </tr>
+</table>
+</blockquote>
+    
+<p>There are several modifiers to the upgrade command, as well:</p>
+
+<blockquote>
+<table>
+    <tr>
+	<td align="left"><p>OPTION</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td align="left"><p>DESCRIPTION</td>
+    </tr>
+    <tr>    
+	<td colspan="5" bgcolor="#000000"></td>
+    </tr>
+    <tr>
+	<td><p>Install</td>
+        <td valign="top" align="left" width="10%"></td>
+	<td><p>Installs, rather than lists, available upgrades</td>
+    </tr>
+    <tr>    
+	<td colspan="5" bgcolor="#000000"></td>
+    </tr>
+    <tr>
+	<td><p>Precious</td>
+        <td valign="top" align="left" width="10%"></td>
+	<td><p>Allows upgrading of "precious" packages</td>
+    </tr>
+    <tr>    
+	<td colspan="5" bgcolor="#000000"></td>
+    </tr>
+    <tr>
+	<td><p>Force</td>
+        <td valign="top" align="left" width="10%"></td>
+	<td><p>See <a class="doc" href="#install">install</a></td>
+    </tr>
+    <tr>    
+	<td colspan="5" bgcolor="#000000"></td>
+    </tr>
+    <tr>
+	<td><p>Follow</td>
+	<td valign="top" align="left" width="10%"></td>
+	<td><p>See <a class="doc" href="#install">install</a></td>
+    </tr>
+    <tr>    
+	<td colspan="5" bgcolor="#000000"></td>
+    </tr>
+</table>
+</blockquote>
+
+<p>By default, <code>upgrade</code> typed by itself only lists the available upgrades. To actually install all available
+upgrades, enter:
+
+<pre>
+upgrade -install
+</pre>
+    
+<p>To enable upgrading "precious" packages, type:
+    
+<pre>
+upgrade -install -precious
+</pre>
+    
+</PPM3-HELP>
+    
+<PPM3-HELP name="version">
+<h3><a name="version">Version</a></h3>
+
+<blockquote>
+<table>
+    <tr>
+	<td><p>Version</td>
+    <td valign="top" align="left" width="10%"></td>
+	<td><p>displays the installed PPM version number.</td>
+    </tr>
+</table>
+</blockquote>
+</PPM3-HELP>
+
+<h2><a name="ppm2_commands">PPM version 2 Commands</a></h4>
+
+<p>A summary of PPM version 2 commands is shown below.  Type <code>help
+&lt;command&gt;</code> at the PPM prompt for usage details. Items in [brackets] 
+are optional.</p>
+
+<table cellpadding="5">
+  <tr>
+    <td><font color="#b82619"><b>Command</b></font></td>
+    <td><font color="#b82619"><b>Function</b></font></td>
+  </tr>
+  <tr>
+    <td><b>genconfig</b></td>
+    <td>prints a minimal PPM configuration file to STDOUT
+      [Note: genconfig only works from the command-line]</td>
+  </tr>
+  <tr>
+    <td><b>help [command]</b></td>
+    <td>lists available commands, or help on 'command'.</td>
+  </tr>
+  <tr>
+    <td><b>install package1 [package2...]</b></td>
+    <td>installs specified packages.</td>
+  </tr>
+  <tr>
+    <td><b>quit</b></td>
+    <td>exits the program.</td>
+  </tr>
+  <tr>
+    <td><b>query [pattern]</b></td>
+    <td>lists installed packages, or packages containing <code>pattern</code>.</td>
+  </tr>
+  <tr>
+    <td><b>query /abstract [pattern]</b></td>
+    <td>lists descriptions of installed packages, or package
+      descriptions containing <code>pattern</code>.</td>
+  </tr>
+  <tr>
+    <td><b>remove package1 [package2...]</b></td>
+    <td>removes the specified packages from the system.</td>
+  </tr>
+  <tr>
+    <td><b>search [pattern]</b></td>
+    <td>lists available packages, or packages containing <code>pattern</code>.</td>
+  </tr>
+  <tr>
+    <td><b>search /abstract [pattern]</b></td>
+    <td>lists descriptions of available packages, or package
+      descriptions containing <code>pattern</code>.</td>
+  </tr>
+  <tr>
+    <td><b>set</b></td>
+    <td>set/display current options.</td>
+  </tr>
+  <tr>
+    <td><b>set save</b></td>
+    <td>save current options.</td>
+  </tr>
+  <tr>
+    <td><b>verify [package1...]</b></td>
+    <td>verifies currently installed packages are up to date.</td>
+  </tr>
+  <tr>
+    <td><b>verify /upgrade [package1...]</b></td>
+    <td>installs available package upgrades.</td>
+  </tr>
+  <tr>
+    <td><b>version</b></td>
+    <td>displays the PPM version number</td>
+  </tr>
+</table>
+<p>A pattern is a search string just like the regular expressions - for example
+if you search for with this command</p>
+<blockquote>
+  <p><code>search ODBC|DBI</code></p>
+</blockquote>
+<p>(which means <i>'search for packages in which the characters ODBC and/or the
+characters DBI are present in that order'</i>) you get a result like this</p>
+<blockquote>
+  <p>Apache-DBI<br>
+  DBD-ODBC<br>
+  DBI<br>
+  FindBin<br>
+  Win32-ODBC</p>
+</blockquote>
+<p>Note that if you use <code>'search /abstract [pattern]' </code>the search will only
+include the ABSTRACT section of the package files.</p>
+
+<h2><a name="repositories">Where are the package repositories?</a></h2>
+<p>By default, PPM will use the ActiveState package repository, but there are
+other repositories on the Internet. At the moment there are these repositories:</p>
+    
+<p><b>Note: most of these repositories are for ActivePerl 5xx builds only; they
+may not be compatible with ActivePerl 6xx builds. Check these repositories for the latest updates:</b></p>
+    
+<blockquote>
+  <table cellspacing="10">
+    <tr>
+      <td valign="top" align="left" width="50%">http://ppm-ia.ActiveState.com/PPM/ppmserver.plex?urn:/PPM/Server/SQL</td>
+      <td valign="top" align="left" width="50%">New 3.0 Repository
+        from ActiveState</td>
+    </tr>
+    <tr>
+      <td valign="top" align="left" width="50%">http://www.ActiveState.com/cgibin/PPM/ppmserver.plex?urn:/PPMServer</td>
+      <td valign="top" align="left" width="50%">The default package repository from ActiveState</td>
+    </tr>
+    <tr>
+      <td valign="top" align="left" width="50%">http://theoryx5.uwinnipeg.ca/cgi-bin/ppmserver?urn:/PPMServer</td>
+      <td valign="top" align="left" width="50%">University of Winnipeg</td>
+    </tr>
+    <tr>
+      <td valign="top" align="left" width="50%">http://Jenda.Krynicky.cz/perl</td>
+      <td valign="top" align="left" width="50%">Jan Krynicky's package
+        repository</td>
+    </tr>
+    <tr>
+      <td valign="top" align="left" width="50%">http://www.roth.net/perl/packages/</td>
+      <td valign="top" align="left" width="50%">Roth Consulting's package
+        repository</td>
+    </tr>
+    <tr>
+      <td valign="top" align="left" width="50%">http://www.xray.mpe.mpg.de/~ach/ptk/ppm</td>
+      <td valign="top" align="left" width="50%">Achim Bohnet's package
+        repository</td>
+    </tr>
+    <tr>
+      <td valign="top" align="left" width="50%">http://rto.dk/packages/</td>
+      <td valign="top" align="left" width="50%">RTO's packages repository
+        (mostly mirrors of the above)</td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <hr width="50%">
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" align="left" width="50%">http://www.fastnetltd.ndirect.co.uk/Perl/zips/</td>
+      <td valign="top" align="left" width="50%">Fastnet Software Ltd's packages
+        - not directly accessible from PPM at present</td>
+    </tr>
+  </table>
+</blockquote>
+
+<h4>For PPM3 users</h4>
+<p>To use these package repositories you start PPM3 and at the prompt type:</p>
+    
+<pre>
+repository add <i>NAME</i> <i>URL</i>
+</pre>
+    
+<p>where <i>NAME</i> is a name by which you want to reference the repository
+from PPM and <i>URL</i> is the URL to the repository. Please note that <i>NAME</i> is
+optional, as PPM will assign a name to the repository for you. For example, entering:</p>
+
+<pre>
+repository add JENDA http://Jenda.Krynicky.cz/perl
+</pre>
+
+<p>will create a repository for you, by the name of JENDA and give you access to the modules
+available there.</p>
+
+<h4>For PPM users</h4>
+<p>To use these package repositories you start PPM and at the prompt type</p>
+<pre>
+set repository <i>NAME</i> <i>URL</i>
+</pre>
+    
+<p>where <i>NAME</i> is a name by which you want to reference the repository
+from PPM and <i>URL</i> is the URL to the repository. You could for example type</p>
+
+<pre>
+set repository JENDA http://Jenda.Krynicky.cz/perl
+</pre>
+
+<p>The next time you do a 'search' you will not only search the ActiveState
+package repository but also the repositories you have added. Before you exit PPM
+you should save the changes to the configuration by issuing the command 'set
+save'.</p>
+
+<h2><a name="how_to_make_ppm_distribution">How do I make a PPM package?</a></h2>
+<p>If you want to make a PPM package for use on other machine you can do it like
+this:</p>
+<p>Specify the AUTHOR and ABSTRACT parameters in the Makefile.PL. However you
+should only pass them to WriteMakefile if the version of the perl is greater
+than 5.005 - older perls do not have these parameters added and do not expect to
+see them. This is an example Makefile.PL:</p>
+<blockquote>
+  <p><code>use ExtUtils::MakeMaker;<br>
+  # See lib/ExtUtils/MakeMaker.pm for details of how to influence<br>
+  # the contents of the Makefile that is written.<br>
+  WriteMakefile(<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;'NAME' =&gt; 'Term::Control',<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;'VERSION_FROM' =&gt; 'Control.pm', # finds $VERSION<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;($] ge '5.005') ? (<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'AUTHOR' =&gt; 'Johnny Doel (johnny@doel.org)',<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'ABSTRACT' =&gt; 'Control the
+  IO for terminals',<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;) : (),<br>
+  );</code></p>
+</blockquote>
+<p>Then you make the archive with the commands</p>
+<blockquote>
+  <p><code>perl Makefile.PL<br>
+  nmake</code></p>
+</blockquote>
+<p>The resulting files are placed in the blib directory that is created when you
+run nmake. These files should be packed into an archive like this:</p>
+<blockquote>
+  <p><code>tar cvf <i>package</i>.tar blib<br>
+  gzip --best <i>package</i>.tar</code></p>
+</blockquote>
+<p>You now have an archive called <i>package</i>.tar.gz. Then you generate the
+PPD file by:</p>
+<blockquote>
+  <p><code>nmake ppd</code></p>
+</blockquote>
+<p>You have to edit the resulting PPD file and add the location of the package
+archive into &lt;CODEBASE HREF="" /&gt;. The location is relative to
+the PPD file.</p>
+<p>You can get nmake from <a class="doc" href="http://download.microsoft.com/download/vc15/Patch/1.52/W95/EN-US/Nmake15.exe">http://download.microsoft.com/download/vc15/Patch/1.52/W95/EN-US/Nmake15.exe</a>.
+</p>
+
+
+<h2><a name="ppm_and_proxies">PPM, Proxies and Firewalls</a></h2>
+<p>If you use a proxy server or firewall, you might have trouble running PPM.
+Here is the solution.</p>
+<blockquote>
+  <p><b>NOTE</b>: If none of the changes in this document work for you,
+  you may download individual packages from <a class="doc" href="http://www.activestate.com/PPMpackages/5.6/zips">here
+  [ActivePerl 613 and later]</a> or <a class="doc" href="http://www.activestate.com/PPMpackages/5.005/zips">here
+  [ActivePerl 522 and earlier]</a> and install them according to the directions
+  in the README file contained within the ZIP file. If you want, you can also
+  keep a local repository, with several .ppd files in a permanent repository
+  directory, and their .tar.gz files in an <i>x86</i> directory beneath that.</p>
+</blockquote>
+<ol start="1">
+  <li>
+    <h3>Set Environment Vars</h3>
+  </li>
+</ol>
+<blockquote>
+  <p>Up to three environment variables need to be set.</p>
+</blockquote>
+<blockquote>
+    <p><b>Under Windows 2000</b><br>
+    Right click on "My Computer", click on "Properties" and select the
+    "Advanced" tab. Click the button marked "Environment Variables"
+    and make the following changes in the "System Variables" window:<br></p>
+    <ol>
+    <li>With the "New" button, add the setting <i>HTTP_proxy</i>, with your proxy name as the
+    value (you must include "<code>http://</code>"), followed by a colon and
+      the proxy port, if applicable; e.g., "<code>http://proxy:8080</code>"</li>
+    <li>If you require a user name and/or password to access your proxy, use the "New" button
+    to add the settings <i>HTTP_proxy_user</i> and <i>HTTP_proxy_pass</i>, with your user name and
+      password as the respective values.</li>
+    </ol>
+</blockquote>
+<blockquote>
+  <p><strong>Under Windows NT<br>
+  </strong>Right click on "My Computer", click on
+  "Properties", select the "Environment" tab. These are your
+  environment settings. Make the following changes:<br></p>
+  <ol>
+    <li>Add the setting <i>HTTP_proxy</i>, with your proxy name as the value (you
+      must include "<code>http://</code>"), followed by a colon and
+      the proxy port, if applicable; e.g., "<code>http://proxy:8080</code>"</li>
+    <li>If you require a user name and/or password to access your proxy, add the
+      settings <i>HTTP_proxy_user</i> and <i>HTTP_proxy_pass</i>, with your user name and
+      password as the respective values.</li>
+    </ol>
+</blockquote>
+<blockquote>
+  <p><strong>Under Windows 9x<br></strong>
+  In your AUTOEXEC.BAT file, place the following lines then reboot so the changes can take effect:</p>
+</blockquote>
+<blockquote>
+  <ol>
+    <li>SET HTTP_proxy=&lt;your proxy server (you must include
+      "<code>http://</code>", followed by a colon and the proxy
+      port, if applicable; e.g., <code>SET HTTP_proxy=http://proxy:8080</code></li>
+    <li>SET HTTP_proxy_user=&lt;your user name&gt; (if required)</li>
+    <li>SET HTTP_proxy_pass=&lt;your password&gt; (if required)</li>
+  </ol>
+</blockquote>
+<ol start="2">
+  <li>
+    <h3>Try using PPM</h3>
+  </li>
+</ol>
+<blockquote>
+  <p>With your internet connection active, try using PPM again. Try to install a
+  small package, like File-Slurp. You'll know that it still fails if you see an
+  error stating that it can't find a ppd file for the specified package.</p>
+</blockquote>
+<ol start="3">
+  <li>
+    <h3>Further Information and Help</h3>
+  </li>
+</ol>
+<blockquote>
+  <p>If there were problems with any of the above hints, please see 
+  <a class="doc" href="../readme.html#Troubleshooting_FAQ">Troubleshooting</a>
+  for information regarding further help.</p>
+</blockquote>
+
+<h2><a name="AUTHOR_AND_COPYRIGHT">AUTHOR AND COPYRIGHT</a></h2>
+<p>This FAQ was originally assembled and maintained by Evangelo Prodromou. It
+has been revised and updated by Brian Jepson of O'Reilly &amp; Associates, David
+Grove, David Dmytryshyn, and Murray Nesbitt of ActiveState, Henning Michael Møller-Nielsen
+of RTO, Kevin Meltzer, and David Sparks of ActiveState.</p>
+<p>This FAQ is in the public domain. If you use it, however, please ensure that
+you give credit to the original authors.</p>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td class="block" valign="MIDDLE" width="100%" bgcolor="#cccccc"><strong>
+      <p class="block">&nbsp;ActivePerl FAQ - PPM</p>
+      </strong></td>
+  </tr>
+</table>
+
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+Evil twins :
+http://www-01.ibm.com/support/docview.wss?uid=swg21125072
+
+How to find ct dump -l foo.c@@
+	@@ means dumping the element object related to the file , not the version selected by the view
+
+cleartool find . -type d -exec 'cleartool describe -fmt "%On, %En\\n" $CLEARCASE_PN@@'??
+	gives all the evil twins in the directory
+
+ct lshistory -l .@@ 
+	gives the history of the current directory
+	Uncatalogued means it was ct rmnamed
+	Added - means added new file was checked in that directory
+
+
+
+
+
+

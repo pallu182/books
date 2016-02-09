@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<TITLE>runperl.bat - "universal" batch file to run perl scripts</TITLE>
+<LINK REL="stylesheet" HREF="../Active.css" TYPE="text/css">
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;runperl.bat - "universal" batch file to run perl scripts</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<LI><A HREF="#bugs">BUGS</A></LI>
+	<LI><A HREF="#see also">SEE ALSO</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>runperl.bat - ``universal'' batch file to run perl scripts</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<PRE>
+        C:\&gt; copy runperl.bat foo.bat
+        C:\&gt; foo
+        [..runs the perl script `foo'..]
+</PRE>
+<PRE>
+
+        C:\&gt; foo.bat
+        [..runs the perl script `foo'..]</PRE>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P>This file can be copied to any file name ending in the ``.bat'' suffix.
+When executed on a DOS-like operating system, it will invoke the perl
+script of the same name, but without the ``.bat'' suffix.  It will
+look for the script in the same directory as itself, and then in
+the current directory, and then search the directories in your PATH.</P>
+<P>It relies on the <A HREF="../lib/Pod/perlfunc.html#item_exec"><CODE>exec()</CODE></A> operator, so you will need to make sure
+that works in your perl.</P>
+<P>This method of invoking perl scripts has some advantages over
+batch-file wrappers like <CODE>pl2bat.bat</CODE>:  it avoids duplication
+of all the code; it ensures <A HREF="../lib/Pod/perlvar.html#item_%240"><CODE>$0</CODE></A> contains the same name as the
+executing file, without any egregious ``.bat'' suffix; it allows
+you to separate your perl scripts from the wrapper used to
+run them; since the wrapper is generic, you can use symbolic
+links to simply link to <CODE>runperl.bat</CODE>, if you are serving your
+files on a filesystem that supports that.</P>
+<P>On the other hand, if the batch file is invoked with the ``.bat''
+suffix, it does an extra <A HREF="../lib/Pod/perlfunc.html#item_exec"><CODE>exec()</CODE></A>.  This may be a performance
+issue.  You can avoid this by running it without specifying
+the ``.bat'' suffix.</P>
+<P>Perl is invoked with the -x flag, so the script must contain
+a <CODE>#!perl</CODE> line.  Any flags found on that line will be honored.</P>
+<P>
+<HR>
+<H1><A NAME="bugs">BUGS</A></H1>
+<P>Perl is invoked with the -S flag, so it will search the PATH to find
+the script.  This may have undesirable effects.</P>
+<P>
+<HR>
+<H1><A NAME="see also">SEE ALSO</A></H1>
+<P>perl, perlwin32, pl2bat.bat</P>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;runperl.bat - "universal" batch file to run perl scripts</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

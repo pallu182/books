@@ -1,0 +1,17 @@
+F ARRAY_OF.;1                       	array_of_arrays_1
+F ARRAY_OF.000;1                    	array_of_hashes_3
+F ARRAY_OF.001;1                    	array_of_hashes_2
+F ARRAY_OF.002;1                    	array_of_hashes_1
+F ARRAY_OF.003;1                    	array_of_arrays_3
+F ARRAY_OF.004;1                    	array_of_arrays_2
+F COMPLEX_.;1                       	complex_1
+F COMPLEX_.000;1                    	complex_4
+F COMPLEX_.001;1                    	complex_3
+F COMPLEX_.002;1                    	complex_2
+F HASH_OF_.;1                       	hash_of_arrays_1
+F HASH_OF_.000;1                    	hash_of_hashes_3
+F HASH_OF_.001;1                    	hash_of_hashes_2
+F HASH_OF_.002;1                    	hash_of_hashes_1
+F HASH_OF_.003;1                    	hash_of_arrays_3
+F HASH_OF_.004;1                    	hash_of_arrays_2
+F MISC.;1                           	MISC

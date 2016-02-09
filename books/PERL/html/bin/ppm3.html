@@ -1,0 +1,1453 @@
+<HTML>
+<HEAD>
+<TITLE>ppm3 - Programmer's Package Manager, version 3.0</TITLE>
+<LINK REL="stylesheet" HREF="../Active.css" TYPE="text/css">
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;ppm3 - Programmer's Package Manager, version 3.0</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<LI><A HREF="#commands">COMMANDS</A></LI>
+	<LI><A HREF="#describe  describe packages">describe - Describe Packages</A></LI>
+	<UL>
+
+		<LI><A HREF="#synopsis">Synopsis</A></LI>
+		<LI><A HREF="#description">Description</A></LI>
+		<LI><A HREF="#see also">See Also</A></LI>
+	</UL>
+
+	<LI><A HREF="#exit, q, quit  exit the program">exit, q, quit - Exit the program</A></LI>
+	<UL>
+
+		<LI><A HREF="#synopsis">Synopsis</A></LI>
+		<LI><A HREF="#description">Description</A></LI>
+	</UL>
+
+	<LI><A HREF="#help  general help, or help on specific commands.">help - General help, or help on specific commands.</A></LI>
+	<UL>
+
+		<LI><A HREF="#synopsis">Synopsis</A></LI>
+		<LI><A HREF="#description">Description</A></LI>
+	</UL>
+
+	<LI><A HREF="#install  install packages">install - Install Packages</A></LI>
+	<UL>
+
+		<LI><A HREF="#synopsis">Synopsis</A></LI>
+		<LI><A HREF="#description">Description</A></LI>
+		<LI><A HREF="#see also">See Also</A></LI>
+	</UL>
+
+	<LI><A HREF="#profile  manage ppm profiles">profile - Manage PPM Profiles</A></LI>
+	<UL>
+
+		<LI><A HREF="#synopsis">Synopsis</A></LI>
+		<LI><A HREF="#description">Description</A></LI>
+	</UL>
+
+	<LI><A HREF="#properties  describe installed packages">properties - Describe Installed Packages</A></LI>
+	<UL>
+
+		<LI><A HREF="#synopsis">Synopsis</A></LI>
+		<LI><A HREF="#description">Description</A></LI>
+		<LI><A HREF="#see also">See Also</A></LI>
+	</UL>
+
+	<LI><A HREF="#query  query installed packages">query - Query Installed Packages</A></LI>
+	<UL>
+
+		<LI><A HREF="#synopsis">Synopsis</A></LI>
+		<LI><A HREF="#description">Description</A></LI>
+		<LI><A HREF="#see also">See Also</A></LI>
+	</UL>
+
+	<LI><A HREF="#repository  repository control">repository - Repository Control</A></LI>
+	<UL>
+
+		<LI><A HREF="#synopsis">Synopsis</A></LI>
+		<LI><A HREF="#description">Description</A></LI>
+		<LI><A HREF="#repository types">Repository Types</A></LI>
+	</UL>
+
+	<LI><A HREF="#search  search for packages">search - Search for Packages</A></LI>
+	<UL>
+
+		<LI><A HREF="#synopsis">Synopsis</A></LI>
+		<LI><A HREF="#description">Description</A></LI>
+		<LI><A HREF="#search results">Search Results</A></LI>
+	</UL>
+
+	<LI><A HREF="#settings  view or set ppm settings">settings - View or Set PPM Settings</A></LI>
+	<UL>
+
+		<LI><A HREF="#synopsis">Synopsis</A></LI>
+		<LI><A HREF="#description">Description</A></LI>
+	</UL>
+
+	<LI><A HREF="#targets  view target installer backends">targets - View Target Installer Backends</A></LI>
+	<UL>
+
+		<LI><A HREF="#synopsis">Synopsis</A></LI>
+		<LI><A HREF="#description">Description</A></LI>
+	</UL>
+
+	<LI><A HREF="#tree  show dependency tree for packages">tree - Show Dependency Tree for Packages</A></LI>
+	<UL>
+
+		<LI><A HREF="#synopsis">Synopsis</A></LI>
+		<LI><A HREF="#description">Description</A></LI>
+	</UL>
+
+	<LI><A HREF="#remove, uninstall  uninstalls installed packages">remove, uninstall - Uninstalls Installed Packages</A></LI>
+	<UL>
+
+		<LI><A HREF="#synopsis">Synopsis</A></LI>
+		<LI><A HREF="#description">Description</A></LI>
+		<LI><A HREF="#see also">See Also</A></LI>
+	</UL>
+
+	<LI><A HREF="#upgrade  list or install available upgrades">upgrade - List or install available upgrades</A></LI>
+	<UL>
+
+		<LI><A HREF="#synopsis">Synopsis</A></LI>
+		<LI><A HREF="#description">Description</A></LI>
+		<LI><A HREF="#see also">See Also</A></LI>
+	</UL>
+
+	<LI><A HREF="#version  print the name and version of ppm.">version - print the name and version of PPM.</A></LI>
+	<LI><A HREF="#extra help topics">EXTRA HELP TOPICS</A></LI>
+	<LI><A HREF="#ppm migration  ppm migration guide">ppm migration - PPM Migration Guide</A></LI>
+	<UL>
+
+		<LI><A HREF="#description">Description</A></LI>
+	</UL>
+
+	<LI><A HREF="#prompt  information about the ppm3 prompt">prompt - information about the PPM3 prompt</A></LI>
+	<UL>
+
+		<LI><A HREF="#description">Description</A></LI>
+		<LI><A HREF="#examples">Examples</A></LI>
+		<LI><A HREF="#see also">See Also</A></LI>
+	</UL>
+
+	<LI><A HREF="#quickstart  a beginners' guide to ppm3">quickstart - a beginners' guide to PPM3</A></LI>
+	<UL>
+
+		<LI><A HREF="#description">Description</A></LI>
+	</UL>
+
+	<LI><A HREF="#unicode  notes about unicode author names">unicode - Notes About Unicode Author Names</A></LI>
+	<UL>
+
+		<LI><A HREF="#description">Description</A></LI>
+	</UL>
+
+	<LI><A HREF="#bugs">BUGS</A></LI>
+	<LI><A HREF="#see also">SEE ALSO</A></LI>
+	<LI><A HREF="#author">AUTHOR</A></LI>
+	<LI><A HREF="#copyright">COPYRIGHT</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>ppm3 - Programmer's Package Manager, version 3.0</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<P>ppm3 [-file=f] [-shared] [-target[=t]] [-pause] [command [args]]</P>
+<P>When run with no arguments, PPM3 starts up an interactive shell where you can
+enter commands. You may specify command-line arguments to run a single
+command.</P>
+<P>For example, the following two sessions are equivalent:</P>
+<PRE>
+   $ ppm
+   ppm&gt; search Tk
+   [results displayed]
+   ppm&gt; exit</PRE>
+<PRE>
+   $ ppm search Tk
+   [results displayed]</PRE>
+<P>In the first case, PPM returns you to the prompt, where you can enter more
+commands.</P>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P>The program <EM>ppm3</EM> is intended to simplify the tasks of locating, installing,
+upgrading and removing Perl packages.</P>
+<P><EM>ppm3</EM> runs in one of three modes: an interactive shell from which commands
+may be entered; a script interpreter, reading sequential commands from a
+file; and command-line mode, in which one specific action is performed per
+invocation of the program.</P>
+<P>
+<HR>
+<H1><A NAME="commands">COMMANDS</A></H1>
+<P>The following sections describe each command available in PPM. The following
+help is also available via the online help feature by typing 'help' in PPM3.</P>
+<P>
+<HR>
+<H1><A NAME="describe  describe packages">describe -- Describe Packages</A></H1>
+<P>
+<H2><A NAME="synopsis">Synopsis</A></H2>
+<PRE>
+ des                Describes default/current package
+ des &lt;number&gt;       Describes package &lt;number&gt; in the
+                    current search set
+ des &lt;range&gt;        Describes packages in the given 
+                    &lt;range&gt; from the current search
+ des &lt;package name&gt; Describes named package
+ des &lt;url&gt;          Describes package located at &lt;url&gt;
+ des &lt;glob pattern&gt; Performes a new search using &lt;glob pattern&gt;</PRE>
+<P>
+<H2><A NAME="description">Description</A></H2>
+<P>The describe command returns information about a package, including
+the name of the package, the author's name and a brief description
+(called an ``Abstract'') about the package. For example:</P>
+<PRE>
+    describe libnet</PRE>
+<P>returns:</P>
+<PRE>
+    ===============================
+    Package 1
+    Name: libnet
+    Version: 1.07.03
+    Author: Graham Barr
+    Abstract: Collection of Network protocol modules
+    Implementations:
+            1.sun4-solaris-thread-multi
+            2.i686-linux-thread-multi
+            3.MSWIn32-x86-multi-thread
+    ===============================</PRE>
+<P>There are two modifiers to the describe command:</P>
+<DL>
+<DT><STRONG><A NAME="item_%2Dppd">-ppd</A></STRONG><BR>
+<DD>
+Displays the raw PPD of the package.
+<P></P>
+<DT><STRONG><A NAME="item_%2Ddump">-dump</A></STRONG><BR>
+<DD>
+The same as -ppd.
+<P></P></DL>
+<P>When the describe command is called without arguments, it returns
+information about the first package in the current search. If there is no
+default search set, you will be prompted to use the search command
+to find a package.</P>
+<P>If describe is called with a numeric argument, that number is set as the
+default package and the information about that package is returned. If the
+number given doesn't exist, you will be prompted to use search to find a
+package. Also, you can use describe to get descriptions of several
+packages.  For example:</P>
+<PRE>
+    describe 4-7</PRE>
+<P>will return descriptions of packages 4 through 7 in the current search
+request. You can also enter:</P>
+<PRE>
+    describe 3-4,10</PRE>
+<P>to get information on packages 3, 4 and 10.</P>
+<P>If you specify a URL as the argument to describe, PPM will describe the
+package located at the URL. The URL must point to a PPD file. The URL
+can also point to a PPD file on your computer.</P>
+<P>When the describe command is given a name with a wildcard (such as ``*'' or
+``?'') it executes the search command with the given argument. For example,
+describe Tk* will return the <CODE>name(s)</CODE> of any packages that match the
+search parameters.</P>
+<P>
+<H2><A NAME="see also">See Also</A></H2>
+<P>properties</P>
+<P>
+<HR>
+<H1><A NAME="exit, q, quit  exit the program">exit, q, quit -- Exit the program</A></H1>
+<P>
+<H2><A NAME="synopsis">Synopsis</A></H2>
+<PRE>
+ exit                Exit
+ quit                Exit
+ q                   Exit
+ q &lt;query&gt;           Perform a new query (shortcut for query)</PRE>
+<P>
+<H2><A NAME="description">Description</A></H2>
+<P>When you leave the PPM environment, the current settings are saved.</P>
+<P>
+<HR>
+<H1><A NAME="help  general help, or help on specific commands.">help -- General help, or help on specific commands.</A></H1>
+<P>
+<H2><A NAME="synopsis">Synopsis</A></H2>
+<PRE>
+ help                Lists available commands and help topics
+ help 'command'      Lists detailed help about a specific command</PRE>
+<P>
+<H2><A NAME="description">Description</A></H2>
+<P>The help command provides a brief description of the commands available
+within PPM. For help on a specific command, enter help followed by the
+command name. For example, enter help settings or help set for a detailed
+description of the settings command.</P>
+<P>There are some extra help topics built into PPM. They can be accessed
+within the PPM environment as follows:</P>
+<PRE>
+  help ppm_migration</PRE>
+<P>shows more details about the changes from previous versions of PPM</P>
+<PRE>
+  help quickstart</PRE>
+<P>an easy-to-follow guide to getting started with PPM</P>
+<PRE>
+  help prompt</PRE>
+<P>provides a detailed explanation about the PPM prompt</P>
+<P>
+<HR>
+<H1><A NAME="install  install packages">install -- Install Packages</A></H1>
+<P>
+<H2><A NAME="synopsis">Synopsis</A></H2>
+<PRE>
+ install           Installs default package
+ install &lt;number&gt;  Installs packages by a specific &lt;number&gt;
+ install &lt;range&gt;   Installs packages in the given numeric &lt;range&gt;
+ install &lt;name&gt;    Installs named package
+ install &lt;url&gt;     Installs the package located at &lt;url&gt;</PRE>
+<P>
+<H2><A NAME="description">Description</A></H2>
+<P>The install command is used to install packages from the repository.  Install
+packages by name or number (the number is given by the repository or search
+request), or set a default package using the describe command. You can specify
+a full URL to a PPD file; the URL may point to a PPD file on your computer.</P>
+<P>If you have profile tracking enabled, (see 'help profile') the current profile
+will be updated to include the newly installed package(s).</P>
+<P>The following modifiers can be used with the install command:</P>
+<DL>
+<DT><DD>
+-force
+<P></P>
+<DT><DD>
+-noforce
+<P></P>
+<DT><DD>
+-follow
+<P></P>
+<DT><DD>
+-nofollow
+<P></P></DL>
+<P>The force and follow switches determine how packages are installed:</P>
+<PRE>
+ FORCE       FOLLOW          RESULT
+ false       false           Checks to see if the package is installed and
+                             if it is, installation stops. If there are any
+                             missing prerequisites, the installation will
+                             fail.</PRE>
+<PRE>
+ false       true            Checks to see if the package is installed and
+                             if it is, installation stops. If there are any
+                             missing prerequisites, they are automatically
+                             installed. NOTE: this is the default setting
+                             when PPM is first installed.</PRE>
+<PRE>
+ true        false           If the package is installed, PPM will
+                             reinstall the package. If there are any
+                             missing prerequisites, the installation will
+                             fail.</PRE>
+<PRE>
+ true        true            If the package is installed, PPM will
+                             reinstall the package. All prerequisites are
+                             installed, missing or not.
+</PRE>
+<PRE>
+
+If you do not specify any options, install uses the default settings. 
+Set or view the current defaults using the 'settings' command.</PRE>
+<P>For example:</P>
+<PRE>
+    install foo</PRE>
+<P>will install the package named ``foo'', using the default settings. 
+Over-ride the defaults using the install modifiers described above.</P>
+<P>For example:</P>
+<PRE>
+    install foo -force</PRE>
+<P>will install the ``foo'' package, even if it has already been installed. If
+both -force and -follow are set to ``true'', all the prerequisites for any
+package you install will also be installed. For example, the installation
+of a tk-related package, like ``tk-ach'' which is 8.4 kB will be preceded
+by the installation of Tk, which is 1.7 MB.</P>
+<P>You can also install by package number. Package numbers are 
+based on the current repository or current search request. For example:</P>
+<PRE>
+    install 6</PRE>
+<P>installs package number 6. You can install more than one package at one
+time:</P>
+<PRE>
+    install 3-5</PRE>
+<P>installs packages 3, 4 and 5. You can also type install 3-6,8 to install 
+packages 3,4,5,6 and 8.</P>
+<P>
+<H2><A NAME="see also">See Also</A></H2>
+<P>profile</P>
+<P>
+<HR>
+<H1><A NAME="profile  manage ppm profiles">profile -- Manage PPM Profiles</A></H1>
+<P>
+<H2><A NAME="synopsis">Synopsis</A></H2>
+<PRE>
+ profile                     Lists profiles available on the repository
+ profile &lt;num&gt;               Switches to the given profile
+ profile add &lt;name&gt;          Creates a new profile on the repository
+ profile delete &lt;name or num&gt;
+                             Deletes the given profile
+ profile describe [name or num]
+                             Describes the current or given profile
+ profile save                Saves the client state to the current profile
+ profile restore             Restores the current profile
+ profile rename &lt;name or num&gt; &lt;name&gt;
+                             Renames the given profile to &lt;name&gt;</PRE>
+<P>
+<H2><A NAME="description">Description</A></H2>
+<P>Profiles store information about packages that are installed on your
+system. If the 'profile-track' setting is enabled, your ASPN Profile will
+be updated with information about installed packages. Profiles allow you
+to easily migrate, reinstall, upgrade or restore PPM packages in one or
+more locations.</P>
+<P>To use profiles, you must have a license for ASPN. For license
+information, see <A HREF="http://www.ActiveState.com/ASPN/About.">http://www.ActiveState.com/ASPN/About.</A> 
+Disable profile tracking by setting 'profile-track=0'.</P>
+<P>
+<HR>
+<H1><A NAME="properties  describe installed packages">properties -- Describe Installed Packages</A></H1>
+<P>
+<H2><A NAME="synopsis">Synopsis</A></H2>
+<PRE>
+ prop                    Describes default installed package
+ prop &lt;number&gt;           Describes installed package &lt;number&gt;
+ prop &lt;range&gt;            Describes a &lt;range&gt; of installed packages
+ prop &lt;package name&gt;     Describes named installed package
+ prop &lt;url&gt;              Describes installed package located at &lt;url&gt;
+ prop &lt;glob pattern&gt;     Performs a new query using &lt;glob pattern&gt;</PRE>
+<P>
+<H2><A NAME="description">Description</A></H2>
+<P>The properties command is an verbose form of the describe command. In
+addition to summary information, properties will display
+the installation date and a URL showing the location of the package
+within the repository.</P>
+<P>If you specify the package as a URL, PPM determines the package name
+from the URL and searches for that.</P>
+<P>When the properties command is used with wildcard arguments,
+the text entered at the PPM prompt is passed to the query command.</P>
+<P>For example, typing 'properties libnet' will give you:</P>
+<PRE>
+    ====================
+        Name: libnet
+     Version: 1.07.03
+      Author: Graham Barr
+       Title: libnet
+    Abstract: Collection of Network protocol modules
+    InstDate: Fri Oct  2 16:15:15 1998
+    Location: <A HREF="http://ppm-ia.ActiveState.com/PPM/">http://ppm-ia.ActiveState.com/PPM/</A>...
+    ====================</PRE>
+<P>
+<H2><A NAME="see also">See Also</A></H2>
+<P>describe</P>
+<P>
+<HR>
+<H1><A NAME="query  query installed packages">query -- Query Installed Packages</A></H1>
+<P>
+<H2><A NAME="synopsis">Synopsis</A></H2>
+<PRE>
+ query                   Displays list of previous queries
+ query &lt;number&gt;          Displays results of previous query
+ query &lt;glob pattern&gt;    Performs a new query using &lt;glob pattern&gt;
+ query *                 Displays a list of all installed packages</PRE>
+<P>
+<H2><A NAME="description">Description</A></H2>
+<P>The query command displays a list of all installed packages, or a
+list based on the &lt;glob pattern&gt; switch. You can also check
+the list of past queries, or the results of a past query.</P>
+<P>With PPM 3.0, you can now perform much more powerful queries. The syntax
+is identical to the 'search' command, and almost all the search switches
+are also available for querying installed packages.</P>
+<P>Recall previous queries with the 'query &lt;number&gt;' command. PPM3
+stores all queries from the current PPM session.</P>
+<P>Note: Depending on the value of the ``case-sensitivity'' setting,
+the query may or may not be case-sensitive. See ``help settings'' for
+instructions on setting the default case sensitivity.</P>
+<P>
+<H2><A NAME="see also">See Also</A></H2>
+<P>search, settings</P>
+<P>
+<HR>
+<H1><A NAME="repository  repository control">repository -- Repository Control</A></H1>
+<P>
+<H2><A NAME="synopsis">Synopsis</A></H2>
+<PRE>
+ rep                        Displays all repositories
+ rep add [name] &lt;location&gt;  Adds a new repository; makes it active
+ rep delete &lt;name or num&gt;   Deletes specified repository
+ rep describe &lt;name or num&gt; Displays information about the specified
+                            repository
+ rep rename &lt;name or num&gt; &lt;name&gt;
+                            Renames the specified repository to
+                            the given name
+ rep on &lt;name&gt;              Activates the specified repository
+ rep off &lt;name or num&gt;      Removes the repository from the active list
+ rep up &lt;name or num&gt;       Moves the specified repository up one
+ rep down &lt;name or num&gt;     Moves the specified repository down one</PRE>
+<P>
+<H2><A NAME="description">Description</A></H2>
+<P>The <EM>repository</EM> (or <EM>rep</EM>) command controls two lists or repositories:</P>
+<OL>
+<LI>
+The list of ``active'' repositories. This is the list of repositories used by
+<EM>search</EM>, <EM>install</EM>, <EM>upgrade</EM>, and <EM>verify</EM>.
+<P></P>
+<LI>
+The list of all known repositories. You can designate a repository ``inactive'',
+which means PPM will not use it in any commands.
+<P></P></OL>
+<P>If no arguments are given, the rep command will list the active
+repositories defined in the PPM settings. The order is significant: when
+installing a package, PPM will try the first repository, then the
+second, and so on, until it find the package you asked for. When
+searching, PPM merges the results of all the repositories together, so the
+order is less important (see the <EM>search</EM> command).</P>
+<P>For example, when you enter:</P>
+<PRE>
+    rep</PRE>
+<P>PPM3 will return something resembling this:</P>
+<PRE>
+    Repositories:
+    [1] ActiveCD
+    [2] ActiveState Package Repository
+    [ ] An inactive repository</PRE>
+<P>In the example above, entering 'rep off 2' will disable the second repository
+(the ActiveStat Package Repository). To add another repository:</P>
+<PRE>
+    rep add [options] &lt;NAME&gt; &lt;LOCATION&gt;</PRE>
+<P>The following options are available for the 'add' command:</P>
+<DL>
+<DT><DD>
+-username
+<P></P>
+<DT><DD>
+-password
+<P></P></DL>
+<P>These options allow you to specify a username and password to be used
+when logging into a repository. Currently, these are only used for FTP
+and WWW repositories.</P>
+<P>For example:</P>
+<PRE>
+    rep add &quot;EZE&quot; <A HREF="http://foo.com/MyPPMPackages">http://foo.com/MyPPMPackages</A></PRE>
+<P>with ``EZE'' being the name of the repository (for easy reference)
+and the location noted by the http location. If you were to enter the
+rep command again, you would see:</P>
+<PRE>
+    ppm&gt; rep
+    Repositories:
+    [1] ActiveCD
+    [2] ActiveState Package Repository
+    [3] EZE
+    [ ] An inactive repository</PRE>
+<P>To move the new repository to the top of the Active list, you would type:</P>
+<PRE>
+    ppm&gt; rep up EZE
+    Repositories:
+    [1] ActiveCD
+    [2] EZE
+    [3] ActiveState Package Repository
+    [ ] An inactive repository
+    ppm&gt; rep up EZE
+    Repositories:
+    [1] EZE
+    [2] ActiveCD
+    [3] ActiveState Package Repository
+    [ ] An inactive repository</PRE>
+<P>To disable the ActiveCD repository temporarily, enter the following:</P>
+<PRE>
+    ppm&gt; rep off ActiveCD
+    Repositories:
+    [1] EZE
+    [2] ActiveState Package Repository
+    [ ] ActiveCD
+    [ ] An inactive repository</PRE>
+<P>To describe a repository, refer to it either by name, or by the number
+displayed next to the repository in the Active Repositories list. You must
+refer to inactive repositories by their full name.</P>
+<PRE>
+    ppm&gt; rep describe 2
+    Describing Active Repository 2:
+        Name: ActiveState Package Repository
+    Location: <A HREF="http://ppm.ActiveState.com/cgibin/PPM/">http://ppm.ActiveState.com/cgibin/PPM/</A>...
+        Type: PPMServer 2.00
+    ppm&gt; rep describe ActiveCD
+    Describing Inactive Repository:
+        Name: ActiveCD
+    Location: F:\PPMPackages\5.8plus
+        Type: Local Directory</PRE>
+<P>To re-activate the ActiveCD repository, use the <EM>rep on</EM> command. You
+must refer to inactive repositories by name, not number.</P>
+<PRE>
+    ppm&gt; rep on ActiveCD
+    Active Repositories:
+    [1] EZE
+    [2] ActiveState Package Repository
+    [3] ActiveCD
+    [ ] An inactive repository</PRE>
+<P>
+<H2><A NAME="repository types">Repository Types</A></H2>
+<P>PPM3 supports several types of package repositories:</P>
+<OL>
+<LI>
+PPM Server 3.0
+<P>ActiveState's SOAP-driven package server. Because all searches are
+done server-side, the server can deliver much richer information about
+packages than other repositories.
+</P>
+<PRE>
+
+=item 2.</PRE>
+<P>PPM Server 2.0</P>
+<P>The SOAP server designed for PPM version 2. PPM3 ships with the
+PPM2 repository as well as the PPM3 repository, so you can use
+either. Simple searches are performed server-side. If your search is
+too complicated for the server, PPM3 will download the package
+summary and search by itself.</P>
+<P></P>
+<LI>
+Web Repositories
+<P>Older versions of PPM used non-SOAP repositories (directories full of
+PPD files accessible using a web browser). Over the history of PPM,
+there have been several different ways of organising the files so that
+PPM can search for packages properly. PPM3 tries to download a summary
+file first -- if that fails, it gets the directory index. It parses the
+summary or the index, and caches it. Searches are done from the
+cache.</P>
+<P></P>
+<LI>
+FTP Repositories
+<P>FTP is another way of exposing a directory full of PPD files. PPM3
+consideres FTP repositories a subset of Web repositories. Treat them as
+identical: PPM3 downloads the summary or the ``index'' (file listing in
+this case), parses it, and then searches from it.</P>
+<P></P>
+<LI>
+Local Repositories
+<P>To support installing packages from the ActiveCD, a local directory can
+be a repository. PPM3 searches the files in the directory. All valid
+path formats are supported, including UNC paths.</P>
+<P></P></OL>
+<P>
+<HR>
+<H1><A NAME="search  search for packages">search -- Search for Packages</A></H1>
+<P>
+<H2><A NAME="synopsis">Synopsis</A></H2>
+<PRE>
+ search                Displays list of previous searches
+ search &lt;number&gt;       Displays results of search &lt;number&gt;
+ search &lt;glob pattern&gt; Performs a new search
+ search &lt;field&gt;=&lt;glob&gt; Searches for all packages matching the field.
+ search *              Displays all packages in the current repository</PRE>
+<P>The available fields are 'ABSTRACT', 'NAME', 'TITLE', 'AUTHOR', and 'VERSION'.
+'NAME' is used when you do not specify a field.</P>
+<P>
+<H2><A NAME="description">Description</A></H2>
+<P>Use the search command to look through the repository for packages.
+PPM version 3.0 provides powerful search functionality. For example:</P>
+<OL>
+<LI>
+Search for 'CGI' anywhere in the name:
+<PRE>
+  search CGI</PRE>
+<P>Example results:</P>
+<PRE>
+  Apache-CGI
+  CGI-Application
+  CGI-ArgChecker</PRE>
+<P></P>
+<LI>
+Search for 'CGI' at the beginning of the name:
+<PRE>
+  search CGI*</PRE>
+<P>Example results:</P>
+<PRE>
+  CGI-ArgChecker
+  CGI-Application</PRE>
+<P></P>
+<LI>
+Search for all modules authored by someone with 'smith' in their name or
+email:
+<PRE>
+  search AUTHOR=smith</PRE>
+<P>Example results:</P>
+<PRE>
+  Apache-ProxyPass
+  Business-ISBN</PRE>
+<P></P>
+<LI>
+Search for 'compress' anywhere in the abstract:
+<PRE>
+  search ABSTRACT=compress</PRE>
+<P>Example results:</P>
+<PRE>
+  Apache-GzipChain
+  IO-Zlib</PRE>
+<P></P>
+<LI>
+Search for 'CGI' in the name, or 'web' in the abstract:
+<PRE>
+  search CGI or ABSTRACT=web</PRE>
+<P>Example results:</P>
+<PRE>
+  CGI-XMLForm
+  HTML-Clean</PRE>
+<P></P>
+<LI>
+Search for 'XML' in the name and either 'parser' in the name or 'pars' in the
+abstract, but not with 'XPath' in the name:
+<PRE>
+  search XML and (parser or ABSTRACT=pars) and not XPath</PRE>
+<P>Example results:</P>
+<PRE>
+  XML-Node
+  XML-Parser-EasyTree</PRE>
+<P></P>
+<LI>
+PPM Server 3.0 repositories only: search by module name, even if unrelated to
+the containing package:
+<PRE>
+  search Data::Grove
+</PRE>
+<PRE>
+
+Example results:</PRE>
+<PRE>
+  libxml-perl</PRE>
+<P></P>
+<LI>
+Browse all packages in the repository:
+<PRE>
+  search *</PRE>
+<P>Example results:</P>
+<PRE>
+  Affix-Infix2Postfix
+  AI-Fuzzy
+  [many more...]</PRE>
+<P></P></OL>
+<P>Recall previous searches using the 'search &lt;number&gt;' command. PPM3 stores
+searches for each session until you exit PPM.</P>
+<P>Some package names or versions are too long to be displayed in the search
+results. If a name is too long, you will see a '~' (tilde) as the last visible
+character in the column. You can use <EM>describe</EM> to view detailed information
+about such packages.</P>
+<P>
+<H2><A NAME="search results">Search Results</A></H2>
+<P>When you type a command like <CODE>search XML</CODE>, PPM searches in each of the Active
+Repositories (see the <EM>repository</EM> command) for your package. The results are
+merged into one list, and duplicates (packages found in more than one
+repository) are hidden.</P>
+<P>You can control what fields PPM shows for each package. The fields each have a
+built-in weight, which is used to calculate how wide to make each field based
+on the width of your screen. Information that doesn't fit into a field is
+truncated, and a tilde (<CODE>~</CODE>) character is displayed in the last column of the
+field.</P>
+<P>Let's get down to an example:</P>
+<PRE>
+    ppm&gt; search XML
+    Searching in Active Repositories
+        1. CGI-XMLForm           [0.10] Extension to CGI.pm which
+        2. Data-DumpXML          [1.01] Dump arbitrary data structures
+        3. DBIx-XML_RDB          [0.05] Perl extension for creating XML
+        4. DBIx-XMLMessage       [0.03] XML Message exchange between DBI
+        5. GoXML-XQI            [1.1.4] Perl extension for the XML Query
+        6. Language-DATR-DATR2~ [0.901] manipulate DATR .dtr, XML, HTML,
+        7. libxml-perl           [0.07] support for deeply nested
+        8. Mail-FilterXML         [0.1] Undetermined
+        9. Mail-XML              [0.03] Adds a toXML() method to
+       10. Pod-XML               [0.93] Module to convert POD to XML</PRE>
+<P>As you can see, the three fields being displayed are:</P>
+<OL>
+<LI>
+NAME
+<P>The package name</P>
+<P></P>
+<LI>
+VERSION
+<P>The package version</P>
+<P></P>
+<LI>
+ABSTRACT
+<P>The package abstract</P>
+<P></P></OL>
+<P>You can customize the view somewhat. If you want to view the authors, but not
+the abstract, you can run the same <EM>search</EM> command after using <EM>set</EM> to
+change the fields:</P>
+<PRE>
+    ppm&gt; set fields=&quot;NAME VERSION AUTHOR&quot;
+    Setting 'fields' set to 'name version author'.
+    ppm&gt; search XML
+    Using cached search result set 1.
+        1. CGI-XMLForm         [0.10] Matt Sergeant (matt@sergeant.org)
+        2. Data-DumpXML        [1.01] Gisle Aas (gisle@aas.no)
+        3. DBIx-XML_RDB        [0.05] Matt Sergeant (matt@sergeant.org)
+        4. DBIx-XMLMessage     [0.03] Andrei Nossov (andrein@andrein.com)
+        5. GoXML-XQI          [1.1.4] Matthew MacKenzie (matt@goxml.com)
+        6. Language-DATR-DAT~ [0.901] Lee Goddard (lgoddard@cpan.org)
+        7. libxml-perl         [0.07] Ken MacLeod (ken@bitsko.slc.ut.us)
+        8. Mail-FilterXML       [0.1] Matthew MacKenzie (matt@goxml.com)
+        9. Mail-XML            [0.03] Matthew MacKenzie (matt@goxml.com)
+       10. Pod-XML             [0.93] Matt Sergeant (matt@sergeant.org)</PRE>
+<P>You can change the order in which the results are sorted, and what columns are
+displayed. The settings <EM>fields</EM> and <EM>sort-field</EM> changes this. You can
+sort by any valid field name (even fields which are not displayed). See the
+<EM>settings</EM> command for the valid field names.</P>
+<P>PPM always hides ``duplicate'' results. It decides whether a result is
+duplicated based on the fields being displayed. If the same package is found
+in more than one repository, but you don't have the REPOSITORY field showing,
+PPM will only list the package once.</P>
+<P>
+<HR>
+<H1><A NAME="settings  view or set ppm settings">settings -- View or Set PPM Settings</A></H1>
+<P>
+<H2><A NAME="synopsis">Synopsis</A></H2>
+<PRE>
+ set                 Displays current settings
+ set &lt;name&gt;          Displays the current setting of the given &lt;name&gt;
+ set &lt;name&gt; &lt;value&gt;  Sets &lt;name&gt; to &lt;value&gt;
+ unset &lt;name&gt;        Sets &lt;name&gt; to a &quot;false&quot; value: '0' for boolean
+                     Settings, '' for others.</PRE>
+<P>
+<H2><A NAME="description">Description</A></H2>
+<P>The settings command is used to configure the default PPM environment.
+Settings such as the number of lines displayed per page, case-sensitivity,
+and the log file are configured using the settings command.</P>
+<P>Setting names may be abbreviated to uniqueness. For example, instead
+of typing 'case-sensitivity', you may type 'case'.</P>
+<P>Available settings:</P>
+<PRE>
+ NAME                VALUE           DESCRIPTION
+ case-sensitivity    1 or 0      If 1, searches and queries are
+                                 case-sensitive.</PRE>
+<PRE>
+ download-chunksize  integer     If this is set to a positive,
+                                 non-zero integer, PPM updates the
+                                 status after &quot;integer&quot; of bytes
+                                 transferred during an install or
+                                 upgrade.</PRE>
+<PRE>
+ fields              fields      A space-separated list of fields to 
+                                 display in the search results. Valid
+                                 fields are:</PRE>
+<PRE>
+                                   ABSTRACT
+                                   AUTHOR
+                                   NAME
+                                   REPOSITORY
+                                   TITLE
+                                   VERSION</PRE>
+<PRE>
+                                 Usually, NAME and TITLE have the same
+                                 content.</PRE>
+<PRE>
+ follow-install      1 or 0      See 'help install' for details.</PRE>
+<PRE>
+ force-install       1 or 0      See 'help install' for details.</PRE>
+<PRE>
+ install-verbose     1 or 0      If 0, suppresses most output when
+                                 installing packages. If 1, PPM prints
+                                 each file as it is installed.</PRE>
+<PRE>
+ pager               path        The path to an external pager program
+                                 used to page long displays. If blank,
+                                 or set to 'internal', the internal
+                                 pager is used. If 'none', paging
+                                 is disabled.</PRE>
+<PRE>
+ profile-track       1 or 0      If 1, PPM arranges to have the 
+                                 ASPN server track your PPM profile. 
+                                 This means that every time your install
+                                 or remove a package, your profile is
+                                 updated on the server. If 0, you must
+                                 manually save your profile using
+                                 'profile save'.</PRE>
+<PRE>
+ prompt-context      1 or 0      If 1, enables the prompt to change
+                                 based on the current state of PPM, i.e
+                                 showing current target, query, etc.</PRE>
+<PRE>
+ prompt-slotsize     integer     If prompt-verbose is 1, this defines
+                                 the width of each slot in the prompt.
+                                 For instance, 4 means to use 4 
+                                 character-wide slots.</PRE>
+<PRE>
+ prompt-verbose      1 or 0      If 0, uses numbers to represent the
+                                 context in the prompt; much shorter.
+                                 If prompt-context is set to 0, there
+                                 will be no visible difference in the
+                                 'prompt-verbose' settings.</PRE>
+<PRE>
+ rebuild-html        1 or 0      If 0, suppresses regeneration of HTML
+                                 documentation when packages are
+                                 installed. If 1, enables HTML to be
+                                 generated from POD documentation.
+                                 Enabling this option may slow down
+                                 package installation.</PRE>
+<PRE>
+ remove-verbose      1 or 0      If 0, suppresses most output when
+                                 removing packages. If 1, prints the
+                                 name of each file as it is removed.</PRE>
+<PRE>
+ sort-field          field       The field by which to sort search and
+                                 query results. Valid fields are
+                                 ABSTRACT, AUTHOR, NAME, TITLE
+                                 and VERSION.</PRE>
+<PRE>
+ tempdir             path        A temporary directory into which
+                                 packages are downloaded and expanded
+                                 during 'install' and 'upgrade'.</PRE>
+<PRE>
+ trace-file          path        A file to which PPM will write tracing
+                                 information.</PRE>
+<PRE>
+ trace-level         integer     If 0 or negative, tracing is disabled.
+                                 Positive, non-zero integers result in
+                                 tracing information being written to
+                                 'trace-file'. Higher settings of
+                                 'trace-level' result in more trace
+                                 information.</PRE>
+<PRE>
+ upgrade-verbose     1 or 0      If 0, suppresses most output when
+                                 upgrading packages. If 1, prints the
+                                 name of each file as it is upgraded.</PRE>
+<P>For information about migrating options used by previous
+versions of PPM, see 'help ppm_migration'.</P>
+<P>When you assign a value to a setting, PPM saves the configuration.
+Therefore, setting values persist across sessions.</P>
+<P>
+<HR>
+<H1><A NAME="targets  view target installer backends">targets -- View Target Installer Backends</A></H1>
+<P>
+<H2><A NAME="synopsis">Synopsis</A></H2>
+<PRE>
+ target                      Displays a list of backend targets
+ target &lt;number&gt;             Sets &lt;number&gt; as default backend target
+ target [select] &lt;name or num&gt;
+                             Sets &lt;name or num&gt; as default backend target
+ target describe [name or num]
+                             Describes the given (or default) target
+ target set &lt;key&gt; &lt;val&gt;      Sets the target's &lt;key&gt; to &lt;val&gt; 
+ target rename &lt;name or num&gt; &lt;name&gt;
+                             Renames the given target to &lt;name&gt;</PRE>
+<P>
+<H2><A NAME="description">Description</A></H2>
+<P>The target is the destination location of the install routine, such as 
+the directory where the packages are installed when they're downloaded
+from the repository. For example:</P>
+<PRE>
+    target</PRE>
+<P>returns:</P>
+<PRE>
+    Targets:
+      1. ActivePerl 618
+    * 2. ActivePerl 629</PRE>
+<P>This shows that there are two available targets, and that the second
+target (ActivePerl 629) is currently the default (as shown by the
+asterisk). Using multiple targets, you can manage multiple 
+installations of Perl from a single command-line.</P>
+<P>
+<HR>
+<H1><A NAME="tree  show dependency tree for packages">tree -- Show Dependency Tree for Packages</A></H1>
+<P>
+<H2><A NAME="synopsis">Synopsis</A></H2>
+<PRE>
+ tree                Displays the dependency-tree of the current
+                     or default package
+ tree &lt;number&gt;       Displays the dependency-tree of the given &lt;number&gt;
+ tree &lt;range&gt;        Displays a &lt;range&gt; of dependency-trees
+ tree &lt;package name&gt; Displays the dependency-tree of the named package
+ tree &lt;url&gt;          Displays the dependency-tree for the
+                     package at &lt;url&gt;
+ tree &lt;glob pattern&gt; Performs a new search using &lt;glob pattern&gt;</PRE>
+<P>
+<H2><A NAME="description">Description</A></H2>
+<P>The tree command is used to show the ``dependency tree'' of a given
+package (additional packages that are required by the current package).
+For example:
+</P>
+<PRE>
+
+    tree SOAP-lite</PRE>
+<P>returns:</P>
+<PRE>
+    ====================
+    SOAP-Lite 0.51
+    |__MIME-tools 5.316
+    |   |__MailTools 1.15
+    |   \__IO-stringy 1.216
+    |
+    \__MIME-Lite 2.105
+    ====================</PRE>
+<P>SOAP-Lite requires four other packages.</P>
+<P>When tree is called without a &lt;name&gt; or &lt;number&gt; switch, the command
+will return the dependency tree of the first package in the default
+search result. If there is no default search, you will be requested to
+use search to find a package.</P>
+<P>
+<HR>
+<H1><A NAME="remove, uninstall  uninstalls installed packages">remove, uninstall -- Uninstalls Installed Packages</A></H1>
+<P>
+<H2><A NAME="synopsis">Synopsis</A></H2>
+<PRE>
+ remove              Deletes default installed package
+ remove &lt;number&gt;     Deletes installed package &lt;number&gt;
+ remove &lt;range&gt;      Deletes a &lt;range&gt; of installed packages
+ remove &lt;name&gt;       Deletes a packages by a specific name
+ remove &lt;url&gt;        Deletes the package located at &lt;url&gt;</PRE>
+<P>
+<H2><A NAME="description">Description</A></H2>
+<P>The remove and uninstall commands function identically. They are used to
+delete packages from the current target (specified using the target
+command). If profile tracking is enabled, (see 'help profile') the
+current PPM profile on ASPN will be updated.</P>
+<P>Packages can be removed by package name, by their numerical listing, or 
+by specifying a URL to a PPD file. For example:</P>
+<PRE>
+    remove XML-DOM</PRE>
+<P>will delete the XML-DOM package from the target.</P>
+<P>To remove package by number:</P>
+<PRE>
+    remove 6</PRE>
+<P>and the sixth package in your current query will be removed. If no
+queries have been run in the current PPM session, you will be prompted
+to use a query to find a package before deleting it. Remember that removing
+packages clears all previous query requests, since the numerical
+sequence stored in any query will no longer be true once <A HREF="../lib/Pod/perlfunc.html#item_package"><CODE>package(s)</CODE></A> have
+been removed.</P>
+<P>Packages can also be removed in groups.  For example:</P>
+<PRE>
+    remove 4-7</PRE>
+<P>will delete packages 4, 5, 6, and 7 from your target. You can also skip
+packages:</P>
+<PRE>
+    remove 3-5, 7</PRE>
+<P>this will delete packages 3, 4, 5 and 7, but will leave 6 intact.
+Remember to run a new query whenever you remove a package from your
+target.</P>
+<P>If you specify the package as a URL, PPM determines the package name from
+the URL and removes that.</P>
+<P>Please note that wildcards like ``*'' or ``?'' cannot be used with the remove
+command.</P>
+<P>
+<H2><A NAME="see also">See Also</A></H2>
+<P>profile</P>
+<P>
+<HR>
+<H1><A NAME="upgrade  list or install available upgrades">upgrade -- List or install available upgrades</A></H1>
+<P>
+<H2><A NAME="synopsis">Synopsis</A></H2>
+<PRE>
+ upgrade [*]         Lists upgrades available for all installed packages
+ upgrade &lt;number&gt;    Upgrades installed package &lt;number&gt;
+ upgrade &lt;range&gt;     Upgrades a &lt;range&gt; of installed packages
+ upgrade &lt;package&gt;   Upgrades the named &lt;package&gt;</PRE>
+<P>
+<H2><A NAME="description">Description</A></H2>
+<P>The upgrade command lists package upgrades that are available on the
+current repository for packages installed on your system. To install
+available upgrades, use the '--install' option.</P>
+<P>If profile tracking is enabled, (see 'help profile'), your profile
+will be updated to reflect changes to any packages which are upgraded.</P>
+<P>There are several modifiers to the upgrade command:</P>
+<DL>
+<DT><STRONG><A NAME="item_%2Dinstall">-install</A></STRONG><BR>
+<DD>
+Installs, rather than lists, available upgrades
+<P></P>
+<DT><STRONG><A NAME="item_%2Dprecious">-precious</A></STRONG><BR>
+<DD>
+Allows upgrading of ``precious'' packages
+<P></P>
+<DT><STRONG><A NAME="item_%2Dforce">-force</A></STRONG><BR>
+<DD>
+See 'help install'
+<P></P>
+<DT><STRONG><A NAME="item_%2Dfollow">-follow</A></STRONG><BR>
+<DD>
+See 'help install'
+<P></P></DL>
+<P>By default, 'upgrade' typed by itself only lists the available upgrades.
+To actually install all available upgrades, enter</P>
+<PRE>
+    upgrade -install</PRE>
+<P>To enable upgrading ``precious'' packages, enter</P>
+<PRE>
+    upgrade -install -precious</PRE>
+<P>
+<H2><A NAME="see also">See Also</A></H2>
+<P>profile</P>
+<P>
+<HR>
+<H1><A NAME="version  print the name and version of ppm.">version -- print the name and version of PPM.</A></H1>
+<P>Prints the name and version of PPM3.</P>
+<P>
+<HR>
+<H1><A NAME="extra help topics">EXTRA HELP TOPICS</A></H1>
+<P>The following sections describe extra help topics available in PPM. An extra
+help topic is not the name of a command -- it is only available as a help
+page. The following help is available via the online help feature by typing
+'help' in PPM3.</P>
+<P>
+<HR>
+<H1><A NAME="ppm migration  ppm migration guide">ppm migration -- PPM Migration Guide</A></H1>
+<P>
+<H2><A NAME="description">Description</A></H2>
+<P>Those familiar with PPM version 2 should appreciate the extended
+functionality  of PPM version 3, including the command-line history,
+autocomplete and profiles. Some PPM version 2 commands are different
+in PPM version 3. Examples of command changes include:</P>
+<OL>
+<LI>
+Adding a repository
+<P>PPM2:</P>
+<PRE>
+  set repository my_repository <A HREF="http://my/repository">http://my/repository</A></PRE>
+<P>PPM3:</P>
+<PRE>
+  repository add my_repository <A HREF="http://my/repository">http://my/repository</A></PRE>
+<P></P>
+<LI>
+Removing a repository
+<P>PPM2:</P>
+<PRE>
+  set repository --remove my_repository</PRE>
+<P>PPM3:</P>
+<PRE>
+  repository del my_repository</PRE>
+<P></P>
+<LI>
+Setting the temporary directory
+<P>PPM2:</P>
+<PRE>
+  set build DIRECTORY</PRE>
+<P>PPM3</P>
+<PRE>
+  set tempdir DIRECTORY</PRE>
+<P></P>
+<LI>
+Setting frequency of download updates
+<P>PPM2:</P>
+<PRE>
+  set downloadstatus NUMBER</PRE>
+<P>PPM3:</P>
+<PRE>
+  set download-chunksize NUMBER</PRE>
+<P></P>
+<LI>
+Changing the installation root directory:
+<P>PPM2:</P>
+<PRE>
+  set root DIRECTORY</PRE>
+<P>PPM3:</P>
+<PRE>
+  target set root DIRECTORY</PRE>
+<P></P>
+<LI>
+Listing all installed packages:
+<P>PPM2:</P>
+<PRE>
+  query</PRE>
+<P>PPM3:</P>
+<PRE>
+  query *</PRE>
+<P></P>
+<LI>
+Listing all packages on server:
+<P>PPM2:</P>
+<PRE>
+  search</PRE>
+<P>PPM3:</P>
+<PRE>
+  search *</PRE>
+<P></P>
+<LI>
+Enabling HTML documentation generation:
+<P>PPM2:</P>
+<PRE>
+  set rebuildhtml 1</PRE>
+<P>PPM3:</P>
+<PRE>
+  set rebuild-html 1</PRE>
+<P></P></OL>
+<P>
+<HR>
+<H1><A NAME="prompt  information about the ppm3 prompt">prompt -- information about the PPM3 prompt</A></H1>
+<P>
+<H2><A NAME="description">Description</A></H2>
+<P>The PPM prompt can tell you six things:</P>
+<OL>
+<LI><STRONG><A NAME="item_%29">)</A></STRONG><BR>
+
+The current repository;
+<P></P>
+<LI><STRONG>)</STRONG><BR>
+
+The current target;
+<P></P>
+<LI><STRONG>)</STRONG><BR>
+
+The last search you made on the current repository;
+<P></P>
+<LI><STRONG>)</STRONG><BR>
+
+The last query you made on the current target;
+<P></P>
+<LI><STRONG>)</STRONG><BR>
+
+The last package you described from this repository; and,
+<P></P>
+<LI><STRONG>)</STRONG><BR>
+
+The last package you described from this target.
+<P></P></OL>
+<P>To enable the prompt to tell you this information, you must set
+'prompt-context' to '1'. The following examples all assume this setting.</P>
+<P>
+<H2><A NAME="examples">Examples</A></H2>
+<OL>
+<LI>
+Repository and Target:
+<P>Set 'prompt-context' The prompt will resemble:</P>
+<PRE>
+    ppm:1:1&gt;</PRE>
+<P>In this case, the first '1' means that the first repository is selected.
+The second '1' means the first target is selected. You can prove this by
+adding another repository and switching to it:</P>
+<PRE>
+    ppm:1:1&gt; rep add TEMP <A HREF="http://my/repository">http://my/repository</A>
+    Repositories:
+      1. ActiveState Package Repository
+    * 2. TEMP
+    ppm:1:1&gt; rep 2
+    Repositories:
+      1. ActiveState Package Repository
+    * 2. TEMP
+    ppm:2:1&gt;</PRE>
+<P>The same is true for targets. If you have multiple versions of Perl
+installed, when you swtich to a different target the second number
+reflects the change.</P>
+<P>If you delete all the repositories, the repository number changes to '?'.
+The same goes for targets. If either item is indicated by a question mark,
+you must configure a repository or target before proceeding.</P>
+<P></P>
+<LI>
+Search and Query:
+<P>PPM stores searches and search results from in the current session.
+The prompt displays the search number:</P>
+<PRE>
+    ppm:1:1&gt; search Text
+    [results displayed here]
+    ppm:1:1:s1&gt;</PRE>
+<P>The 's1' indicates that the last search you performed
+can be viewed again by entering 'search 1'. Type 'search' with no
+arguments to view the list of cached searches:</P>
+<PRE>
+    ppm:1:1:s1&gt; search
+    Search Result Sets:
+    * 1. Text</PRE>
+<P>If you then enter 'search 1', you will see the same results as when you
+typed 'search Text' earlier. If you search for something else ('search 
+Parse') then the number will change to 's2':</P>
+<PRE>
+    ppm:1:1:s1&gt; search Parse
+    [results displayed here]
+    ppm:1:1:s2&gt;</PRE>
+<P>The same indicators apply to the query command. When you run a query,
+a numerical indicator displays the current query:</P>
+<PRE>
+    ppm:1:1:s1&gt; query PPM
+    [results displayed here]
+    ppm:1:1:s1:q1&gt;</PRE>
+<P>You can view the past queries with 'query', and view results by querying a
+particular number.</P>
+<P></P>
+<LI>
+Describe and Properties:
+<P>When you use the describe command with the numerical switch (to view
+package information based on the package number in the last search or
+query), PPM sets that index to the current index. If you use the desribe
+command with the name switch, and the name is found within the current
+result, the index is set to the current one. If no package is found,
+PPM creates a new search or query on-the-fly, and sets it as the current
+search or query.</P>
+<P>For example:</P>
+<PRE>
+    ppm:1:1&gt; search Text
+    1. Convert-Context  [0.501]     an Attributed Text data type
+    2. gettext          [1.01]      message handling functions
+    3. HTML-FromText    [1.005]     mark up text as HTML
+    4. HTML-Subtext     [1.03]      Perform text substitutions on an HTML
+                                    template
+    5. Locale-Maketext  [0.18]      framework for software localization
+    ppm:1:1:s1&gt;</PRE>
+<PRE>
+    ppm:1:1:s1&gt; describe 1
+    ====================
+    Package 1:
+        Name: Convert-Context
+     Version: 0.501
+      Author: Martin Schwartz (martin@nacho.de)
+    Abstract: an Attributed Text data type
+    Implementations:
+           1. i686-linux-thread-multi
+           2. MSWin32-x86-multi-thread
+           3. sun4-solaris-thread-multi
+    ====================
+    ppm:1:1:s1:sp1&gt;</PRE>
+<P>The last prompt has an extra 'sp1'. That stands for 'search
+package 1', and it means that PPM considers 'Convert-Context' to be the
+default package. If you now type 'describe' or 'install' with no
+arguments, PPM will apply your command to this package.</P>
+<P>If you go back to where you had no default package selected:</P>
+<PRE>
+    ppm:1:1&gt; search Text
+    1. Convert-Context  [0.501]     an Attributed Text data type
+    2. gettext          [1.01]      message handling functions
+    3. HTML-FromText    [1.005]     mark up text as HTML
+    4. HTML-Subtext     [1.03]      Perform text substitutions on an HTML
+                                    template
+    5. Locale-Maketext  [0.18]      framework for software localization
+    ppm:1:1:s1&gt;</PRE>
+<P>...and you describe 'Locale-Maketext', you will see this:</P>
+<PRE>
+    ppm:1:1:s1&gt; describe Locale-Maketext
+    ====================
+        Name: Locale-Maketext
+     Version: 0.18
+      Author: Sean M. Burke (sburke@cpan.org)
+    Abstract: framework for software localization
+    Prerequisites:
+           1. I18N-LangTags 0.13
+    Implementations:
+           1. i686-linux-thread-multi
+           2. MSWin32-x86-multi-thread
+           3. sun4-solaris-thread-multi
+    ====================
+    ppm:1:1:s1:sp5&gt;</PRE>
+<P>Notice that the correct package got selected, even though you specified it
+by name.</P>
+<P></P></OL>
+<P>This behaviour also applies to the query and properties commands.</P>
+<P>
+<H2><A NAME="see also">See Also</A></H2>
+<P>describe, properties, query, search</P>
+<P>
+<HR>
+<H1><A NAME="quickstart  a beginners' guide to ppm3">quickstart -- a beginners' guide to PPM3</A></H1>
+<P>
+<H2><A NAME="description">Description</A></H2>
+<P>PPM (Programmer's Package Manager) is a utility for managing
+software ``packages''. A package is a modular extension for a language
+or a software program. Packages reside in  repositories. PPM can use 
+three types of repositories:</P>
+<PRE>
+ 1) A directory on a CD-ROM or hard drive in your computer
+ 2) A website
+ 3) A remote Repository Server (such as ASPN)</PRE>
+<P>Common Commands:</P>
+<P>To view PPM help:</P>
+<PRE>
+  help
+  help &lt;command&gt;</PRE>
+<P>To view the name of the current repository:</P>
+<PRE>
+  repository</PRE>
+<P>To search the current repository:</P>
+<PRE>
+  search &lt;keywords&gt;</PRE>
+<P>To install a package:</P>
+<PRE>
+  install &lt;package_name&gt;</PRE>
+<P>Most commands can be truncated; as long as the command is unambiguous,
+PPM will recognize it.  For example, 'repository add foo`` can be
+entered as 'rep add foo'.</P>
+<P>PPM features user profiles, which store information about installed
+packages. Profiles are stored as part of your ASPN account; thus,
+you can easily maintain package profiles for different languages, or
+configure one machine with your favorite packages, and then copy that
+installation to another machine by accessing your ASPN profile.</P>
+<P>For more information, type 'help profile' at the PPM prompt.</P>
+<P>
+<HR>
+<H1><A NAME="unicode  notes about unicode author names">unicode -- Notes About Unicode Author Names</A></H1>
+<P>
+<H2><A NAME="description">Description</A></H2>
+<P>CPAN author names are defined to be in Unicode. Unicode is an international
+standard ISO 10646, defining the <EM>Universal Character Set (UCS)</EM>. UCS
+contains all characters of all other character set standards. For more
+information about Unicode, see <EM><A HREF="http://www.unicode.org/">http://www.unicode.org/</A></EM>.</P>
+<P>The CPAN authors website is located at your local CPAN mirror under
+/authors/00whois.html. For example, you can view it at
+<EM><A HREF="http://www.cpan.org/authors/00whois.html">http://www.cpan.org/authors/00whois.html</A></EM>. This page can be rendered by
+Mozilla 0.9.8 and Internet Explorer 5.0, but you may have to install extra
+language packs to view all the author names.</P>
+<P>By default, PPM3 renders all characters as Latin1 when it prints them to your
+console. Characters outside the Latin1 range (0-255) are not printed at all.</P>
+<P>If your console can render UTF-8 characters, you can tell PPM3 not to recode
+characters by using one of the following environment variables:</P>
+<DL>
+<DT><DD>
+LC_ALL
+<P></P>
+<DT><DD>
+LC_CTYPE
+<P></P>
+<DT><DD>
+LANG
+<P></P>
+<DT><DD>
+PPM_LANG
+<P></P></DL>
+<P>PPM3 requires one of these environment variables to contain the string
+'UTF-8'. For example, the following setting make PPM3 print
+beautifully-formatted authors in RedHat Linux 7.2 (assumes you're using a
+Bourne shell):</P>
+<PRE>
+  $ PPM_LANG='en_US.UTF-8' xterm -u8 -e ppm3</PRE>
+<P>Linux and Solaris users should refer to <EM>xterm</EM> for more information about
+setting up xterm to display UTF-8 characters.</P>
+<P>
+<HR>
+<H1><A NAME="bugs">BUGS</A></H1>
+<P>If you find a bug in PPM, please report it at this URL:</P>
+<PRE>
+  <A HREF="http://bugs.activestate.com/enter_bug.cgi?set_product=PPM">http://bugs.activestate.com/enter_bug.cgi?set_product=PPM</A></PRE>
+<P>Bugs regarding the ActiveState Package Repository (particularly missing or
+out-of-date packages) should be sent via email to this email address:</P>
+<PRE>
+  <A HREF="mailto:ppm-request@ActiveState.com">mailto:ppm-request@ActiveState.com</A></PRE>
+<P>
+<HR>
+<H1><A NAME="see also">SEE ALSO</A></H1>
+<P>For information about the older version of PPM, see <EM>ppm</EM>.</P>
+<P>
+<HR>
+<H1><A NAME="author">AUTHOR</A></H1>
+<P>ActiveState Corporation (<A HREF="mailto:support@ActiveState.com">support@ActiveState.com</A>)</P>
+<P>
+<HR>
+<H1><A NAME="copyright">COPYRIGHT</A></H1>
+<P>Copyright (C) 2001, 2002, ActiveState Corporation. All Rights Reserved.</P>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;ppm3 - Programmer's Package Manager, version 3.0</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

@@ -1,0 +1,6 @@
+F FRACTAL.PM;1                      	fractal.pm
+F FRACTAL.XS;1                      	fractal.xs
+F MAKEFILE.PL;1                     	Makefile.PL
+F MANDEL.C;1                        	mandel.c
+F MANDEL.H;1                        	mandel.h
+F TEST.PL;1                         	test.pl

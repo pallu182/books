@@ -1,0 +1,8 @@
+F COS.;1                            	cos
+F CRYPT.;1                          	crypt
+F EVAL.;1                           	eval
+F FLOCK.;1                          	flock
+F FORK.;1                           	fork
+F GETC.;1                           	getc
+F IOCTL.;1                          	ioctl
+F MISC.;1                           	MISC

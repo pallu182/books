@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<TITLE>XMLRPCsh.pl - Interactive shell for XMLRPC calls</TITLE>
+<LINK REL="stylesheet" HREF="../Active.css" TYPE="text/css">
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;XMLRPCsh.pl - Interactive shell for XMLRPC calls</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<LI><A HREF="#copyright">COPYRIGHT</A></LI>
+	<LI><A HREF="#author">AUTHOR</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>XMLRPCsh.pl - Interactive shell for XMLRPC calls</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<PRE>
+  perl XMLRPCsh.pl <A HREF="http://betty.userland.com/RPC2">http://betty.userland.com/RPC2</A> 
+  &gt; examples.getStateName(2)
+  &gt; examples.getStateNames(1,2,3,7)
+  &gt; examples.getStateList([1,9])
+  &gt; examples.getStateStruct({a=&gt;1, b=&gt;24})
+  &gt; Ctrl-D (Ctrl-Z on Windows)</PRE>
+<P>or</P>
+<PRE>
+  # all parameters after uri will be executed as methods
+  perl XMLRPCsh.pl <A HREF="http://betty.userland.com/RPC2">http://betty.userland.com/RPC2</A> examples.getStateName(2)
+  &gt; Ctrl-D (Ctrl-Z on Windows)</PRE>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P>XMLRPCsh.pl is a shell for making XMLRPC calls. It takes one parameter,
+endpoint (actually it will tell you about it if you try to run it). 
+Additional commands can follow.</P>
+<P>After that you'll be able to run any methods of XMLRPC::Lite, like autotype, 
+readable, etc. You can run it the same way as you do it in 
+your Perl script. You'll see output from method, result of XMLRPC call,
+detailed info on XMLRPC faulure or transport error.</P>
+<P>For full list of available methods see documentation for XMLRPC::Lite.</P>
+<P>Along with methods of XMLRPC::Lite you'll be able (and that's much more 
+interesting) run any XMLRPC methods you know about on remote server and
+see processed results. You can even switch on debugging (with call 
+something like: <CODE>on_debug(sub{print@_})</CODE>) and see XMLRPC code with 
+headers sent and recieved.</P>
+<P>
+<HR>
+<H1><A NAME="copyright">COPYRIGHT</A></H1>
+<P>Copyright (C) 2000 Paul Kulchenko. All rights reserved.</P>
+<P>
+<HR>
+<H1><A NAME="author">AUTHOR</A></H1>
+<P>Paul Kulchenko (<A HREF="mailto:paulclinger@yahoo.com">paulclinger@yahoo.com</A>)</P>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;XMLRPCsh.pl - Interactive shell for XMLRPC calls</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

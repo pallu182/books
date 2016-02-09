@@ -1,0 +1,73 @@
+<HTML>
+<HEAD>
+<TITLE>perlglob.bat - a more capable perlglob.exe replacement</TITLE>
+<LINK REL="stylesheet" HREF="../Active.css" TYPE="text/css">
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;perlglob.bat - a more capable perlglob.exe replacement</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<LI><A HREF="#author">AUTHOR</A></LI>
+	<LI><A HREF="#see also">SEE ALSO</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>perlglob.bat - a more capable perlglob.exe replacement</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<PRE>
+    @perlfiles = glob  &quot;..\\pe?l/*.p?&quot;;
+    print &lt;..\\pe?l/*.p?&gt;;</PRE>
+<PRE>
+    # more efficient version
+    &gt; perl -MFile::DosGlob=glob -e &quot;print &lt;../pe?l/*.p?&gt;&quot;</PRE>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P>This file is a portable replacement for perlglob.exe.  It
+is largely compatible with perlglob.exe (the Microsoft setargv.obj
+version) in all but one respect--it understands wildcards in
+directory components.</P>
+<P>It prints null-separated filenames to standard output.</P>
+<P>For details of the globbing features implemented, see
+<A HREF="../lib/File/DosGlob.html">the File::DosGlob manpage</A>.</P>
+<P>While one may replace perlglob.exe with this, usage by overriding
+CORE::glob with File::DosGlob::glob should be much more efficient,
+because it avoids launching a separate process, and is therefore
+strongly recommended.  See <A HREF="../lib/Pod/perlsub.html">the perlsub manpage</A> for details of overriding
+builtins.</P>
+<P>
+<HR>
+<H1><A NAME="author">AUTHOR</A></H1>
+<P>Gurusamy Sarathy &lt;<A HREF="mailto:gsar@activestate.com">gsar@activestate.com</A>&gt;</P>
+<P>
+<HR>
+<H1><A NAME="see also">SEE ALSO</A></H1>
+<P>perl</P>
+<P>File::DosGlob</P>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;perlglob.bat - a more capable perlglob.exe replacement</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

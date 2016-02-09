@@ -1,0 +1,876 @@
+<HTML>
+<HEAD>
+<TITLE>ActivePerl Change Log</TITLE>
+<LINK REL="stylesheet" HREF="Active.css" TYPE="text/css">
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#activeperl change log">ActivePerl Change Log</A></LI>
+	<UL>
+
+		<LI><A HREF="#build 635 thursday, feb 6, 2003">Build 635 Thursday, Feb 6, 2003</A></LI>
+		<LI><A HREF="#build 633 monday, june 17, 2002">Build 633 Monday, June 17, 2002</A></LI>
+		<LI><A HREF="#build 632 monday, june 3, 2002">Build 632 Monday, June 3, 2002</A></LI>
+		<LI><A HREF="#build 631 monday, december 31, 2001">Build 631 Monday, December 31, 2001</A></LI>
+		<LI><A HREF="#build 630 wednesday, october 30, 2001">Build 630 Wednesday, October 30, 2001</A></LI>
+		<LI><A HREF="#build 629 thursday, august 23, 2001">Build 629 Thursday, August 23, 2001</A></LI>
+		<LI><A HREF="#build 628 thursday, july 5, 2001">Build 628 Thursday, July 5, 2001</A></LI>
+		<LI><A HREF="#build 626 thursday, may 1, 2001">Build 626 Thursday, May 1, 2001</A></LI>
+		<LI><A HREF="#build 623 sunday, december 12, 2000">Build 623 Sunday, December 12, 2000</A></LI>
+		<LI><A HREF="#build 622 sunday, november 5, 2000">Build 622 Sunday, November 5, 2000</A></LI>
+		<LI><A HREF="#build 620 sunday, october 29, 2000">Build 620 Sunday, October 29, 2000</A></LI>
+		<LI><A HREF="#build 618 tuesday, september 12, 2000">Build 618 Tuesday, September 12, 2000</A></LI>
+		<LI><A HREF="#build 617 thursday, august 31, 2000">Build 617 Thursday, August 31, 2000</A></LI>
+		<LI><A HREF="#build 616 friday, july 14, 2000">Build 616 Friday, July 14, 2000</A></LI>
+		<LI><A HREF="#build 615 thursday, june 29, 2000">Build 615 Thursday, June 29, 2000</A></LI>
+		<LI><A HREF="#build 613 thursday, march 23, 2000">Build 613 Thursday, March 23, 2000</A></LI>
+		<LI><A HREF="#build 612 wednesday, march 22, 2000">Build 612 Wednesday, March 22, 2000</A></LI>
+		<LI><A HREF="#build 611 wednesday, march 15, 2000">Build 611 Wednesday, March 15, 2000</A></LI>
+		<LI><A HREF="#build 609 wednesday, march 1, 2000">Build 609 Wednesday, March 1, 2000</A></LI>
+		<LI><A HREF="#build 607 friday, february 11, 2000">Build 607 Friday, February 11, 2000</A></LI>
+		<LI><A HREF="#build 606 friday, february 4, 2000">Build 606 Friday, February 4, 2000</A></LI>
+		<LI><A HREF="#build 604 friday, november 26, 1999">Build 604 Friday, November 26, 1999</A></LI>
+		<LI><A HREF="#build 603 tuesday, november 23, 1999">Build 603 Tuesday, November 23, 1999</A></LI>
+		<LI><A HREF="#build 602 thursday, august 5, 1999">Build 602 Thursday, August 5, 1999</A></LI>
+		<LI><A HREF="#build 601 tuesday, july 13, 1999">Build 601 Tuesday, July 13, 1999</A></LI>
+		<LI><A HREF="#what's new in the 600 series">What's new in the 600 Series</A></LI>
+	</UL>
+
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="activeperl change log">ActivePerl Change Log</A></H1>
+<P>For the latest information on ActivePerl, please see:</P>
+<PRE>
+    <A HREF="http://www.ActiveState.com/ActivePerl/">http://www.ActiveState.com/ActivePerl/</A></PRE>
+<P>
+<H2><A NAME="build 635 thursday, feb 6, 2003">Build 635 Thursday, Feb 6, 2003</A></H2>
+<P><EM>Fixes for Security Issues</EM></P>
+<UL>
+<LI>
+On Linux, the <CODE>crypt()</CODE> builtin did not return consistent results.
+This has been corrected.
+<P></P>
+<LI>
+The <CODE>reval()</CODE> and <CODE>rdo()</CODE> methods in the Safe module could be subverted
+into executing unsafe code by the callee.  This problem has been
+corrected.
+<P></P></UL>
+<P><EM>Other Bug Fixes and Changes</EM></P>
+<UL>
+<LI>
+Overloading <CODE>bool</CODE> could result in core dumps in some situations.
+This has been corrected.
+<P></P>
+<LI>
+On Windows, sockets opened by code running under PerlScript and
+Perl for ISAPI were not fully closed internally.  The ensuing leak
+resulted in failure to open files or sockets after a certain
+number of sockets had been opened and closed under these environments.
+This problem was particularly severe when running under ActivePerl
+5.6.1.632 or 5.6.1.633, and is now fixed.
+<P></P>
+<LI>
+On Windows, PerlScript and Perl for ISAPI were affected by a reentrancy
+problem, which meant that recursive invocation of these two engines
+could fail.  This problem has been corrected.
+<P></P>
+<LI>
+PPM3 includes a number of bug fixes for better handling of both PPM2
+and PPM3 repositories.
+<P></P>
+<LI>
+Tk and libwww-perl have been updated to their latest versions.
+<P></P>
+<LI>
+Win32::EventLog could fail to retrieve messages under some circumstances.
+This has been corrected.
+<P></P>
+<LI>
+Win32::OLE has been updated.  Run ``perldoc Win32::OLE::NEWS'' for
+a summary.
+<P></P>
+<LI>
+Win32::Shortcut no longer calls <CODE>CoUninitialize()</CODE> within an END block.
+This avoids random coredumps from this module when its DESTROY methods
+happen to get called after the END block executes.
+<P></P>
+<LI>
+Win32::Job now propagates environment changes to its subprocesses
+correctly.
+<P></P>
+<LI>
+A Win32::GetFolderPath() builtin is now supported.
+Run ``perldoc Win32'' for documentation on this new builtin.
+<P></P>
+<LI>
+PPM v2 and v3 can now optionally generate HTML documentation when
+installing packages if POD documentation is found in the package.
+This is controlled by the rebuildhtml option in PPM v2 and the
+rebuild-html option in PPM v3.
+<P></P>
+<LI>
+Other minor bug fixes and documentation updates.
+<P></P>
+<LI>
+Build 634 was not formally released to the public.
+<P></P></UL>
+<P>
+<H2><A NAME="build 633 monday, june 17, 2002">Build 633 Monday, June 17, 2002</A></H2>
+<P><EM>Bug Fixes and Changes</EM></P>
+<UL>
+<LI>
+The PPM3 release included in Build 632 had a bug in the package upgrade
+functionality.  This has been corrected in PPM v3.0.1.
+<P></P>
+<LI>
+Some modules that autoloaded their constants could reset $! during
+autoloading.  Such locations now properly localize $! before potentially
+modifying it.
+<P></P>
+<LI>
+IO::Pipe now works on Windows.
+<P></P>
+<LI>
+libwin32 v0.191 is included on Windows.
+<P></P></UL>
+<P>
+<H2><A NAME="build 632 monday, june 3, 2002">Build 632 Monday, June 3, 2002</A></H2>
+<P><EM>Fixes for Security Issues</EM></P>
+<UL>
+<LI>
+Compress-Zlib is now linked with zlib v1.1.4, which fixes a buffer overflow
+vulnerability in this library.
+<P></P>
+<LI>
+The version of SOAP-Lite included in ActivePerl 5.6.1.631 and earlier
+allowed untrusted data to call any subroutine that is defined in the
+program that loads SOAP::Lite, or in any modules used by the program.
+SOAP-Lite v0.55, included in this release of ActivePerl, contains a
+fix for this issue.
+<P></P></UL>
+<P><EM>Other Bug Fixes and Changes</EM></P>
+<UL>
+<LI>
+Redirecting STD* handles with <CODE>open(STDOUT, &quot;</CODE>&amp;=FOO``)&gt; leaked memory
+on all platforms.  This leak has been fixed.
+<P></P>
+<LI>
+Race conditions involving backticks, piped <CODE>open()</CODE> have been fixed.
+These problems could affect environments where multiple Perl interpreters
+execute in concurrent threads.
+<P></P>
+<LI>
+Use of the range operator on constant numbers, as for example <CODE>1..20</CODE>,
+could result in compile-time stricture checks being disabled for parts
+of the program.  The problem has been corrected.
+<P></P>
+<LI>
+XSUBs can now be undefined using undef().
+<P></P>
+<LI>
+On Unix platforms, %ENV and  %SIG handling could result in race conditions.
+Changes to %ENV and %SIG are now only propagated to the underlying system
+process context within the top level interpreter.
+<P></P>
+<LI>
+On Unix platforms, ActivePerl now uses reentrant versions of library
+functions, where available.  This further improves thread-safety in
+multiple-interpreter environments.
+<P></P>
+<LI>
+Win32::GetLongPathName() did not work correctly if there were ``.'' or
+``..'' components in the argument.  The implementation has been improved
+to handle this better.
+<P></P>
+<LI>
+On Windows platforms, a Win32::SetChildShowWindow() builtin is now
+supported.  This can be used to set the visibility of child process
+windows.  See <EM>Win32</EM> for more information.
+<P></P>
+<LI>
+Newer versions of the following modules are included: Digest-MD5,
+MIME-Base64, URI, HTML-Parser, libwww-perl, SOAP-Lite, and libnet.
+<P></P>
+<LI>
+libwin32 has been updated on Windows platforms.  There is support for
+job objects (available in Windows 2000 and XP) through the new Win32::Job
+extension, which can be used to manage a group of processes.
+<P></P>
+<LI>
+On Windows platforms, the installer ensures that the Microsoft Installer
+automatic repair ``feature'' will not be triggered.  This ensures that the
+repair ``feature'' does not corrupt the ActivePerl installation by ``repairing''
+critical files to their unrelocated state.
+<P></P>
+<LI>
+Documentation for perl programs is now included in the table of contents.
+<P></P></UL>
+<P>
+<H2><A NAME="build 631 monday, december 31, 2001">Build 631 Monday, December 31, 2001</A></H2>
+<P><EM>Bug Fixes and Changes</EM></P>
+<UL>
+<LI>
+ActivePerl 5.6.1.628 introduced a memory leak in <CODE>eval &quot;...&quot;</CODE> expressions
+that create anonymous subroutines.  This has been fixed.
+<P></P>
+<LI>
+On Windows, the behavior of <CODE>system(@list)</CODE> has been further rationalized to
+improve compatibility with the behavior before 5.6.1.630.  Automatic quoting of
+arguments with whitespace is now skipped if the argument already contains
+double quotes anywhere within it.  Previously, the double quotes needed
+to be at both ends in order for further quoting to be skipped.
+<P></P>
+<LI>
+Bugs in command.com on Windows 9x/Me prevented the <CODE>system()</CODE> enhancements
+in ActivePerl 5.6.1.630 from working in some situations.  These enhancements
+are now disabled under Windows 9x/Me.
+<P></P>
+<LI>
+Perl for ISAPI and PerlScript had a bug in ActivePerl 5.6.1.630 that
+caused <CODE>system()</CODE> and backticks to leak handles, resulting in failure of
+these functions after a certain number of invocations.  This has been
+corrected.
+<P></P>
+<LI>
+ActivePerl 5.6.1.629 and later had a problem in Perl for ISAPI that
+caused %ENV modifications done by the script to affect the real
+environment, resulting in incompatible behavior of scripts that assumed
+the older behavior.  The behavior before 5.6.1.629 has been reinstated.
+<P></P>
+<LI>
+On Windows, the internal memory allocator used by Perl could fail after
+around 1 GB of allocations even though more memory may be available on
+the system.  Allocating up to and beyond 2GB is now possible if the
+system has memory available and allows a single process to allocate
+that amount of memory.  Note that most Windows systems running on
+x86 have a 2GB limit on allocations by a single process.
+<P></P>
+<LI>
+Non-blocking <CODE>waitpid()</CODE> on any process (a.k.a. waitpid(-1, WNOHANG)) is now
+supported on Windows.
+<P></P>
+<LI>
+Due to popular demand, the following modules are now included by default:
+Storable, Tk, and XML-Simple.
+<P></P>
+<LI>
+PPM v3 beta 3 is included.  A number of bugs in beta 2 have been fixed.
+Installing from URLs (http, ftp, and file) and installing through a HTTP
+proxy server are now supported.
+<P></P>
+<LI>
+Compress-Zlib and MIME-Base64 have been updated to their latest versions.
+<P></P>
+<LI>
+Due to popular demand, HTML documentation has been reintroduced into the
+default installation for Windows.
+<P></P>
+<LI>
+Various other minor bugs have been fixed.  See the ActivePerl bug database
+at <A HREF="http://bugs.ActiveState.com/">http://bugs.ActiveState.com/</A> for more information.
+<P></P></UL>
+<P>
+<H2><A NAME="build 630 wednesday, october 30, 2001">Build 630 Wednesday, October 30, 2001</A></H2>
+<P><EM>Bug Fixes and Changes</EM></P>
+<UL>
+<LI>
+PPM v3 beta 2 is included.  This version of PPM is a complete rewrite,
+and comes with many new features and improvements, including support
+for managing installation profiles through the ASPN web site.
+<P></P>
+<LI>
+Many of the standard extensions supplied with Perl have been audited
+for the use of C ``static'' variables and fixed to avoid such uses, making
+these extensions safe to use in multi-threaded environments such as
+PerlEx and PerlMx Enterprise.  The list includes B, DynaLoader,
+File::Glob, DB_File, Opcode, and re.
+<P></P>
+<LI>
+The <CODE>readline()</CODE> (aka ``diamond'') operator now works on ``our'' variables.
+<P></P>
+<LI>
+On Windows, <CODE>system()</CODE> and backticks behave more sanely with respect to
+whitespace in arguments.  Any whitespace inside quoted arguments are
+correctly preserved.  <CODE>system()</CODE> with multiple arguments also automatically
+quotes any arguments that contain whitespace by enclosing them in
+double-quotes, as necessary.  This improves portability of the standard
+idiom of calling <CODE>system()</CODE> with multiple arguments.
+<P></P>
+<LI>
+On Windows, IO::File::new_tmpfile() does not fail after 32767 calls
+<P></P>
+<LI>
+On Windows, entries in %ENV were sometimes being improperly propagated
+to child processes if such entries happened to be at the end of the
+internal process environment table.  This misbehavior has been corrected.
+<P></P>
+<LI>
+PerlScript and Perl for ISAPI ignore the \\?\ prefix in new-fangled
+file names returned by IIS in Windows XP.
+<P></P>
+<LI>
+In scripts running under PerlScript or Perl for ISAPI, <CODE>print()</CODE> with
+more than one argument did not print the second and subsequent arguments.
+This has been fixed.
+<P></P>
+<LI>
+The style and content of the included online documentation has been
+extensively revised.  On Windows, all the documentation is now provided
+in fully searchable HTML Help format.  Documentation in conventional
+HTML format continues to be included only for Unix platforms, and can
+also be downloaded separately.
+<P></P>
+<LI>
+Some of the bundled modules have been updated to their latest available
+versions: libwin32 v0.18, URI v1.17, and SOAP-Lite v0.51 are now included.
+<P></P></UL>
+<P>
+<H2><A NAME="build 629 thursday, august 23, 2001">Build 629 Thursday, August 23, 2001</A></H2>
+<P><EM>Bug Fixes and Changes</EM></P>
+<UL>
+<LI>
+Perl now uses the reentrant versions of time functions localtime_r(),
+gmtime_r(), and <CODE>asctime_r()</CODE> on Unix platforms, making the corresponding
+builtins and POSIX::asctime() thread-safe.
+<P></P>
+<LI>
+On Windows, child processes launched with Win32::Spawn() now correctly
+inherit any modifications to %ENV done by the script.
+<P></P>
+<LI>
+On Windows, modifications to $ENV{PATH} in the script correctly affect
+the lookup of executables in <CODE>system()</CODE> and backticks.  Previous versions
+did not propagate %ENV modifications completely enough for the underlying
+<CODE>CreateProcess()</CODE> system call to notice any changes.
+<P></P>
+<LI>
+A small number of minor bug fixes from the Perl development track have been
+incorporated.  See the ActivePerl source code diff for the complete list.
+<P></P>
+<LI>
+Compress-Zlib has been updated to v1.13.
+<P></P>
+<LI>
+libwin32 v0.173 is included.
+<P></P></UL>
+<P>
+<H2><A NAME="build 628 thursday, july 5, 2001">Build 628 Thursday, July 5, 2001</A></H2>
+<P><EM>Bug Fixes and Changes</EM></P>
+<UL>
+<LI>
+A few bug fixes from the Perl development track have been incorporated.
+See the ActivePerl source code diff for the complete list.
+<P></P>
+<LI>
+ActivePerl on Solaris does not use Perl's malloc by default.  Sufficient
+compatibility stubs are included such that binary compatibility with
+previous builds will not be affected.
+<P></P>
+<LI>
+HTML-Parser has been updated to v3.25.
+<P></P>
+<LI>
+The included HTML documentation has many substantive and cosmetic
+improvements.
+<P></P>
+<LI>
+Build 627 was not formally released to the public.
+<P></P></UL>
+<P>
+<H2><A NAME="build 626 thursday, may 1, 2001">Build 626 Thursday, May 1, 2001</A></H2>
+<P>Build 626 is based on Perl 5.6.1.  This is the first release of ActivePerl
+based on this new maintenance release of Perl.  This release is meant for
+use in production systems.  However, owing to the sheer volume of changes
+between Perl 5.6.0 and 5.6.1 that have been incorporated, please be sure
+to test it thoroughly in a non-critical environment before you upgrade
+your production systems.</P>
+<P>Please check the <EM>perldelta.pod</EM> file in the Perl source distribution for
+a list of the major changes in Perl.  Only additional changes specific to
+ActivePerl are mentioned here.</P>
+<P><EM>Bug Fixes and Changes</EM></P>
+<UL>
+<LI>
+Perl 5.6.1 has been incorporated.  See <EM>perldelta</EM> for a list of changes.
+<P></P>
+<LI>
+The Solaris pkgadd and Red Hat RPM packages are now relocatable.  See the
+release notes for how to install them to a location other than the
+default one.
+<P></P>
+<LI>
+The following new modules have been included: HTML-Tagset v3.03
+<P></P>
+<LI>
+The following modules have been updated to newer versions: SOAP-Lite, 
+HTML-Parser v3.19, HTML-Tree v3.11, URI v1.11, libwww-perl v5.51.
+<P>For additional information on module updates in Perl 5.6.1, see <EM>perldelta</EM>.</P>
+<P></P>
+<LI>
+A number of fixes to PPM have been included.  PPM now displays a download 
+status indicator, and sports a ``getconfig'' command.
+<P></P>
+<LI>
+A large number of documentation updates are included.
+<P></P></UL>
+<P>
+<H2><A NAME="build 623 sunday, december 12, 2000">Build 623 Sunday, December 12, 2000</A></H2>
+<P><EM>Bug Fixes and Changes</EM></P>
+<UL>
+<LI>
+<EM>Windows 95, Windows 98 and Windows Me Installation</EM>
+<P>Installer now adds Perl/bin directory to the PATH environment variable for
+Windows 9x.  Windows 9x will need to be rebooted for this to take effect.</P>
+<P>The PATH settings are not removed after an uninstallation.</P>
+<P></P>
+<LI>
+PPM updated to 2.1.2.  It now uses SOAP-Lite and has drastically
+reduced bandwidth requirements for SUMMARY requests.  This is a
+prerequisite for supporting the new PPM repository containing most of
+CPAN.
+<P></P>
+<LI>
+OLE Browser has been fixed to work on IE 5.5.
+<P></P>
+<LI>
+minor bug fixes to <CODE>fork()</CODE> emulation and duplication of socket handles
+on Windows 9X.
+<P></P></UL>
+<P>
+<H2><A NAME="build 622 sunday, november 5, 2000">Build 622 Sunday, November 5, 2000</A></H2>
+<P><EM>Bug Fixes and Changes</EM></P>
+<UL>
+<LI>
+Custom build for ActivePerl CDROM
+<P></P>
+<LI>
+MSI installer addes the CDROM repository to the ppm.xml file (Windows only)
+<P></P></UL>
+<P>
+<H2><A NAME="build 620 sunday, october 29, 2000">Build 620 Sunday, October 29, 2000</A></H2>
+<P><EM>Bug Fixes and Changes</EM></P>
+<UL>
+<LI>
+bug fixes in environment setup for backticks and <CODE>system()</CODE>
+<P></P></UL>
+<P><EM>PerlScript</EM></P>
+<UL>
+<LI>
+works now with IIS5.  Previously ASP would sometimes return
+an empty page when the page was accessed simultaneously from multiple clients.
+<P></P>
+<LI>
+supports OLE objects as parameters (VT_DISPATCH)
+<P></P>
+<LI>
+various namespace / package setup problems fixed
+<P></P>
+<LI>
+STDIN/STDOUT/STDERR are now available when run under WSH
+<P></P>
+<LI>
+JScript and VBScript functions can be called directly (on ASP pages)
+<P></P></UL>
+<P><EM>Documentation</EM></P>
+<UL>
+<LI>
+Commandline parameters for MSI installer documented (installation notes)
+<P></P>
+<LI>
+Win32 builtin documentation moved from Pod to Modules
+<P></P></UL>
+<P><EM>Modules</EM></P>
+<UL>
+<LI>
+CGI.pm updated to 2.74
+<P></P>
+<LI>
+Win32API::Net updated to version 0.09
+<P></P></UL>
+<P>
+<H2><A NAME="build 618 tuesday, september 12, 2000">Build 618 Tuesday, September 12, 2000</A></H2>
+<P><EM>Bug Fixes and Changes</EM></P>
+<UL>
+<LI>
+Bug fixes imported from the Perl development track.  See the following file
+for the detailed log:
+<PRE>
+    <A HREF="http://www.ActiveState.com/download/ActivePerl/src/5.6/AP618_diff.txt">http://www.ActiveState.com/download/ActivePerl/src/5.6/AP618_diff.txt</A></PRE>
+<P>Individual patches for each of these changes may also be obtained.  See
+<EM>perlhack</EM>.</P>
+<P></P>
+<LI>
+Perl's <CODE>newSVrv()</CODE> API function could result in corrupt data when coercing an
+already initialized value to the right type, and could also lead to memory
+leaks.  Win32::OLE v0.14 tickled these bugs.  <CODE>newSVrv()</CODE> has been fixed to
+resolve these issues.
+<P></P>
+<LI>
+Perl's optimizer could coredump on stacked assignments involving <CODE>split()</CODE>,
+such as <CODE>@a = @b = split(...)</CODE>.  This is now fixed.
+<P></P>
+<LI>
+Windows sockets weren't being initialized correctly in child threads if the
+parent already initialized it.  This resulted in <CODE>print()</CODE> on a socket
+created under such conditions not being handled correctly (whereas <CODE>send()</CODE>
+would do the right thing).  The problem has been fixed.
+<P></P>
+<LI>
+Win32::OLE v0.14 had a bug that could cause strings longer than 256 characters
+to be truncated by a single character.  This has been corrected.
+<P></P></UL>
+<P>
+<H2><A NAME="build 617 thursday, august 31, 2000">Build 617 Thursday, August 31, 2000</A></H2>
+<P><EM>Bug Fixes and Changes</EM></P>
+<UL>
+<LI>
+Bug fixes imported from the Perl development track.  See the following file
+for the detailed log:
+<PRE>
+    <A HREF="http://www.ActiveState.com/download/ActivePerl/src/5.6/AP617_diff.txt">http://www.ActiveState.com/download/ActivePerl/src/5.6/AP617_diff.txt</A></PRE>
+<P>Individual patches for each of these changes may also be obtained.  See
+<EM>perlhack</EM>.</P>
+<P></P>
+<LI>
+Problems with backticks not returning a proper return code under Windows 9x
+have been fixed.  Linux, Solaris and Windows NT/2000 weren't affected.
+<P></P>
+<LI>
+<CODE>wait()</CODE> and <CODE>waitpid()</CODE> now return the correct pid values for pseudo-pids on
+Windows.
+<P></P>
+<LI>
+New entries added to the end of the environment via <CODE>%ENV</CODE> did not get
+inherited by child processes on Windows.  This has been corrected.
+<P></P>
+<LI>
+Build 616 introduced a change that could make <CODE>close(SOCKET)</CODE> return a bogus
+return value.  This has been corrected.
+<P></P>
+<LI>
+Various minor PerlScript incompatibilities under Internet Explorer 5.5
+on Windows have been corrected.
+<P></P>
+<LI>
+Perl for ISAPI and PerlScript do not add entries to the EventLog by default.
+<P></P>
+<LI>
+libnet v1.06 is now included with ActivePerl.  To configure the site-specific
+defaults for libnet, run <CODE>$Config{installprefix}/bin/libnetcfg.pl</CODE>.
+<P></P>
+<LI>
+Digest-MD5 v2.11 is now included with ActivePerl.
+<P></P>
+<LI>
+Several bundled extensions have been upgraded to newer versions. URI v1.09,
+libwww-perl v5.48, Compress-Zlib v1.08 and libwin32 v0.17 are now included.
+<P></P>
+<LI>
+The included HTML documentation has been improved and updated to be current
+with the latest modules.
+<P></P>
+<LI>
+The HtmlHelp.pm module is no longer included with ActivePerl.  If you want
+this module, please obtain it from a release prior to ActivePerl 617.
+<P></P></UL>
+<P>
+<H2><A NAME="build 616 friday, july 14, 2000">Build 616 Friday, July 14, 2000</A></H2>
+<P><EM>Bug Fixes and Changes</EM></P>
+<UL>
+<LI>
+Bug fixes imported from the Perl development track.  See the following file
+for the detailed log:
+<PRE>
+    <A HREF="http://www.ActiveState.com/download/ActivePerl/src/5.6/AP616_diff.txt">http://www.ActiveState.com/download/ActivePerl/src/5.6/AP616_diff.txt</A></PRE>
+<P>Individual patches for each of these changes may also be obtained.  See
+<EM>perlhack</EM>.</P>
+<P></P>
+<LI>
+A bug in Win32::OLE that prevented PerlScript from working properly
+has been fixed.
+<P></P>
+<LI>
+On Windows, a small memory leak in the <CODE>accept()</CODE> builtin function has
+been fixed.
+<P></P>
+<LI>
+On Windows, creating sockets in pseudo-child processes did not work
+because Winsock was not initialized in the pseudo-process.  This has
+been rectified.
+<P></P></UL>
+<P>
+<H2><A NAME="build 615 thursday, june 29, 2000">Build 615 Thursday, June 29, 2000</A></H2>
+<P><EM>Bug Fixes and Changes</EM></P>
+<UL>
+<LI>
+Bug fixes imported from the Perl development track.  See the following file
+for the detailed log:
+<PRE>
+    <A HREF="http://www.ActiveState.com/download/ActivePerl/src/5.6/AP615_diff.txt">http://www.ActiveState.com/download/ActivePerl/src/5.6/AP615_diff.txt</A></PRE>
+<P>Individual patches for each of these changes may also be obtained.  See
+<EM>perlhack</EM>.</P>
+<P></P>
+<LI>
+On Unix platforms, ActivePerl is now built with the <CODE>-Duseithreads</CODE>
+Configure option, just as on Windows.  While this provides a functionally
+identical perl, it also makes this build binary incompatible with earlier
+builds on Unix platforms.  If you had installed any extensions (i.e. modules
+with XS code) using earlier builds via PPM or otherwise, you will need
+to reinstall them under this build.  Future builds will maintain binary
+compatibility with this one.
+<P>On Windows, this build continues to be binary compatible with build 613.</P>
+<P></P>
+<LI>
+The installation location for the native installations on Unix (Red Hat
+RPM, Debian dpkg, or Solaris pkgadd) have changed.  These packages will
+now be installed under /usr/local/ActivePerl-5.6/ rather than under
+/usr/local/perl-5.6.  This one-time change avoids confusion with locally
+installed versions built from the sources, and also avoids installing
+on top of existing binary-incompatible build 613 installations.
+<P>The installation location can be chosen as usual on Windows, and when
+installing using the generic installers on Unix.</P>
+<P></P>
+<LI>
+On Windows, <CODE>chdir()</CODE> could sometimes fail to return failure when given a
+non-existent directory, and UNC paths didn't work correctly.  These
+problems have been corrected.
+<P></P>
+<LI>
+The <CODE>libwin32</CODE> v0.16 release from CPAN is included for the Windows
+builds.
+<P></P>
+<LI>
+Various small PPM bugs have been fixed.
+<P></P>
+<LI>
+A bug in PerlScript that prevented it from working under IIS5 on
+Windows 2000 has been fixed.
+<P></P></UL>
+<P>
+<H2><A NAME="build 613 thursday, march 23, 2000">Build 613 Thursday, March 23, 2000</A></H2>
+<P><EM>Bug Fixes and Changes</EM></P>
+<UL>
+<LI>
+This build corresponds to the Perl 5.6.0 source code release.
+<P></P>
+<LI>
+This package contains some files that were missing in build 612.
+<P></P></UL>
+<P>
+<H2><A NAME="build 612 wednesday, march 22, 2000">Build 612 Wednesday, March 22, 2000</A></H2>
+<P><EM>Bug Fixes and Changes</EM></P>
+<UL>
+<LI>
+This build corresponds to the Perl 5.6.0 source code release.
+<P></P>
+<LI>
+This build incorporates mostly minor bug fixes between 5.6.0 release
+candidate 2 and the final 5.6.0 source code release.  See <EM>perldelta</EM>
+for a detailed summary of changes between 5.005 and 5.6.0.
+<P></P></UL>
+<P>
+<H2><A NAME="build 611 wednesday, march 15, 2000">Build 611 Wednesday, March 15, 2000</A></H2>
+<P><EM>Bug Fixes and Changes</EM></P>
+<UL>
+<LI>
+This build corresponds to the Perl 5.6.0 release candidate 2 sources.
+<P></P>
+<LI>
+<CODE>binmode()</CODE> now supports a second optional argument that can be used
+to switch a file handle to ``:crlf'' or ``:raw'' mode.  (These correspond
+to the traditional text and binary modes.)  See <EM>perlfunc/binmode</EM>.
+<P></P>
+<LI>
+The new <CODE>open</CODE> pragma can be used to set the default mode for
+implicitly opened handles in the current lexical scope.  This is
+useful to set a particular mode for the results of the qx//
+operator.  See <EM>open</EM>.
+<P></P>
+<LI>
+The bundled ActivePerl documentation has been reorganized.  Outdated
+material has either been reworked to reflect the current status, or
+removed when it was no longer applicable.
+<P></P>
+<LI>
+Many bugs in the beta releases have been fixed.
+<P></P></UL>
+<P>
+<H2><A NAME="build 609 wednesday, march 1, 2000">Build 609 Wednesday, March 1, 2000</A></H2>
+<P><EM>Bug Fixes and Changes</EM></P>
+<UL>
+<LI>
+This build corresponds to the public Perl 5.6 beta 3 release, otherwise
+known as v5.5.670.
+<P></P>
+<LI>
+The Windows version of the installer now supports installing into paths
+that contain spaces.
+<P></P>
+<LI>
+Linux and Solaris install packages that allow non-privileged users to
+install anywhere are supported.  The system-specific packaging formats
+that typically require root privileges continue to be available.
+<P></P>
+<LI>
+Support for <CODE>kill(0,$pid)</CODE> on Windows to test if process exists.
+<P></P>
+<LI>
+There is a new tutorial on Object Oriented Perl for beginners.  See
+`perlboot'.
+<P></P>
+<LI>
+The PPM repository has been updated with newer versions of modules for
+all supported platforms.
+<P></P></UL>
+<P>
+<H2><A NAME="build 607 friday, february 11, 2000">Build 607 Friday, February 11, 2000</A></H2>
+<P><EM>Bug Fixes and Changes</EM></P>
+<UL>
+<LI>
+This build corresponds to the public Perl 5.6 beta 1 release, otherwise
+known as v5.5.650.
+<P></P>
+<LI>
+Several bugs in the Unicode support have been fixed.
+<P></P>
+<LI>
+Support for Unicode has changed from previous development versions. See
+perlunicode.pod for details.
+<P></P>
+<LI>
+There is a new -C command-line switch to request that system calls use
+the wide-character APIs.  This can also be used in the shebang line.
+<P></P>
+<LI>
+The byte pragma can be used to force byte-semantics on Perl operations.
+When not used, character semantics apply if the data is Unicode; otherwise,
+byte semantics are used.
+<P></P></UL>
+<P>
+<H2><A NAME="build 606 friday, february 4, 2000">Build 606 Friday, February 4, 2000</A></H2>
+<P><EM>Bug Fixes and Changes</EM></P>
+<UL>
+<LI>
+PPM can communicate with the package repository via SOAP. Currently PPM's
+and SOAP's integration is somewhat limited; however, it serves as proof of
+concept.
+<P></P>
+<LI>
+New modules included with the distribution are:
+<PRE>
+         - SOAP
+         - File::CounterFile
+         - Font::AFM</PRE>
+<P></P>
+<LI>
+Support for Unicode has changed from previous versions. See
+perlunicode.pod for details.
+<P></P></UL>
+<P>
+<H2><A NAME="build 604 friday, november 26, 1999">Build 604 Friday, November 26, 1999</A></H2>
+<P><EM>Bug Fixes and Changes</EM></P>
+<UL>
+<LI>
+A few bugs in the <CODE>fork()</CODE> emulation have been fixed. perlfork.pod reflects
+these changes.
+<P></P></UL>
+<P>
+<H2><A NAME="build 603 tuesday, november 23, 1999">Build 603 Tuesday, November 23, 1999</A></H2>
+<P><EM>Bug Fixes and Changes</EM></P>
+<UL>
+<LI>
+NOTE:Build 603 is not binary compatible with earlier builds. If you have
+compiled your own extensions with earlier builds, you will need to recompile
+all of them.
+<P></P>
+<LI>
+Build 603 corresponds to Perl 5.005_62. Additional patches available
+since 5.005_62 in the public Perl repository have been incorporated.
+<P></P>
+<LI>
+Preliminary support for <CODE>fork()</CODE> is included. See the perlfork.pod document
+for details about this functionality.
+<P></P>
+<LI>
+Documentation in fully searchable HTMLHelp format is included.
+<P></P>
+<LI>
+Many of the included extensions from CPAN have been updated to newer
+versions.
+<P></P>
+<LI>
+A large number of minor bugs in the Perl core have been fixed. See the
+Changes file in the included sources for a detailed list.
+<P></P></UL>
+<P>
+<H2><A NAME="build 602 thursday, august 5, 1999">Build 602 Thursday, August 5, 1999</A></H2>
+<P><EM>Bug Fixes and Changes</EM></P>
+<UL>
+<LI>
+Build 602 corresponds to Perl 5.005_60. Additional patches available
+since 5.005_60 in the public Perl repository have been incorporated.
+<P></P>
+<LI>
+A number of pre-built extensions from CPAN are included in this release.
+These may be installed using PPM or VPM (both of which are included).
+<P></P></UL>
+<P>
+<H2><A NAME="build 601 tuesday, july 13, 1999">Build 601 Tuesday, July 13, 1999</A></H2>
+<P><EM>Bug Fixes and Changes</EM></P>
+<UL>
+<LI>
+Build 601 corresponds to Perl 5.005_57. Additional patches available
+since 5.005_57 in the public Perl repository have been incorporated.
+<P></P>
+<LI>
+This build features a major reworking of the API exposed by the
+PERL_OBJECT build option. The result is a well-defined Perl API (restricted to
+C syntax) that provides very high degree of compatibility for extensions
+available from CPAN.
+<P></P>
+<LI>
+Perl for ISAPI, PerlScript, PerlEz and PerlMsg have been modified to use
+the new PERL_OBJECT API.
+<P></P>
+<LI>
+Visual Package Manager (VPM) is now available. VPM can be used to install
+pre-built binaries from a package repository. One such is available at
+<A HREF="http://www.activestate.com/packages/perl5_6/.">http://www.activestate.com/packages/perl5_6/.</A>
+<P></P></UL>
+<P>
+<H2><A NAME="what's new in the 600 series">What's new in the 600 Series</A></H2>
+<P><EM>Major Changes</EM></P>
+<UL>
+<LI>
+This series is built around development versions of Perl 5.006. Build 600
+corresponds to Perl 5.005_57.
+<P></P>
+<LI>
+Significant changes that have occurred in the
+5.006 development track are documented in perldelta.
+<P></P>
+<LI>
+Build 600 includes additional changes for supporting globalization.  All
+Win32 API calls made by Perl now follow the utf8 mode of the interpreter.
+Wide versions of the API calls are made when utf8 is in effect.  See utf8
+for more information on enabling support for Unicode.
+<P></P>
+<LI>
+The 600 series is not binary compatible with builds in the 500 series. Any
+extensions built using binaries from the ActivePerl 500 series will need
+to be recompiled.  Note especially that this applies to PPDs that may have
+been built for 500 series builds.
+<P></P></UL>
+
+</BODY>
+
+</HTML>

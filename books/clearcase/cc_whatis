@@ -1,0 +1,217 @@
+annotate                 Annotates lines of text file / time stamps, user names, and so on
+ant_ccase                ClearCase audited builds with Jakarta Ant
+apropos                  Displays command summary information
+catcr                    Displays configuration record created by clearmake, omake (Windows only), or clearaudit
+catcs                    Displays the config spec of a view
+cc.icon, default icon    File type to icon mapping rules (graphical interface)
+cc.magic, default.magic  File typing rules
+cd                       Changes the current working directory
+chactivity               Changes an activity
+chbl                     Changes a baseline
+checkin                  Creates a permanent new version of an element
+checkout                 Creates a modifiable copy of a version
+checkvob                 Finds and fixes inconsistencies between VOB database and storage pools, problems with hyperlinks, and problems with global types
+chevent                  Changes the comment string in an event record
+chflevel                 Raises the feature level of a VOB
+chfolder                 Modifies a UCM folder
+chmaster                 Transfers mastership of VOB-database object
+chpool                   Changes the storage pool to which an element is assigned
+chproject                Modifies a UCM project
+chstream                 Modifies a UCM stream
+chtype                   Changes the type of an element or renames a branch
+chview                   Changes properties of a view
+clearaudit               Non-clearmake build and shell command auditing facility for dynamic views
+clearbug                 Creates problem report for Rational Technical Support
+cleardescribe            Lists or changes the properties of an object graphically
+cleardiff                Compares or merges text files
+cleardiffbl              Starts  the diffbl browser
+clearexport_ccase        Copies ClearCase data to a different VOB
+clearexport_cvs          Converts CVS files to elements
+clearexport_pvcs         Converts PVCS files to elements
+clearexport_rcs          Converts RCS files to elements
+clearexport_sccs         Converts SCCS files to ClearCase or ClearCase LT elements
+clearfsimport            Converts file system objects to element versions
+clearimport              Reads data files created by clearexport tools and import elements into a VOB
+clearjoinproj            Starts the UCM Join Project Wizard
+clearlicense             Monitors and controls the database of license keys used by ClearCase Licensing
+clearmake                ClearCase build utility
+clearmake.options        clearmake build options specification (BOS) file
+clearmrgman              Manages the merging of versions graphically
+clearprojexp             Starts the UCM Project Explorer
+clearprompt              Prompt for user input
+cleartool                ClearCase and ClearCase LT user-level commands (command-line interface)
+clearviewupdate          Updates elements in a snapshot view
+comments                 Event records and comments
+config_ccase             ClearCase and ClearCase LT configuration
+config_spec              Rules for selecting versions of elements to appear in a view
+cptype                   Makes a copy of an existing type object
+crmregister              Creates or change Rational ClearQuest user database connection information used by UCM operations originating on the local host
+CtCmd                    Perl extension for ClearCase and ClearCase LT
+deliver                  Delivers changes in a source stream to the target stream within or across projects
+describe                 Describes an object
+diff                     Compares versions of a text-file element or a directory
+diffbl                   Compares the contents of baselines or streams
+diffcr                   Compares configuration records created by clearmake, omake, or clearaudit
+dospace                  Reports on VOB disk space used for shared derived objects
+du_tool                  Create and manage deployment units
+edcs                     Edits the config spec of a view
+endview                  Deactivates a view
+env_ccase                Environment variables
+events_ccase             Operations and event records
+exports_ccase            List of VOBs to be accessed by non-ClearCase hosts
+export_mvfs              Exports and unexports VOBs to NFS clients (non-ClearCase access)
+file                     Displays the element type ClearCase or ClearCase LT would use for a file
+find                     Uses a pattern, query, or expression to search for objects
+findmerge                Searches for versions that require a merge /optionally perform merge
+fmt_ccase                Format strings for command output
+get                      In ClearCase and ClearCase LT, copies a specified version of a file element into a snapshot view
+getcache                 Displays cache information
+getlog                   Displays UNIX log files or Windows log entries
+help                     Displays help on command usage
+hostinfo                 Displays configuration data for one or more hosts
+init_ccase               Startup/shutdown script
+intro                    Introduction to ClearCase, ClearCase LT, ClearCase MultiSite reference pages
+ln                       Creates VOB hard link or VOB symbolic link
+lock                     Locks an object
+ls                       Lists VOB-resident objects, elements loaded into a snapshot view, and view-private objects in a directory
+lsactivity               Lists information about UCM activities
+lsbl                     Lists information about a baseline
+lscheckout               Lists checkouts of an element
+lsclients                Displays the client host list for a ClearCase license or registry server host, or for a ClearCase LT server host
+lscomp                   Lists information about a component
+lsdo                     Lists derived objects created by clearmake, omake, or clearaudit (dynamic views only)
+lsfolder                 Lists information about folders
+lshistory                Lists event records for VOB-database objects
+lslock                   Lists locks on objects
+lsmaster                 Lists objects mastered by a replica
+lspool                   Lists VOB storage pools
+lsprivate                Lists objects in a dynamic view's private storage area
+lsproject                Lists information about a UCM project
+lsregion                 Lists ClearCase network regions
+lsreplica                Lists VOB replicas
+lssite                   Lists site-wide default properties
+lsstgloc                 Lists view and VOB server storage locations
+lsstream                 Lists information about one or more streams
+lstype                   Lists a VOB's type objects
+lsview                   Lists view registry entries
+lsvob                    Lists VOB registry entries
+lsvtree                  Lists version tree of an element
+makefile_aix             clearmake compatibility with AIX make
+makefile_ccase           makefiles processed by clearmake
+makefile_gnu             clearmake compatibility with Gnu make
+makefile_sun             clearmake compatibility with Solaris make
+man                      Displays an online reference page
+merge                    Merges versions of a text-file element or a directory
+mkactivity               Creates an activity
+mkattr                   Attaches attributes to objects
+mkattype                 Creates or updates an attribute type object
+mkbl                     Creates a baseline or set of baselines
+mkbranch                 Creates a new branch in the version tree of an element
+mkbrtype                 Creates/updates a branch type object
+mkcomp                   Creates a component object
+mkdir                    Creates a directory element
+mkelem                   Creates a file or directory element
+mkeltype                 Creates or updates an element type object
+mkfolder                 Creates a folder for a project
+mkhlink                  Attaches a hyperlink to an object
+mkhltype                 Creates or updates a hyperlink type object
+mklabel                  Attaches version labels to versions of elements
+mklbtype                 Creates or updates a label type object
+mkpool                   Creates a VOB storage pool or modifies its scrubbing parameters
+mkproject                Creates a project
+mkregion                 Registers a new ClearCase network region
+mkstgloc                 Creates a server storage location for views or VOBs
+mkstream                 Creates a stream for a project
+mktag                    Creates a tag for a view or VOB
+mktrigger                Attaches a trigger to an element or UCM object
+mktrtype                 Creates a trigger type object
+mkview                   Creates and registers a view
+mkvob                    Creates and registers a versioned object base (VOB)
+mount                    Activates a VOB at its VOB-tag directory
+mount_ccase              Mount/unmount commands for VOBs and the viewroot directory
+msdostext_mode           Enables or disables a VOB's interop text mode support
+mv                       Moves or renames an element or VOB link
+mvfscache                Controls and monitors MVFS caches (dynamic views only)
+mvfslog                  Sets or displays MVFS console error logging level
+mvfsstat                 Displays MVFS statistics
+mvfsstorage              Lists data container pathname for MVFS file
+mvfstime                 Summarizes MVFS activity while a command is executing
+mvfsversion              Displays MVFS version string
+pathnames_ccase          Pathname resolution, dynamic view context, and extended namespace
+permissions              Identity checking
+profile_ccase            cleartool user profile: .clearcase_profile
+promote_server           Changes storage location of derived object data container
+protect                  Changes permissions or ownership of a VOB object
+protectvob               Changes owner or groups of a VOB
+pwd                      Prints working directory
+pwv                      Prints the working view
+query_language           Selects objects by their metadata
+rebase                   Changes the configuration of a stream
+recoverview              Recovers a dynamic view database
+reformatview             Updates the format of a view database
+reformatvob              Updates the format of a VOB database
+register                 Creates an entry in the VOB or view object registry
+relocate                 Moves elements and directory trees from one VOB to another
+rename                   Assigns a new name to an existing object
+reqmaster                Sets access controls for mastership requests or requests mastership of a branch or branch type
+reserve                  Converts an unreserved checkout to reserved
+rgy_backup               Copies registry files and client list from primary registry server host to backup registry server host
+rgy_check                Check registry files for inconsistencies
+rgy_passwd               Creates or changes encrypted VOB-tag registry password
+rgy_switchover           Makes a backup registry server host the primary registry server host
+rmactivity               Deletes an activity
+rmattr                   Removes an attribute from an object
+rmbl                     Removes a baseline
+rmbranch                 Removes a branch from the version tree of an element
+rmcomp                   Removes a component
+rmdo                     Removes a derived object from a VOB
+rmelem                   Removes an element or symbolic link from a VOB
+rmfolder                 Remove a folder
+rmhlink                  Removed a hyperlink object
+rmlabel                  Removes a version label from a version
+rmmerge                  Removes a merge arrow from an element's version tree
+rmname                   Removes the name of an element or VOB symbolic link from a directory version
+rmpool                   Removes a VOB storage pool
+rmproject                Removes a project
+rmregion                 Unregisters a ClearCase network region
+rmstgloc                 Removes registry entries for server storage locations
+rmstream                 Remove a stream
+rmtag                    Removes a view-tag or a VOB-tag from the networkwide storage registry
+rmtrigger                Removes trigger from an element or UCM object
+rmtype                   Removes a type object from a VOB
+rmver                    Removes a version from the version tree of an element
+rmview                   Removes a view or removes view-related records from a VOB
+rmvob                    Removes a VOB storage directory
+schedule                 Schedules and manages jobs to be run one or more times
+schemes                  X Window System resources for ClearCase and ClearCase LT Graphical User Interfaces (GUIs)
+scrubber                 Removes data containers from VOB storage pools and removes DOs from VOB database
+setactivity              Sets or unsets the activity for a view
+setcache                 Changes cache settings
+setcs                    Sets the config spec of a view
+setplevel                Changes the list of promotion levels in a project VOB
+setrgysvrtype            Provides a simple mechanism to configure registry server type on a local host
+setsite                  Sets or unsets site-wide properties in the site config registry
+setview                  Creates a process that is set to a dynamic view
+shell                    Creates a subprocess to run a shell or other program
+snapshot.conf            VOB snapshot configuration file
+space                    Reports on disk space use for views, VOBs, or file-system files or directories
+startview                Starts or connects to a dynamic view's view_server process
+type_manager             Program for managing contents of element versions
+umount                   Deactivates a VOB
+uncheckout               Cancels a checkout of an element
+unlock                   Unlocks an object
+unregister               Removes an entry from the vob_object or view_object registry
+unreserve                Changes a reserved checkout to unreserved
+update                   Updates elements in a snapshot view
+version_selector         Version-selector syntax
+view_scrubber            Remove derived object data containers from dynamic view storage
+vob_restore              Restores a VOB from backup media
+vob_scrubber             Remove event records and oplog entries from VOB database
+vob_sidwalk, vob_siddump Reads or changes security identifiers in a schema version 54 VOB database
+vob_snapshot             Copies the VOB databases of all local VOBs or replicas configured for database snapshot
+vob_snapshot_setup       Sets or displays VOB database snapshot parameters
+wildcards_ccase          Pattern-matching characters for ClearCase and ClearCase LT pathnames
+winkin                   Accesses one or more derived objects (DOs) from a dynamic view, or converts a nonshareable derived object to a shareable (promoted) derived object
+xclearcase               Primary ClearCase and ClearCase LT graphical interface utility
+xcleardiff               Compares or merges text files graphically
+xmldiffmrg               Parses, compares, and merges XML file versions

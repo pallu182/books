@@ -1,0 +1,412 @@
+<HTML>
+<HEAD>
+<TITLE>pod2man - Convert POD data to formatted *roff input</TITLE>
+<LINK REL="stylesheet" HREF="../Active.css" TYPE="text/css">
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;pod2man - Convert POD data to formatted *roff input</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<LI><A HREF="#options">OPTIONS</A></LI>
+	<LI><A HREF="#diagnostics">DIAGNOSTICS</A></LI>
+	<LI><A HREF="#examples">EXAMPLES</A></LI>
+	<LI><A HREF="#bugs">BUGS</A></LI>
+	<LI><A HREF="#notes">NOTES</A></LI>
+	<LI><A HREF="#see also">SEE ALSO</A></LI>
+	<LI><A HREF="#author">AUTHOR</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>pod2man - Convert POD data to formatted *roff input</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<P>pod2man [<STRONG>--section</STRONG>=<EM>manext</EM>] [<STRONG>--release</STRONG>=<EM>version</EM>]
+[<STRONG>--center</STRONG>=<EM>string</EM>] [<STRONG>--date</STRONG>=<EM>string</EM>] [<STRONG>--fixed</STRONG>=<EM>font</EM>]
+[<STRONG>--fixedbold</STRONG>=<EM>font</EM>] [<STRONG>--fixeditalic</STRONG>=<EM>font</EM>]
+[<STRONG>--fixedbolditalic</STRONG>=<EM>font</EM>] [<STRONG>--official</STRONG>] [<STRONG>--lax</STRONG>]
+[<STRONG>--quotes</STRONG>=<EM>quotes</EM>] [<EM>input</EM> [<EM>output</EM>] ...]</P>
+<P>pod2man <STRONG>--help</STRONG></P>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P><STRONG>pod2man</STRONG> is a front-end for Pod::Man, using it to generate *roff input
+from POD source.  The resulting *roff code is suitable for display on a
+terminal using nroff(1), normally via man(1), or printing using troff(1).</P>
+<P><EM>input</EM> is the file to read for POD source (the POD can be embedded in
+code).  If <EM>input</EM> isn't given, it defaults to STDIN.  <EM>output</EM>, if given,
+is the file to which to write the formatted output.  If <EM>output</EM> isn't
+given, the formatted output is written to STDOUT.  Several POD files can be
+processed in the same <STRONG>pod2man</STRONG> invocation (saving module load and compile
+times) by providing multiple pairs of <EM>input</EM> and <EM>output</EM> files on the
+command line.</P>
+<P><STRONG>--section</STRONG>, <STRONG>--release</STRONG>, <STRONG>--center</STRONG>, <STRONG>--date</STRONG>, and <STRONG>--official</STRONG> can be
+used to set the headers and footers to use; if not given, Pod::Man will
+assume various defaults.  See below or <A HREF="../lib/Pod/Man.html">the Pod::Man manpage</A> for details.</P>
+<P><STRONG>pod2man</STRONG> assumes that your *roff formatters have a fixed-width font named
+CW.  If yours is called something else (like CR), use <STRONG>--fixed</STRONG> to specify
+it.  This generally only matters for troff output for printing.  Similarly,
+you can set the fonts used for bold, italic, and bold italic fixed-width
+output.</P>
+<P>Besides the obvious pod conversions, Pod::Man, and therefore pod2man also
+takes care of formatting func(), func(n), and simple variable references
+like $foo or @bar so you don't have to use code escapes for them; complex
+expressions like <CODE>$fred{'stuff'}</CODE> will still need to be escaped, though.
+It also translates dashes that aren't used as hyphens into en dashes, makes
+long dashes--like this--into proper em dashes, fixes ``paired quotes,'' and
+takes care of several other troff-specific tweaks.  See <A HREF="../lib/Pod/Man.html">the Pod::Man manpage</A> for
+complete information.</P>
+<P>
+<HR>
+<H1><A NAME="options">OPTIONS</A></H1>
+<DL>
+<DT><STRONG><A NAME="item_%2Dc_string%2C_%2D%2Dcenter%3Dstring"><STRONG>-c</STRONG> <EM>string</EM>, <STRONG>--center</STRONG>=<EM>string</EM></A></STRONG><BR>
+<DD>
+Sets the centered page header to <EM>string</EM>.  The default is ``User
+Contributed Perl Documentation'', but also see <STRONG>--official</STRONG> below.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dd_string%2C_%2D%2Ddate%3Dstring"><STRONG>-d</STRONG> <EM>string</EM>, <STRONG>--date</STRONG>=<EM>string</EM></A></STRONG><BR>
+<DD>
+Set the left-hand footer string to this value.  By default, the modification
+date of the input file will be used, or the current date if input comes from
+STDIN.
+<P></P>
+<DT><STRONG><A NAME="item_%2D%2Dfixed%3Dfont"><STRONG>--fixed</STRONG>=<EM>font</EM></A></STRONG><BR>
+<DD>
+The fixed-width font to use for vertabim text and code.  Defaults to CW.
+Some systems may want CR instead.  Only matters for <CODE>troff(1)</CODE> output.
+<P></P>
+<DT><STRONG><A NAME="item_%2D%2Dfixedbold%3Dfont"><STRONG>--fixedbold</STRONG>=<EM>font</EM></A></STRONG><BR>
+<DD>
+Bold version of the fixed-width font.  Defaults to CB.  Only matters for
+<CODE>troff(1)</CODE> output.
+<P></P>
+<DT><STRONG><A NAME="item_%2D%2Dfixeditalic%3Dfont"><STRONG>--fixeditalic</STRONG>=<EM>font</EM></A></STRONG><BR>
+<DD>
+Italic version of the fixed-width font (actually, something of a misnomer,
+since most fixed-width fonts only have an oblique version, not an italic
+version).  Defaults to CI.  Only matters for <CODE>troff(1)</CODE> output.
+<P></P>
+<DT><STRONG><A NAME="item_%2D%2Dfixedbolditalic%3Dfont"><STRONG>--fixedbolditalic</STRONG>=<EM>font</EM></A></STRONG><BR>
+<DD>
+Bold italic (probably actually oblique) version of the fixed-width font.
+Pod::Man doesn't assume you have this, and defaults to CB.  Some systems
+(such as Solaris) have this font available as CX.  Only matters for <CODE>troff(1)</CODE>
+output.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dh%2C_%2D%2Dhelp"><STRONG>-h</STRONG>, <STRONG>--help</STRONG></A></STRONG><BR>
+<DD>
+Print out usage information.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dl%2C_%2D%2Dlax"><STRONG>-l</STRONG>, <STRONG>--lax</STRONG></A></STRONG><BR>
+<DD>
+Don't complain when required sections are missing.  Not currently used, as
+POD checking functionality is not yet implemented in Pod::Man.
+<P></P>
+<DT><STRONG><A NAME="item_%2Do%2C_%2D%2Dofficial"><STRONG>-o</STRONG>, <STRONG>--official</STRONG></A></STRONG><BR>
+<DD>
+Set the default header to indicate that this page is part of the standard
+Perl release, if <STRONG>--center</STRONG> is not also given.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dq_quotes%2C_%2D%2Dquotes%3Dquotes"><STRONG>-q</STRONG> <EM>quotes</EM>, <STRONG>--quotes</STRONG>=<EM>quotes</EM></A></STRONG><BR>
+<DD>
+Sets the quote marks used to surround C&lt;&gt; text to <EM>quotes</EM>.  If
+<EM>quotes</EM> is a single character, it is used as both the left and right
+quote; if <EM>quotes</EM> is two characters, the first character is used as the
+left quote and the second as the right quoted; and if <EM>quotes</EM> is four
+characters, the first two are used as the left quote and the second two as
+the right quote.
+<P><EM>quotes</EM> may also be set to the special value <CODE>none</CODE>, in which case no
+quote marks are added around C&lt;&gt; text (but the font is still changed for
+troff output).</P>
+<P></P>
+<DT><STRONG><A NAME="item_%2Dr%2C_%2D%2Drelease"><STRONG>-r</STRONG>, <STRONG>--release</STRONG></A></STRONG><BR>
+<DD>
+Set the centered footer.  By default, this is the version of Perl you run
+<STRONG>pod2man</STRONG> under.  Note that some system an macro sets assume that the
+centered footer will be a modification date and will prepend something like
+``Last modified: ''; if this is the case, you may want to set <STRONG>--release</STRONG> to
+the last modified date and <STRONG>--date</STRONG> to the version number.
+<P></P>
+<DT><STRONG><A NAME="item_%2Ds%2C_%2D%2Dsection"><STRONG>-s</STRONG>, <STRONG>--section</STRONG></A></STRONG><BR>
+<DD>
+Set the section for the <CODE>.TH</CODE> macro.  The standard section numbering
+convention is to use 1 for user commands, 2 for system calls, 3 for
+functions, 4 for devices, 5 for file formats, 6 for games, 7 for
+miscellaneous information, and 8 for administrator commands.  There is a lot
+of variation here, however; some systems (like Solaris) use 4 for file
+formats, 5 for miscellaneous information, and 7 for devices.  Still others
+use 1m instead of 8, or some mix of both.  About the only section numbers
+that are reliably consistent are 1, 2, and 3.
+<P>By default, section 1 will be used unless the file ends in .pm in which case
+section 3 will be selected.</P>
+<P></P></DL>
+<P>
+<HR>
+<H1><A NAME="diagnostics">DIAGNOSTICS</A></H1>
+<P>If <STRONG>pod2man</STRONG> fails with errors, see <A HREF="../lib/Pod/Man.html">the Pod::Man manpage</A> and <A HREF="../lib/Pod/Parser.html">the Pod::Parser manpage</A> for
+information about what those errors might mean.</P>
+<P>
+<HR>
+<H1><A NAME="examples">EXAMPLES</A></H1>
+<PRE>
+    pod2man program &gt; program.1
+    pod2man SomeModule.pm /usr/perl/man/man3/SomeModule.3
+    pod2man --section=7 note.pod &gt; note.7</PRE>
+<P>If you would like to print out a lot of man page continuously, you probably
+want to set the C and D registers to set contiguous page numbering and
+even/odd paging, at least on some versions of man(7).</P>
+<PRE>
+    troff -man -rC1 -rD1 perl.1 <A HREF="../lib/Pod/perldata.html">perldata</A>.1 <A HREF="../lib/Pod/perlsyn.html">perlsyn</A>.1 ...</PRE>
+<P>To get index entries on stderr, turn on the F register, as in:</P>
+<PRE>
+    troff -man -rF1 perl.1</PRE>
+<P>The indexing merely outputs messages via <CODE>.tm</CODE> for each major page,
+section, subsection, item, and any <CODE>X&lt;&gt;</CODE> directives.  See
+<A HREF="../lib/Pod/Man.html">the Pod::Man manpage</A> for more details.</P>
+<P>
+<HR>
+<H1><A NAME="bugs">BUGS</A></H1>
+<P>Lots of this documentation is duplicated from <A HREF="../lib/Pod/Man.html">the Pod::Man manpage</A>.</P>
+<P>POD checking and the corresponding <STRONG>--lax</STRONG> option don't work yet.</P>
+<P>
+<HR>
+<H1><A NAME="notes">NOTES</A></H1>
+<P>For those not sure of the proper layout of a man page, here are some notes
+on writing a proper man page.</P>
+<P>The name of the program being documented is conventionally written in bold
+(using B&lt;&gt;) wherever it occurs, as are all program options.
+Arguments should be written in italics (I&lt;&gt;).  Functions are
+traditionally written in italics; if you write a function as function(),
+Pod::Man will take care of this for you.  Literal code or commands should
+be in C&lt;&gt;.  References to other man pages should be in the form
+<CODE>manpage(section)</CODE>, and Pod::Man will automatically format those
+appropriately.  As an exception, it's traditional not to use this form when
+referring to module documentation; use <CODE>L&lt;Module::Name&gt;</CODE> instead.</P>
+<P>References to other programs or functions are normally in the form of man
+page references so that cross-referencing tools can provide the user with
+links and the like.  It's possible to overdo this, though, so be careful not
+to clutter your documentation with too much markup.</P>
+<P>The major headers should be set out using a <CODE>=head1</CODE> directive, and are
+historically written in the rather startling ALL UPPER CASE format, although
+this is not mandatory.  Minor headers may be included using <CODE>=head2</CODE>, and
+are typically in mixed case.</P>
+<P>The standard sections of a manual page are:</P>
+<DL>
+<DT><STRONG><A NAME="item_NAME">NAME</A></STRONG><BR>
+<DD>
+Mandatory section; should be a comma-separated list of programs or functions
+documented by this podpage, such as:
+<PRE>
+    foo, bar - programs to do something</PRE>
+<P>Manual page indexers are often extremely picky about the format of this
+section, so don't put anything in it except this line.  A single dash, and
+only a single dash, should separate the list of programs or functions from
+the description.  Functions should not be qualified with <CODE>()</CODE> or the like.
+The description should ideally fit on a single line, even if a man program
+replaces the dash with a few tabs.</P>
+<P></P>
+<DT><STRONG><A NAME="item_SYNOPSIS">SYNOPSIS</A></STRONG><BR>
+<DD>
+A short usage summary for programs and functions.  This section is mandatory
+for section 3 pages.
+<P></P>
+<DT><STRONG><A NAME="item_DESCRIPTION">DESCRIPTION</A></STRONG><BR>
+<DD>
+Extended description and discussion of the program or functions, or the body
+of the documentation for man pages that document something else.  If
+particularly long, it's a good idea to break this up into subsections
+<CODE>=head2</CODE> directives like:
+<PRE>
+    =head2 Normal Usage</PRE>
+<PRE>
+    =head2 Advanced Features</PRE>
+<PRE>
+    =head2 Writing Configuration Files</PRE>
+<P>or whatever is appropriate for your documentation.</P>
+<P></P>
+<DT><STRONG><A NAME="item_OPTIONS">OPTIONS</A></STRONG><BR>
+<DD>
+Detailed description of each of the command-line options taken by the
+program.  This should be separate from the description for the use of things
+like <A HREF="../lib/Pod/Usage.html">Pod::Usage</A>.  This is normally presented as a list, with
+each option as a separate <CODE>=item</CODE>.  The specific option string should be
+enclosed in B&lt;&gt;.  Any values that the option takes should be
+enclosed in I&lt;&gt;.  For example, the section for the option
+<STRONG>--section</STRONG>=<EM>manext</EM> would be introduced with:
+<PRE>
+    =item B&lt;--section&gt;=I&lt;manext&gt;</PRE>
+<P>Synonymous options (like both the short and long forms) are separated by a
+comma and a space on the same <CODE>=item</CODE> line, or optionally listed as their
+own item with a reference to the canonical name.  For example, since
+<STRONG>--section</STRONG> can also be written as <STRONG>-s</STRONG>, the above would be:</P>
+<PRE>
+    =item B&lt;-s&gt; I&lt;manext&gt;, B&lt;--section&gt;=I&lt;manext&gt;</PRE>
+<P>(Writing the short option first is arguably easier to read, since the long
+option is long enough to draw the eye to it anyway and the short option can
+otherwise get lost in visual noise.)</P>
+<P></P>
+<DT><STRONG><A NAME="item_RETURN_VALUE">RETURN VALUE</A></STRONG><BR>
+<DD>
+What the program or function returns, if successful.  This section can be
+omitted for programs whose precise exit codes aren't important, provided
+they return 0 on success as is standard.  It should always be present for
+functions.
+<P></P>
+<DT><STRONG><A NAME="item_ERRORS">ERRORS</A></STRONG><BR>
+<DD>
+Exceptions, error return codes, exit statuses, and errno settings.
+Typically used for function documentation; program documentation uses
+DIAGNOSTICS instead.  The general rule of thumb is that errors printed to
+STDOUT or STDERR and intended for the end user are documented in DIAGNOSTICS
+while errors passed internal to the calling program and intended for other
+programmers are documented in ERRORS.  When documenting a function that sets
+errno, a full list of the possible errno values should be given here.
+<P></P>
+<DT><STRONG><A NAME="item_DIAGNOSTICS">DIAGNOSTICS</A></STRONG><BR>
+<DD>
+All possible messages the program can print out--and what they mean.  You
+may wish to follow the same documentation style as the Perl documentation;
+see <CODE>perldiag(1)</CODE> for more details (and look at the POD source as well).
+<P>If applicable, please include details on what the user should do to correct
+the error; documenting an error as indicating ``the input buffer is too
+small'' without telling the user how to increase the size of the input buffer
+(or at least telling them that it isn't possible) aren't very useful.</P>
+<P></P>
+<DT><STRONG><A NAME="item_EXAMPLES">EXAMPLES</A></STRONG><BR>
+<DD>
+Give some example uses of the program or function.  Don't skimp; users often
+find this the most useful part of the documentation.  The examples are
+generally given as verbatim paragraphs.
+<P>Don't just present an example without explaining what it does.  Adding a
+short paragraph saying what the example will do can increase the value of
+the example immensely.</P>
+<P></P>
+<DT><STRONG><A NAME="item_ENVIRONMENT">ENVIRONMENT</A></STRONG><BR>
+<DD>
+Environment variables that the program cares about, normally presented as a
+list using <CODE>=over</CODE>, <CODE>=item</CODE>, and <CODE>=back</CODE>.  For example:
+<PRE>
+    =over 6</PRE>
+<PRE>
+    =item HOME</PRE>
+<PRE>
+    Used to determine the user's home directory.  F&lt;.foorc&gt; in this
+    directory is read for configuration details, if it exists.</PRE>
+<PRE>
+    =back</PRE>
+<P>Since environment variables are normally in all uppercase, no additional
+special formatting is generally needed; they're glaring enough as it is.</P>
+<P></P>
+<DT><STRONG><A NAME="item_FILES">FILES</A></STRONG><BR>
+<DD>
+All files used by the program or function, normally presented as a list, and
+what it uses them for.  File names should be enclosed in F&lt;&gt;.  It's
+particularly important to document files that will be potentially modified.
+<P></P>
+<DT><STRONG><A NAME="item_CAVEATS">CAVEATS</A></STRONG><BR>
+<DD>
+Things to take special care with, sometimes called WARNINGS.
+<P></P>
+<DT><STRONG><A NAME="item_BUGS">BUGS</A></STRONG><BR>
+<DD>
+Things that are broken or just don't work quite right.
+<P></P>
+<DT><STRONG><A NAME="item_RESTRICTIONS">RESTRICTIONS</A></STRONG><BR>
+<DD>
+Bugs you don't plan to fix.  :-)
+<P></P>
+<DT><STRONG><A NAME="item_NOTES">NOTES</A></STRONG><BR>
+<DD>
+Miscellaneous commentary.
+<P></P>
+<DT><STRONG><A NAME="item_SEE_ALSO">SEE ALSO</A></STRONG><BR>
+<DD>
+Other man pages to check out, like man(1), man(7), makewhatis(8), or
+catman(8).  Normally a simple list of man pages separated by commas, or a
+paragraph giving the name of a reference work.  Man page references, if they
+use the standard <CODE>name(section)</CODE> form, don't have to be enclosed in
+L&lt;&gt;, but other things in this section probably should be when
+appropriate.  You may need to use the <CODE>L&lt;...|...&gt;</CODE> syntax to keep
+<STRONG>pod2man</STRONG> and <STRONG>pod2text</STRONG> from being too verbose; see perlpod(1).
+<P>If the package has a web site, include a URL here.</P>
+<P></P>
+<DT><STRONG><A NAME="item_AUTHOR">AUTHOR</A></STRONG><BR>
+<DD>
+Who wrote it (use AUTHORS for multiple people).  Including your current
+e-mail address (or some e-mail address to which bug reports should be sent)
+so that users have a way of contacting you is a good idea.  Remember that
+program documentation tends to roam the wild for far longer than you expect
+and pick an e-mail address that's likely to last if possible.
+<P></P>
+<DT><STRONG><A NAME="item_HISTORY">HISTORY</A></STRONG><BR>
+<DD>
+Programs derived from other sources sometimes have this, or you might keep a
+modification log here.
+<P></P></DL>
+<P>In addition, some systems use CONFORMING TO to note conformance to relevant
+standards and MT-LEVEL to note safeness for use in threaded programs or
+signal handlers.  These headings are primarily useful when documenting parts
+of a C library.  Documentation of object-oriented libraries or modules may
+use CONSTRUCTORS and METHODS sections for detailed documentation of the
+parts of the library and save the DESCRIPTION section for an overview; other
+large modules may use FUNCTIONS for similar reasons.  Some people use
+OVERVIEW to summarize the description if it's quite long.  Sometimes there's
+an additional COPYRIGHT section at the bottom, for licensing terms.
+AVAILABILITY is sometimes added, giving the canonical download site for the
+software or a URL for updates.</P>
+<P>Section ordering varies, although NAME should <EM>always</EM> be the first section
+(you'll break some man page systems otherwise), and NAME, SYNOPSIS,
+DESCRIPTION, and OPTIONS generally always occur first and in that order if
+present.  In general, SEE ALSO, AUTHOR, and similar material should be left
+for last.  Some systems also move WARNINGS and NOTES to last.  The order
+given above should be reasonable for most purposes.</P>
+<P>Finally, as a general note, try not to use an excessive amount of markup.
+As documented here and in <A HREF="../lib/Pod/Man.html">the Pod::Man manpage</A>, you can safely leave Perl variables,
+function names, man page references, and the like unadorned by markup and
+the POD translators will figure it out for you.  This makes it much easier
+to later edit the documentation.  Note that many existing translators
+(including this one currently) will do the wrong thing with e-mail addresses
+or URLs when wrapped in L&lt;&gt;, so don't do that.</P>
+<P>For additional information that may be more accurate for your specific
+system, see either <CODE>man(5)</CODE> or <CODE>man(7)</CODE> depending on your system manual section
+numbering conventions.</P>
+<P>
+<HR>
+<H1><A NAME="see also">SEE ALSO</A></H1>
+<P><A HREF="../lib/Pod/Man.html">Pod::Man</A>, <A HREF="../lib/Pod/Parser.html">Pod::Parser</A>, man(1), nroff(1),
+troff(1), <CODE>man(7)</CODE></P>
+<P>The man page documenting the an macro set may be <CODE>man(5)</CODE> instead of <CODE>man(7)</CODE> on
+your system.</P>
+<P>
+<HR>
+<H1><A NAME="author">AUTHOR</A></H1>
+<P>Russ Allbery &lt;<A HREF="mailto:rra@stanford.edu">rra@stanford.edu</A>&gt;, based <EM>very</EM> heavily on the
+original <STRONG>pod2man</STRONG> by Larry Wall and Tom Christiansen.  Large portions of
+this documentation, particularly the sections on the anatomy of a proper man
+page, are taken from the <STRONG>pod2man</STRONG> documentation by Tom.</P>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;pod2man - Convert POD data to formatted *roff input</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

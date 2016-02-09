@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<TITLE>exetype - Change executable subsystem type between "Console" and "Windows"</TITLE>
+<LINK REL="stylesheet" HREF="../Active.css" TYPE="text/css">
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;exetype - Change executable subsystem type between "Console" and "Windows"</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<LI><A HREF="#author">AUTHOR</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>exetype - Change executable subsystem type between ``Console'' and ``Windows''</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<PRE>
+        C:\perl\bin&gt; copy perl.exe guiperl.exe
+        C:\perl\bin&gt; exetype guiperl.exe windows</PRE>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P>This program edits an executable file to indicate which subsystem the
+operating system must invoke for execution.</P>
+<P>You can specify any of the following subsystems:</P>
+<DL>
+<DT><STRONG><A NAME="item_CONSOLE">CONSOLE</A></STRONG><BR>
+<DD>
+The CONSOLE subsystem handles a Win32 character-mode application that
+use a console supplied by the operating system.
+<P></P>
+<DT><STRONG><A NAME="item_WINDOWS">WINDOWS</A></STRONG><BR>
+<DD>
+The WINDOWS subsystem handles an application that does not require a
+console and creates its own windows, if required.
+<P></P>
+<DT><STRONG><A NAME="item_NATIVE">NATIVE</A></STRONG><BR>
+<DD>
+The NATIVE subsystem handles a Windows NT device driver.
+<P></P>
+<DT><STRONG><A NAME="item_WINDOWSCE">WINDOWSCE</A></STRONG><BR>
+<DD>
+The WINDOWSCE subsystem handles Windows CE consumer electronics
+applications.
+<P></P>
+<DT><STRONG><A NAME="item_POSIX">POSIX</A></STRONG><BR>
+<DD>
+The POSIX subsystem handles a POSIX application in Windows NT.
+<P></P></DL>
+<P>
+<HR>
+<H1><A NAME="author">AUTHOR</A></H1>
+<P>Jan Dubois &lt;<A HREF="mailto:jand@activestate.com">jand@activestate.com</A>&gt;</P>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;exetype - Change executable subsystem type between "Console" and "Windows"</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

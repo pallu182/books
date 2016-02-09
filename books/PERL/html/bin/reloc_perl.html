@@ -1,0 +1,60 @@
+<HTML>
+<HEAD>
+<TITLE>reloc_perl - relocate a perl installation</TITLE>
+<LINK REL="stylesheet" HREF="../Active.css" TYPE="text/css">
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;reloc_perl - relocate a perl installation</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<LI><A HREF="#copyright">COPYRIGHT</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>reloc_perl - relocate a perl installation</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<PRE>
+  reloc_perl [-a] [-b] [-d] [-e destpath] [-f file] [-i] [-t] [-r] [-v]
+             topath [frompath]</PRE>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P>This tool will move a perl installation wholesale to a new location.</P>
+<P>Edits path names in binaries (e.g., a2p, perl, libperl.a) to reflect the
+new location, but preserves the size of strings by null padding them as
+necessary.</P>
+<P>Edits text files by simple substitution.</P>
+<P>'destpath' cannot be longer than 'frompath'.</P>
+<P>If 'frompath' is not found in any files, no changes whatsoever are made.</P>
+<P>Running the tool without arguments provides more help.</P>
+<P>
+<HR>
+<H1><A NAME="copyright">COPYRIGHT</A></H1>
+<P>(c) 1999-2001 ActiveState Tool Corp.  All rights reserved.</P>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;reloc_perl - relocate a perl installation</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

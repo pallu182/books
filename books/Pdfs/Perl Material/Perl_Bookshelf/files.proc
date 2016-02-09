@@ -1,0 +1,12 @@
+#!/usr/bin/perl
+
+open(INFILE,"<files");
+open(OUTFILE,">files2");
+
+while(<INFILE>) {
+  chomp;
+  $Source=$_;
+  $Target=$Source;
+  $Target =~ tr/A-Z/a-z/;
+  print OUTFILE "mv $Source $Target\n";
+}

@@ -1,0 +1,114 @@
+<HTML>
+<HEAD>
+<TITLE>s2p - Sed to Perl translator</TITLE>
+<LINK REL="stylesheet" HREF="../Active.css" TYPE="text/css">
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;s2p - Sed to Perl translator</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<UL>
+
+		<LI><A HREF="#options">Options</A></LI>
+		<LI><A HREF="#considerations">Considerations</A></LI>
+	</UL>
+
+	<LI><A HREF="#environment">ENVIRONMENT</A></LI>
+	<LI><A HREF="#author">AUTHOR</A></LI>
+	<LI><A HREF="#files">FILES</A></LI>
+	<LI><A HREF="#see also">SEE ALSO</A></LI>
+	<LI><A HREF="#diagnostics">DIAGNOSTICS</A></LI>
+	<LI><A HREF="#bugs">BUGS</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>s2p - Sed to Perl translator</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<P><STRONG>s2p [options] filename</STRONG></P>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P><EM>s2p</EM> takes a sed script specified on the command line (or from
+standard input) and produces a comparable <EM>perl</EM> script on the
+standard output.</P>
+<P>
+<H2><A NAME="options">Options</A></H2>
+<P>Options include:</P>
+<DL>
+<DT><STRONG><A NAME="item_%2DD%3Cnumber%3E"><STRONG>-D&lt;number&gt;</STRONG></A></STRONG><BR>
+<DD>
+sets debugging flags.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dn"><STRONG>-n</STRONG></A></STRONG><BR>
+<DD>
+specifies that this sed script was always invoked with a <STRONG>sed -n</STRONG>.
+Otherwise a switch parser is prepended to the front of the script.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dp"><STRONG>-p</STRONG></A></STRONG><BR>
+<DD>
+specifies that this sed script was never invoked with a <STRONG>sed -n</STRONG>.
+Otherwise a switch parser is prepended to the front of the script.
+<P></P></DL>
+<P>
+<H2><A NAME="considerations">Considerations</A></H2>
+<P>The perl script produced looks very sed-ish, and there may very well
+be better ways to express what you want to do in perl.  For instance,
+s2p does not make any use of the split operator, but you might want
+to.</P>
+<P>The perl script you end up with may be either faster or slower than
+the original sed script.  If you're only interested in speed you'll
+just have to try it both ways.  Of course, if you want to do something
+sed doesn't do, you have no choice.  It's often possible to speed up
+the perl script by various methods, such as deleting all references to
+$\ and chop.</P>
+<P>
+<HR>
+<H1><A NAME="environment">ENVIRONMENT</A></H1>
+<P>s2p uses no environment variables.</P>
+<P>
+<HR>
+<H1><A NAME="author">AUTHOR</A></H1>
+<P>Larry Wall &lt;<EM><A HREF="mailto:larry@wall.org">larry@wall.org</A></EM>&gt;</P>
+<P>
+<HR>
+<H1><A NAME="files">FILES</A></H1>
+<P>
+<HR>
+<H1><A NAME="see also">SEE ALSO</A></H1>
+<PRE>
+ perl   The perl compiler/interpreter</PRE>
+<PRE>
+ a2p    awk to perl translator</PRE>
+<P>
+<HR>
+<H1><A NAME="diagnostics">DIAGNOSTICS</A></H1>
+<P>
+<HR>
+<H1><A NAME="bugs">BUGS</A></H1>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;s2p - Sed to Perl translator</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

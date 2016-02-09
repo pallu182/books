@@ -1,0 +1,128 @@
+<HTML>
+<HEAD>
+<TITLE>perlcc - generate executables from Perl programs</TITLE>
+<LINK REL="stylesheet" HREF="../Active.css" TYPE="text/css">
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;perlcc - generate executables from Perl programs</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<LI><A HREF="#options">OPTIONS</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>perlcc - generate executables from Perl programs</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<PRE>
+    $ perlcc hello              # Compiles into executable 'a.out'
+    $ perlcc -o hello hello.pl  # Compiles into executable 'hello'</PRE>
+<PRE>
+    $ perlcc -O file            # Compiles using the optimised C backend
+    $ perlcc -B file            # Compiles using the bytecode backend</PRE>
+<PRE>
+    $ perlcc -c file            # Creates a C file, 'file.c'
+    $ perlcc -S -o hello file   # Creates a C file, 'file.c',
+                                # then compiles it to executable 'hello'
+    $ perlcc -c out.c file      # Creates a C file, 'out.c' from 'file'</PRE>
+<PRE>
+    $ perlcc -e 'print q//'     # Compiles a one-liner into 'a.out'
+    $ perlcc -c -e 'print q//'  # Creates a C file 'a.out.c'</PRE>
+<PRE>
+    $ perlcc -r hello           # compiles 'hello' into 'a.out', runs 'a.out'.</PRE>
+<PRE>
+    $ perlcc -r hello a b c     # compiles 'hello' into 'a.out', runs 'a.out'.
+                                # with arguments 'a b c'</PRE>
+<PRE>
+    $ perlcc hello -log c       # compiles 'hello' into 'a.out' logs compile
+                                # log into 'c'.</PRE>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P><EM>perlcc</EM> creates standalone executables from Perl programs, using the
+code generators provided by the <A HREF="../lib/B.html">the B manpage</A> module. At present, you may
+either create executable Perl bytecode, using the <A HREF="#item_%2DB"><CODE>-B</CODE></A> option, or 
+generate and compile C files using the standard and 'optimised' C
+backends.</P>
+<P>The code generated in this way is not guaranteed to work. The whole
+codegen suite (<CODE>perlcc</CODE> included) should be considered <STRONG>very</STRONG>
+experimental. Use for production purposes is strongly discouraged.</P>
+<P>
+<HR>
+<H1><A NAME="options">OPTIONS</A></H1>
+<DL>
+<DT><STRONG><A NAME="item_%2DLlibrary_directories">-L<EM>library directories</EM></A></STRONG><BR>
+<DD>
+Adds the given directories to the library search path when C code is
+passed to your C compiler.
+<P></P>
+<DT><STRONG><A NAME="item_%2DIinclude_directories">-I<EM>include directories</EM></A></STRONG><BR>
+<DD>
+Adds the given directories to the include file search path when C code is
+passed to your C compiler; when using the Perl bytecode option, adds the
+given directories to Perl's include path.
+<P></P>
+<DT><STRONG><A NAME="item_%2Do_output_file_name">-o <EM>output file name</EM></A></STRONG><BR>
+<DD>
+Specifies the file name for the final compiled executable.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dc_C_file_name">-c <EM>C file name</EM></A></STRONG><BR>
+<DD>
+Create C code only; do not compile to a standalone binary.
+<P></P>
+<DT><STRONG><A NAME="item_%2De_perl_code">-e <EM>perl code</EM></A></STRONG><BR>
+<DD>
+Compile a one-liner, much the same as <CODE>perl -e '...'</CODE>
+<P></P>
+<DT><STRONG><A NAME="item_%2DS">-S</A></STRONG><BR>
+<DD>
+Do not delete generated C code after compilation.
+<P></P>
+<DT><STRONG><A NAME="item_%2DB">-B</A></STRONG><BR>
+<DD>
+Use the Perl bytecode code generator.
+<P></P>
+<DT><STRONG><A NAME="item_%2DO">-O</A></STRONG><BR>
+<DD>
+Use the 'optimised' C code generator. This is more experimental than
+everything else put together, and the code created is not guaranteed to
+compile in finite time and memory, or indeed, at all.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dv">-v</A></STRONG><BR>
+<DD>
+Increase verbosity of output; can be repeated for more verbose output.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dr">-r</A></STRONG><BR>
+<DD>
+Run the resulting compiled script after compiling it.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dlog">-log</A></STRONG><BR>
+<DD>
+Log the output of compiling to a file rather than to stdout.
+<P></P></DL>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;perlcc - generate executables from Perl programs</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

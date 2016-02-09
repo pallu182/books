@@ -1,0 +1,10 @@
+F ARGV.;1                           	argv
+F FMT.;1                            	fmt
+F FORMAT_B.;1                       	format_bugs
+F FORMAT_O.;1                       	format_onthefly
+F FORMAT_P.;1                       	format_passwd
+F GETLINE.;1                        	getline
+F HERE_DOC.;1                       	here_docs
+F MISC.;1                           	MISC
+F NEWOPEN.;1                        	newopen
+F SIGHANDL.;1                       	sighandler

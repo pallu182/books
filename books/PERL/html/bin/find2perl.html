@@ -1,0 +1,225 @@
+<HTML>
+<HEAD>
+<TITLE>find2perl - translate find command lines to Perl code</TITLE>
+<LINK REL="stylesheet" HREF="../Active.css" TYPE="text/css">
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;find2perl - translate find command lines to Perl code</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<LI><A HREF="#see also">SEE ALSO</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>find2perl - translate find command lines to Perl code</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<PRE>
+        find2perl [paths] [predicates] | perl</PRE>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P>find2perl is a little translator to convert find command lines to
+equivalent Perl code.  The resulting code is typically faster than
+running find itself.</P>
+<P>``paths'' are a set of paths where find2perl will start its searches and
+``predicates'' are taken from the following list.</P>
+<DL>
+<DT><STRONG><A NAME="item_%21_PREDICATE"><CODE>! PREDICATE</CODE></A></STRONG><BR>
+<DD>
+Negate the sense of the following predicate.  The <CODE>!</CODE> must be passed as
+a distinct argument, so it may need to be surrounded by whitespace and/or
+quoted from interpretation by the shell using a backslash (just as with
+using <CODE>find(1)</CODE>).
+<P></P>
+<DT><STRONG><A NAME="item_%28_PREDICATES_%29"><CODE>( PREDICATES )</CODE></A></STRONG><BR>
+<DD>
+Group the given PREDICATES.  The parentheses must be passed as distinct
+arguments, so they may need to be surrounded by whitespace and/or
+quoted from interpretation by the shell using a backslash (just as with
+using <CODE>find(1)</CODE>).
+<P></P>
+<DT><STRONG><A NAME="item_PREDICATE1_PREDICATE2"><CODE>PREDICATE1 PREDICATE2</CODE></A></STRONG><BR>
+<DD>
+True if _both_ PREDICATE1 and PREDICATE2 are true; PREDICATE2 is not
+evaluated if PREDICATE1 is false.
+<P></P>
+<DT><STRONG><A NAME="item_PREDICATE1_%2Do_PREDICATE2"><CODE>PREDICATE1 -o PREDICATE2</CODE></A></STRONG><BR>
+<DD>
+True if either one of PREDICATE1 or PREDICATE2 is true; PREDICATE2 is
+not evaluated if PREDICATE1 is true.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dfollow"><CODE>-follow</CODE></A></STRONG><BR>
+<DD>
+Follow (dereference) symlinks.  The checking of file attributes depends
+on the position of the <A HREF="#item_%2Dfollow"><CODE>-follow</CODE></A> option. If it precedes the file
+check option, an <A HREF="../lib/Pod/perlfunc.html#item_stat"><CODE>stat</CODE></A> is done which means the file check applies to the
+file the symbolic link is pointing to. If <A HREF="#item_%2Dfollow"><CODE>-follow</CODE></A> option follows the
+file check option, this now applies to the symbolic link itself, i.e.
+an <A HREF="../lib/Pod/perlfunc.html#item_lstat"><CODE>lstat</CODE></A> is done.
+<P></P>
+<DT><STRONG><A NAME="item_%2Ddepth"><CODE>-depth</CODE></A></STRONG><BR>
+<DD>
+Change directory traversal algorithm from breadth-first to depth-first.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dprune"><CODE>-prune</CODE></A></STRONG><BR>
+<DD>
+Do not descend into the directory currently matched.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dxdev"><CODE>-xdev</CODE></A></STRONG><BR>
+<DD>
+Do not traverse mount points (prunes search at mount-point directories).
+<P></P>
+<DT><STRONG><A NAME="item_%2Dname_GLOB"><CODE>-name GLOB</CODE></A></STRONG><BR>
+<DD>
+File name matches specified GLOB wildcard pattern.  GLOB may need to be
+quoted to avoid interpretation by the shell (just as with using
+<CODE>find(1)</CODE>).
+<P></P>
+<DT><STRONG><A NAME="item_%2Dperm_PERM"><CODE>-perm PERM</CODE></A></STRONG><BR>
+<DD>
+Low-order 9 bits of permission match octal value PERM.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dperm_%2DPERM"><CODE>-perm -PERM</CODE></A></STRONG><BR>
+<DD>
+The bits specified in PERM are all set in file's permissions.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dtype_X"><CODE>-type X</CODE></A></STRONG><BR>
+<DD>
+The file's type matches perl's <A HREF="../lib/Pod/perlrun.html#item_%2DX"><CODE>-X</CODE></A> operator.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dfstype_TYPE"><CODE>-fstype TYPE</CODE></A></STRONG><BR>
+<DD>
+Filesystem of current path is of type TYPE (only NFS/non-NFS distinction
+is implemented).
+<P></P>
+<DT><STRONG><A NAME="item_%2Duser_USER"><CODE>-user USER</CODE></A></STRONG><BR>
+<DD>
+True if USER is owner of file.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dgroup_GROUP"><CODE>-group GROUP</CODE></A></STRONG><BR>
+<DD>
+True if file's group is GROUP.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dnouser"><CODE>-nouser</CODE></A></STRONG><BR>
+<DD>
+True if file's owner is not in password database.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dnogroup"><CODE>-nogroup</CODE></A></STRONG><BR>
+<DD>
+True if file's group is not in group database.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dinum_INUM"><CODE>-inum INUM</CODE></A></STRONG><BR>
+<DD>
+True file's inode number is INUM.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dlinks_N"><CODE>-links N</CODE></A></STRONG><BR>
+<DD>
+True if (hard) link count of file matches N (see below).
+<P></P>
+<DT><STRONG><A NAME="item_%2Dsize_N"><CODE>-size N</CODE></A></STRONG><BR>
+<DD>
+True if file's size matches N (see below) N is normally counted in
+512-byte blocks, but a suffix of ``c'' specifies that size should be
+counted in characters (bytes) and a suffix of ``k'' specifes that
+size should be counted in 1024-byte blocks.
+<P></P>
+<DT><STRONG><A NAME="item_%2Datime_N"><CODE>-atime N</CODE></A></STRONG><BR>
+<DD>
+True if last-access time of file matches N (measured in days) (see
+below).
+<P></P>
+<DT><STRONG><A NAME="item_%2Dctime_N"><CODE>-ctime N</CODE></A></STRONG><BR>
+<DD>
+True if last-changed time of file's inode matches N (measured in days,
+see below).
+<P></P>
+<DT><STRONG><A NAME="item_%2Dmtime_N"><CODE>-mtime N</CODE></A></STRONG><BR>
+<DD>
+True if last-modified time of file matches N (measured in days, see below).
+<P></P>
+<DT><STRONG><A NAME="item_%2Dnewer_FILE"><CODE>-newer FILE</CODE></A></STRONG><BR>
+<DD>
+True if last-modified time of file matches N.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dprint"><CODE>-print</CODE></A></STRONG><BR>
+<DD>
+Print out path of file (always true).
+<P></P>
+<DT><STRONG><A NAME="item_%2Dprint0"><CODE>-print0</CODE></A></STRONG><BR>
+<DD>
+Like -print, but terminates with \0 instead of \n.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dexec_OPTIONS_%3B"><CODE>-exec OPTIONS ;</CODE></A></STRONG><BR>
+<DD>
+<A HREF="../lib/Pod/perlfunc.html#item_exec"><CODE>exec()</CODE></A> the arguments in OPTIONS in a subprocess; any occurence of {} in
+OPTIONS will first be substituted with the path of the current
+file.  Note that the command ``rm'' has been special-cased to use perl's
+<A HREF="../lib/Pod/perlfunc.html#item_unlink"><CODE>unlink()</CODE></A> function instead (as an optimization).  The <CODE>;</CODE> must be passed as
+a distinct argument, so it may need to be surrounded by whitespace and/or
+quoted from interpretation by the shell using a backslash (just as with
+using <CODE>find(1)</CODE>).
+<P></P>
+<DT><STRONG><A NAME="item_%2Dok_OPTIONS_%3B"><CODE>-ok OPTIONS ;</CODE></A></STRONG><BR>
+<DD>
+Like -exec, but first prompts user; if user's response does not begin
+with a y, skip the exec.  The <CODE>;</CODE> must be passed as
+a distinct argument, so it may need to be surrounded by whitespace and/or
+quoted from interpretation by the shell using a backslash (just as with
+using <CODE>find(1)</CODE>).
+<P></P>
+<DT><STRONG><A NAME="item_%2Deval_EXPR"><CODE>-eval EXPR</CODE></A></STRONG><BR>
+<DD>
+Has the perl script <A HREF="../lib/Pod/perlfunc.html#item_eval"><CODE>eval()</CODE></A> the EXPR.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dls"><CODE>-ls</CODE></A></STRONG><BR>
+<DD>
+Simulates <CODE>-exec ls -dils {} ;</CODE>
+<P></P>
+<DT><STRONG><A NAME="item_%2Dtar_FILE"><CODE>-tar FILE</CODE></A></STRONG><BR>
+<DD>
+Adds current output to tar-format FILE.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dcpio_FILE"><CODE>-cpio FILE</CODE></A></STRONG><BR>
+<DD>
+Adds current output to old-style cpio-format FILE.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dncpio_FILE"><CODE>-ncpio FILE</CODE></A></STRONG><BR>
+<DD>
+Adds current output to ``new''-style cpio-format FILE.
+<P></P></DL>
+<P>Predicates which take a numeric argument N can come in three forms:</P>
+<PRE>
+   * N is prefixed with a +: match values greater than N
+   * N is prefixed with a -: match values less than N
+   * N is not prefixed with either + or -: match only values equal to N</PRE>
+<P>
+<HR>
+<H1><A NAME="see also">SEE ALSO</A></H1>
+<P>find</P>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;find2perl - translate find command lines to Perl code</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

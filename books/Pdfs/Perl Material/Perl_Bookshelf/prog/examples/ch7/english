@@ -1,0 +1,6 @@
+use English;
+
+...
+
+if ($ERRNO =~ /denied/) { ... }
+

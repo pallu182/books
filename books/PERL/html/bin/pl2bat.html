@@ -1,0 +1,303 @@
+<HTML>
+<HEAD>
+<TITLE>pl2bat - wrap perl code into a batch file</TITLE>
+<LINK REL="stylesheet" HREF="../Active.css" TYPE="text/css">
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;pl2bat - wrap perl code into a batch file</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<UL>
+
+		<LI><A HREF="#advantages">ADVANTAGES</A></LI>
+		<LI><A HREF="#disadvantages">DISADVANTAGES</A></LI>
+		<LI><A HREF="#function">FUNCTION</A></LI>
+	</UL>
+
+	<LI><A HREF="#options">OPTIONS</A></LI>
+	<LI><A HREF="#examples">EXAMPLES</A></LI>
+	<LI><A HREF="#bugs">BUGS</A></LI>
+	<LI><A HREF="#see also">SEE ALSO</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>pl2bat - wrap perl code into a batch file</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<P><STRONG>pl2bat</STRONG> <STRONG>-h</STRONG></P>
+<P><STRONG>pl2bat</STRONG> [<STRONG>-w</STRONG>] [<STRONG>-a</STRONG>&nbsp;<EM>argstring</EM>] [<STRONG>-s</STRONG>&nbsp;<EM>stripsuffix</EM>] [files]</P>
+<P><STRONG>pl2bat</STRONG> [<STRONG>-w</STRONG>] [<STRONG>-n</STRONG>&nbsp;<EM>ntargs</EM>] [<STRONG>-o</STRONG>&nbsp;<EM>otherargs</EM>] [<STRONG>-s</STRONG>&nbsp;<EM>stripsuffix</EM>] [files]</P>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P>This utility converts a perl script into a batch file that can be
+executed on DOS-like operating systems.  This is intended to allow
+you to use a Perl script like regular programs and batch files where
+you just enter the name of the script [probably minus the extension]
+plus any command-line arguments and the script is found in your <STRONG>PATH</STRONG>
+and run.</P>
+<P>
+<H2><A NAME="advantages">ADVANTAGES</A></H2>
+<P>There are several alternatives to this method of running a Perl script. 
+They each have disadvantages that help you understand the motivation
+for using <STRONG>pl2bat</STRONG>.</P>
+<OL>
+<LI>
+<PRE>
+    C:&gt; perl x:/path/to/script.pl [args]</PRE>
+<LI>
+<PRE>
+    C:&gt; perl -S script.pl [args]</PRE>
+<LI>
+<PRE>
+    C:&gt; perl -S script [args]</PRE>
+<LI>
+<PRE>
+    C:&gt; ftype Perl=perl.exe &quot;%1&quot; %*
+    C:&gt; assoc .pl=Perl
+    then
+    C:&gt; script.pl [args]</PRE>
+<LI>
+<PRE>
+    C:&gt; ftype Perl=perl.exe &quot;%1&quot; %*
+    C:&gt; assoc .pl=Perl
+    C:&gt; set PathExt=%PathExt%;.PL
+    then
+    C:&gt; script [args]</PRE>
+</OL>
+<P><STRONG>1</STRONG> and <STRONG>2</STRONG> are the most basic invocation methods that should work on
+any system [DOS-like or not].  They require extra typing and require
+that the script user know that the script is written in Perl.  This
+is a pain when you have lots of scripts, some written in Perl and some
+not.  It can be quite difficult to keep track of which scripts need to
+be run through Perl and which do not.  Even worse, scripts often get
+rewritten from simple batch files into more powerful Perl scripts in
+which case these methods would require all existing users of the scripts
+be updated.</P>
+<P><STRONG>3</STRONG> works on modern Win32 versions of Perl.  It allows the user to
+omit the ``.pl'' or ``.bat'' file extension, which is a minor improvement.</P>
+<P><STRONG>4</STRONG> and <STRONG>5</STRONG> work on some Win32 operating systems with some command
+shells.  One major disadvantage with both is that you can't use them
+in pipelines nor with file redirection.  For example, none of the
+following will work properly if you used method <STRONG>4</STRONG> or <STRONG>5</STRONG>:</P>
+<PRE>
+    C:&gt; script.pl &lt;infile
+    C:&gt; script.pl &gt;outfile
+    C:&gt; echo y | script.pl
+    C:&gt; script.pl | more</PRE>
+<P>This is due to a Win32 bug which Perl has no control over.  This bug
+is the major motivation for <STRONG>pl2bat</STRONG> [which was originally written
+for DOS] being used on Win32 systems.</P>
+<P>Note also that <STRONG>5</STRONG> works on a smaller range of combinations of Win32
+systems and command shells while <STRONG>4</STRONG> requires that the user know
+that the script is a Perl script [because the ``.pl'' extension must
+be entered].  This makes it hard to standardize on either of these
+methods.</P>
+<P>
+<H2><A NAME="disadvantages">DISADVANTAGES</A></H2>
+<P>There are several potential traps you should be aware of when you
+use <STRONG>pl2bat</STRONG>.</P>
+<P>The generated batch file is initially processed as a batch file each
+time it is run.  This means that, to use it from within another batch
+file you should preceed it with <CODE>call</CODE> or else the calling batch
+file will not run any commands after the script:</P>
+<PRE>
+    call script [args]</PRE>
+<P>Except under Windows NT, if you specify more than 9 arguments to
+the generated batch file then the 10th and subsequent arguments
+are silently ignored.</P>
+<P>Except when using <EM>CMD.EXE</EM> under Windows NT, if <EM>perl.exe</EM> is not
+in your <STRONG>PATH</STRONG>, then trying to run the script will give you a generic
+``Command not found''-type of error message that will probably make you
+think that the script itself is not in your <STRONG>PATH</STRONG>.  When using
+<EM>CMD.EXE</EM> under Windows NT, the generic error message is followed by
+``You do not have Perl in your PATH'', to make this clearer.</P>
+<P>On most DOS-like operating systems, the only way to exit a batch file
+is to ``fall off the end'' of the file.  <STRONG>pl2bat</STRONG> implements this by
+doing <CODE>goto :endofperl</CODE> and adding <CODE>__END__</CODE> and <CODE>:endofperl</CODE> as
+the last two lines of the generated batch file.  This means:</P>
+<DL>
+<DT><STRONG><A NAME="item_No_line_of_your_script_should_start_with_a_colon%2">No line of your script should start with a colon.</A></STRONG><BR>
+<DD>
+In particular, for this version of <STRONG>pl2bat</STRONG>, <CODE>:endofperl</CODE>,
+<CODE>:WinNT</CODE>, and <CODE>:script_failed_so_exit_with_non_zero_val</CODE> should not
+be used.
+<P></P>
+<DT><STRONG><A NAME="item_Care_must_be_taken_when_using___END___and_the_DATA">Care must be taken when using <CODE>__END__</CODE> and the <CODE>DATA</CODE> file handle.</A></STRONG><BR>
+<DD>
+One approach is:
+<PRE>
+    .  #!perl
+    .  while( &lt;DATA&gt; ) {
+    .     last   if  /^__END__$/;
+    .     [...]
+    .  }
+    .  __END__
+    .  lines of data
+    .  to be processed
+    .  __END__
+    .  :endofperl</PRE>
+<P>The dots in the first column are only there to prevent <EM>cmd.exe</EM> to interpret
+the <CODE>:endofperl</CODE> line in this documentation.  Otherwise <EM>pl2bat.bat</EM> itself
+wouldn't work.  See the previous item. :-)</P>
+<P></P>
+<DT><STRONG><A NAME="item_The_batch_file_always_%22succeeds%22">The batch file always ``succeeds''</A></STRONG><BR>
+<DD>
+The following commands illustrate the problem:
+<PRE>
+    C:&gt; echo exit(99); &gt;fail.pl
+    C:&gt; pl2bat fail.pl
+    C:&gt; perl -e &quot;print system('perl fail.pl')&quot;
+    99
+    C:&gt; perl -e &quot;print system('fail.bat')&quot;
+    0</PRE>
+<P>So <EM>fail.bat</EM> always reports that it completed successfully.  Actually,
+under Windows NT, we have:</P>
+<PRE>
+    C:&gt; perl -e &quot;print system('fail.bat')&quot;
+    1</PRE>
+<P>So, for Windows NT, <EM>fail.bat</EM> fails when the Perl script fails, but
+the return code is always <CODE>1</CODE>, not the return code from the Perl script.</P>
+<P></P></DL>
+<P>
+<H2><A NAME="function">FUNCTION</A></H2>
+<P>By default, the ``.pl'' suffix will be stripped before adding a ``.bat'' suffix
+to the supplied file names.  This can be controlled with the <A HREF="../lib/Pod/perlrun.html#item_%2Ds"><CODE>-s</CODE></A> option.</P>
+<P>The default behavior is to have the batch file compare the <CODE>OS</CODE>
+environment variable against <CODE>&quot;Windows_NT&quot;</CODE>.  If they match, it
+uses the <CODE>%*</CODE> construct to refer to all the command line arguments
+that were given to it, so you'll need to make sure that works on your
+variant of the command shell.  It is known to work in the <EM>CMD.EXE</EM> shell
+under Windows NT.  4DOS/NT users will want to put a <CODE>ParameterChar = *</CODE>
+line in their initialization file, or execute <CODE>setdos /p*</CODE> in
+the shell startup file.</P>
+<P>On Windows95 and other platforms a nine-argument limit is imposed
+on command-line arguments given to the generated batch file, since
+they may not support <CODE>%*</CODE> in batch files.</P>
+<P>These can be overridden using the <A HREF="../lib/Pod/perlrun.html#item_%2Dn"><CODE>-n</CODE></A> and <CODE>-o</CODE> options or the
+deprecated <A HREF="../lib/Pod/perlrun.html#item_%2Da"><CODE>-a</CODE></A> option.</P>
+<P>
+<HR>
+<H1><A NAME="options">OPTIONS</A></H1>
+<DL>
+<DT><STRONG><A NAME="item_%2Dn_ntargs"><STRONG>-n</STRONG> <EM>ntargs</EM></A></STRONG><BR>
+<DD>
+Arguments to invoke perl with in generated batch file when run from
+Windows NT (or Windows 98, probably).  Defaults to '-x&nbsp;-S&nbsp;%0&nbsp;%*'.
+<P></P>
+<DT><STRONG><A NAME="item_%2Do_otherargs"><STRONG>-o</STRONG> <EM>otherargs</EM></A></STRONG><BR>
+<DD>
+Arguments to invoke perl with in generated batch file except when
+run from Windows NT (ie. when run from DOS, Windows 3.1, or Windows 95).
+Defaults to '-x&nbsp;-S&nbsp;``%0''&nbsp;%1&nbsp;%2&nbsp;%3&nbsp;%4&nbsp;%5&nbsp;%6&nbsp;%7&nbsp;%8&nbsp;%9'.
+<P></P>
+<DT><STRONG><A NAME="item_%2Da_argstring"><STRONG>-a</STRONG> <EM>argstring</EM></A></STRONG><BR>
+<DD>
+Arguments to invoke perl with in generated batch file.  Specifying
+<STRONG>-a</STRONG> prevents the batch file from checking the <CODE>OS</CODE> environment
+variable to determine which operating system it is being run from.
+<P></P>
+<DT><STRONG><A NAME="item_%2Ds_stripsuffix"><STRONG>-s</STRONG> <EM>stripsuffix</EM></A></STRONG><BR>
+<DD>
+Strip a suffix string from file name before appending a ``.bat''
+suffix.  The suffix is not case-sensitive.  It can be a regex if
+it begins with `/' (the trailing '/' is optional and a trailing
+<CODE>$</CODE> is always assumed).  Defaults to <CODE>/.plx?/</CODE>.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dw"><STRONG>-w</STRONG></A></STRONG><BR>
+<DD>
+If no line matching <CODE>/^#!.*perl/</CODE> is found in the script, then such
+a line is inserted just after the new preamble.  The exact line
+depends on <CODE>$Config{startperl}</CODE> [see <A HREF="../lib/Config.html">the Config manpage</A>].  With the <STRONG>-w</STRONG>
+option, <CODE>&quot; -w&quot;</CODE> is added after the value of <CODE>$Config{startperl}</CODE>.
+If a line matching <CODE>/^#!.*perl/</CODE> already exists in the script,
+then it is not changed and the <STRONG>-w</STRONG> option is ignored.
+<P></P>
+<DT><STRONG><A NAME="item_%2Du"><STRONG>-u</STRONG></A></STRONG><BR>
+<DD>
+If the script appears to have already been processed by <STRONG>pl2bat</STRONG>,
+then the script is skipped and not processed unless <STRONG>-u</STRONG> was
+specified.  If <STRONG>-u</STRONG> is specified, the existing preamble is replaced.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dh"><STRONG>-h</STRONG></A></STRONG><BR>
+<DD>
+Show command line usage.
+<P></P></DL>
+<P>
+<HR>
+<H1><A NAME="examples">EXAMPLES</A></H1>
+<PRE>
+        C:\&gt; pl2bat foo.pl bar.PM 
+        [..creates foo.bat, bar.PM.bat..]
+</PRE>
+<PRE>
+
+        C:\&gt; pl2bat -s &quot;/\.pl|\.pm/&quot; foo.pl bar.PM
+        [..creates foo.bat, bar.bat..]</PRE>
+<PRE>
+
+        C:\&gt; pl2bat &lt; somefile &gt; another.bat</PRE>
+<PRE>
+
+        C:\&gt; pl2bat &gt; another.bat
+        print scalar reverse &quot;rekcah lrep rehtona tsuj\n&quot;;
+        ^Z
+        [..another.bat is now a certified japh application..]</PRE>
+<PRE>
+
+        C:\&gt; ren *.bat *.pl
+        C:\&gt; pl2bat -u *.pl
+        [..updates the wrapping of some previously wrapped scripts..]</PRE>
+<PRE>
+
+        C:\&gt; pl2bat -u -s .bat *.bat
+        [..same as previous example except more dangerous..]</PRE>
+<P>
+<HR>
+<H1><A NAME="bugs">BUGS</A></H1>
+<P><A HREF="../lib/Pod/perlvar.html#item_%240"><CODE>$0</CODE></A> will contain the full name, including the ``.bat'' suffix
+when the generated batch file runs.  If you don't like this,
+see runperl.bat for an alternative way to invoke perl scripts.</P>
+<P>Default behavior is to invoke Perl with the <STRONG>-S</STRONG> flag, so Perl will
+search the <STRONG>PATH</STRONG> to find the script.   This may have undesirable
+effects.</P>
+<P>On really old versions of Win32 Perl, you can't run the script
+via</P>
+<PRE>
+    C:&gt; script.bat [args]</PRE>
+<P>and must use</P>
+<PRE>
+    C:&gt; script [args]</PRE>
+<P>A loop should be used to build up the argument list when not on
+Windows NT so more than 9 arguments can be processed.</P>
+<P>See also <A HREF="#disadvantages">Disadvantages</A>.</P>
+<P>
+<HR>
+<H1><A NAME="see also">SEE ALSO</A></H1>
+<P>perl, perlwin32, runperl.bat</P>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;pl2bat - wrap perl code into a batch file</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

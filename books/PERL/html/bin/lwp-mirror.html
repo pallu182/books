@@ -1,0 +1,67 @@
+<HTML>
+<HEAD>
+<TITLE>lwp-mirror - Simple mirror utility for WWW</TITLE>
+<LINK REL="stylesheet" HREF="../Active.css" TYPE="text/css">
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;lwp-mirror - Simple mirror utility for WWW</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<LI><A HREF="#see also">SEE ALSO</A></LI>
+	<LI><A HREF="#author">AUTHOR</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>lwp-mirror - Simple mirror utility for WWW</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<PRE>
+ lwp-mirror [-v] [-t timeout] &lt;url&gt; &lt;local file&gt;</PRE>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P>This program can be used to mirror a document from a WWW server.  The
+document is only transfered if the remote copy is newer than the local
+copy.  If the local copy is newer nothing happens.</P>
+<P>Use the <A HREF="../lib/Pod/perlrun.html#item_%2Dv"><CODE>-v</CODE></A> option to print the version number of this program.</P>
+<P>The timeout value specified with the <CODE>-t</CODE> option.  The timeout value
+is the time that the program will wait for response from the remote
+server before it fails.  The default unit for the timeout value is
+seconds.  You might append ``m'' or ``h'' to the timeout value to make it
+minutes or hours, repectively.</P>
+<P>Because this program is implemented using the LWP library, it only
+supports the protocols that LWP supports.</P>
+<P>
+<HR>
+<H1><A NAME="see also">SEE ALSO</A></H1>
+<P><EM>lwp-request</EM>, <A HREF="../site/lib/LWP.html">the LWP manpage</A></P>
+<P>
+<HR>
+<H1><A NAME="author">AUTHOR</A></H1>
+<P>Gisle Aas &lt;<A HREF="mailto:gisle@aas.no">gisle@aas.no</A>&gt;</P>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;lwp-mirror - Simple mirror utility for WWW</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

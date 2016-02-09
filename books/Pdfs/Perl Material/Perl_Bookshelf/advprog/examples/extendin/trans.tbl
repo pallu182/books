@@ -1,0 +1,5 @@
+D BASIC_XS                          	Basic_XS
+D FRACTAL_                          	Fractal_with_SWIG
+D FRACTAL_.000                      	Fractal_with_XS
+D TYPEMAPS                          	Typemaps_with_SWIG
+D TYPEMAPS.000                      	Typemaps_with_XS

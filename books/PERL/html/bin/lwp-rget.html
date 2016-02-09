@@ -1,0 +1,161 @@
+<HTML>
+<HEAD>
+<TITLE>lwp-rget - Retrieve WWW documents recursively</TITLE>
+<LINK REL="stylesheet" HREF="../Active.css" TYPE="text/css">
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;lwp-rget - Retrieve WWW documents recursively</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<LI><A HREF="#see also">SEE ALSO</A></LI>
+	<LI><A HREF="#author">AUTHOR</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>lwp-rget - Retrieve WWW documents recursively</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<PRE>
+ lwp-rget [--verbose] [--auth=USER:PASS] [--depth=N] [--hier] [--iis]
+          [--keepext=mime/type[,mime/type]] [--limit=N] [--nospace]
+          [--prefix=URL] [--referer=URL] [--sleep=N] [--tolower] &lt;URL&gt;
+ lwp-rget --version</PRE>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P>This program will retrieve a document and store it in a local file.  It
+will follow any links found in the document and store these documents
+as well, patching links so that they refer to these local copies.
+This process continues until there are no more unvisited links or the
+process is stopped by the one or more of the limits which can be
+controlled by the command line arguments.</P>
+<P>This program is useful if you want to make a local copy of a
+collection of documents or want to do web reading off-line.</P>
+<P>All documents are stored as plain files in the current directory. The
+file names chosen are derived from the last component of URL paths.</P>
+<P>The options are:</P>
+<DL>
+<DT><STRONG><A NAME="item_%2D%2Dauth%3DUSER%3APASn">--auth=USER:PASn</A></STRONG><BR>
+<DD>
+Set the authentication credentials to user ``USER'' and password ``PASS'' if
+any restricted parts of the web site are hit.  If there are restricted
+parts of the web site and authentication credentials are not available,
+those pages will not be downloaded.
+<P></P>
+<DT><STRONG><A NAME="item_%2D%2Ddepth%3Dn">--depth=<EM>n</EM></A></STRONG><BR>
+<DD>
+Limit the recursive level. Embedded images are always loaded, even if
+they fall outside the <EM>--depth</EM>. This means that one can use
+<EM>--depth=0</EM> in order to fetch a single document together with all
+inline graphics.
+<P>The default depth is 5.</P>
+<P></P>
+<DT><STRONG><A NAME="item_%2D%2Dhier">--hier</A></STRONG><BR>
+<DD>
+Download files into a hierarchy that mimics the web site structure.
+The default is to put all files in the current directory.
+<P></P>
+<DT><STRONG><A NAME="item_%2D%2Dreferer%3DURI">--referer=<EM>URI</EM></A></STRONG><BR>
+<DD>
+Set the value of the referer header for the initial request.  The
+special value <CODE>&quot;NONE&quot;</CODE> can be used to suppress the referer header in
+any of subsequent requests.
+<P></P>
+<DT><STRONG><A NAME="item_%2D%2Diis">--iis</A></STRONG><BR>
+<DD>
+Sends an ``Accept: */*'' on all URL requests as a workaround for a bug in
+IIS 2.0.  If no Accept MIME header is present, IIS 2.0 returns with a
+``406 No acceptable objects were found'' error.  Also converts any back
+slashes (\\) in URLs to forward slashes (/).
+<P></P>
+<DT><STRONG><A NAME="item_%2D%2Dkeepext%3Dmime%2Ftype%5B%2Cmime%2Ftype%5D">--keepext=<EM>mime/type[,mime/type]</EM></A></STRONG><BR>
+<DD>
+Keeps the current extension for the list MIME types.  Useful when
+downloading text/plain documents that shouldn't all be translated to
+*.txt files.
+<P></P>
+<DT><STRONG><A NAME="item_%2D%2Dlimit%3Dn">--limit=<EM>n</EM></A></STRONG><BR>
+<DD>
+Limit the number of documents to get.  The default limit is 50.
+<P></P>
+<DT><STRONG><A NAME="item_%2D%2Dnospace">--nospace</A></STRONG><BR>
+<DD>
+Changes spaces in all URLs to underscore characters (_).  Useful when
+downloading files from sites serving URLs with spaces in them.	Does not
+remove spaces from fragments, e.g., ``file.html#somewhere in here''.
+<P></P>
+<DT><STRONG><A NAME="item_%2D%2Dprefix%3Durl_prefix">--prefix=<EM>url_prefix</EM></A></STRONG><BR>
+<DD>
+Limit the links to follow. Only URLs that start the prefix string are
+followed.
+<P>The default prefix is set as the ``directory'' of the initial URL to
+follow.	 For instance if we start lwp-rget with the URL
+<CODE>http://www.sn.no/foo/bar.html</CODE>, then prefix will be set to
+<CODE>http://www.sn.no/foo/</CODE>.</P>
+<P>Use <CODE>--prefix=''</CODE> if you don't want the fetching to be limited by any
+prefix.</P>
+<P></P>
+<DT><STRONG><A NAME="item_%2D%2Dsleep%3Dn">--sleep=<EM>n</EM></A></STRONG><BR>
+<DD>
+Sleep <EM>n</EM> seconds before retrieving each document. This options allows
+you to go slowly, not loading the server you visiting too much.
+<P></P>
+<DT><STRONG><A NAME="item_%2D%2Dtolower">--tolower</A></STRONG><BR>
+<DD>
+Translates all links to lowercase.  Useful when downloading files from
+IIS since it does not serve files in a case sensitive manner.
+<P></P>
+<DT><STRONG><A NAME="item_%2D%2Dverbose">--verbose</A></STRONG><BR>
+<DD>
+Make more noise while running.
+<P></P>
+<DT><STRONG><A NAME="item_%2D%2Dquiet">--quiet</A></STRONG><BR>
+<DD>
+Don't make any noise.
+<P></P>
+<DT><STRONG><A NAME="item_%2D%2Dversion">--version</A></STRONG><BR>
+<DD>
+Print program version number and quit.
+<P></P>
+<DT><STRONG><A NAME="item_%2D%2Dhelp">--help</A></STRONG><BR>
+<DD>
+Print the usage message and quit.
+<P></P></DL>
+<P>Before the program exits the name of the file, where the initial URL
+is stored, is printed on stdout.  All used filenames are also printed
+on stderr as they are loaded.  This printing can be suppressed with
+the <EM>--quiet</EM> option.</P>
+<P>
+<HR>
+<H1><A NAME="see also">SEE ALSO</A></H1>
+<P><EM>lwp-request</EM>, <A HREF="../site/lib/LWP.html">the LWP manpage</A></P>
+<P>
+<HR>
+<H1><A NAME="author">AUTHOR</A></H1>
+<P>Gisle Aas &lt;<A HREF="mailto:aas@sn.no">aas@sn.no</A>&gt;</P>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;lwp-rget - Retrieve WWW documents recursively</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

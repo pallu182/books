@@ -1,0 +1,36 @@
+; Version number and signature of INF file.
+;
+[version]
+signature="$CHICAGO$"
+AdvancedINF=2.0
+
+; The order of files in this section defines the download order.
+; Last in First download.
+[Add.Code]
+jinstall.exe
+jpiexp32.dll=jpiexp32.dll
+npjpi141_02.dll=npjpi141_02.dll
+
+[jpiexp32.dll]
+FileVersion=1,4,1,2
+RegisterServer=no
+clsid={8AD9C840-044E-11D1-B3E9-00805F499D93}
+hook=bridgeinstaller
+
+[npjpi141_02.dll]
+FileVersion=1,4,1,2
+RegisterServer=no
+clsid={CAFEEFAC-0014-0001-0002-ABCDEFFEDCBA}
+hook=bridgeinstaller
+
+[jinstall.exe]
+file-win32-x86=thiscab
+FileVersion=1,4,1,2
+
+; jinstall.exe will be executed.
+;
+[bridgeinstaller]
+run=%EXTRACT_DIR%\jinstall.exe http://java.sun.com/products/plugin/autodl/jinstall-1_4_1_02-windows-i586.xml
+
+
+

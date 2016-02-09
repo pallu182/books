@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<TITLE>podselect - print selected sections of pod documentation on standard output</TITLE>
+<LINK REL="stylesheet" HREF="../Active.css" TYPE="text/css">
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;podselect - print selected sections of pod documentation on standard output</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#options and arguments">OPTIONS AND ARGUMENTS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<LI><A HREF="#see also">SEE ALSO</A></LI>
+	<LI><A HREF="#author">AUTHOR</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>podselect - print selected sections of pod documentation on standard output</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<P><STRONG>podselect</STRONG> [<STRONG>-help</STRONG>] [<STRONG>-man</STRONG>] [<STRONG>-section</STRONG>&nbsp;<EM>section-spec</EM>]
+[<EM>file</EM>&nbsp;...]</P>
+<P>
+<HR>
+<H1><A NAME="options and arguments">OPTIONS AND ARGUMENTS</A></H1>
+<DL>
+<DT><STRONG><A NAME="item_%2Dhelp"><STRONG>-help</STRONG></A></STRONG><BR>
+<DD>
+Print a brief help message and exit.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dman"><STRONG>-man</STRONG></A></STRONG><BR>
+<DD>
+Print the manual page and exit.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dsection_section%2Dspec"><STRONG>-section</STRONG>&nbsp;<EM>section-spec</EM></A></STRONG><BR>
+<DD>
+Specify a section to include in the output.
+See <A HREF="../lib/Pod/Parser.html#section specifications">SECTION SPECIFICATIONS in the Pod::Parser manpage</A>
+for the format to use for <EM>section-spec</EM>.
+This option may be given multiple times on the command line.
+<P></P>
+<DT><STRONG><A NAME="item_file"><EM>file</EM></A></STRONG><BR>
+<DD>
+The pathname of a file from which to select sections of pod
+documentation (defaults to standard input).
+<P></P></DL>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P><STRONG>podselect</STRONG> will read the given input files looking for pod
+documentation and will print out (in raw pod format) all sections that
+match one ore more of the given section specifications. If no section
+specifications are given than all pod sections encountered are output.</P>
+<P><STRONG>podselect</STRONG> invokes the <STRONG>podselect()</STRONG> function exported by <STRONG>Pod::Select</STRONG>
+Please see <A HREF="../lib/Pod/Select.html#podselect()">podselect() in the Pod::Select manpage</A> for more details.</P>
+<P>
+<HR>
+<H1><A NAME="see also">SEE ALSO</A></H1>
+<P><A HREF="../lib/Pod/Parser.html">the Pod::Parser manpage</A> and <A HREF="../lib/Pod/Select.html">the Pod::Select manpage</A></P>
+<P>
+<HR>
+<H1><A NAME="author">AUTHOR</A></H1>
+<P>Brad Appleton &lt;<A HREF="mailto:bradapp@enteract.com">bradapp@enteract.com</A>&gt;</P>
+<P>Based on code for <STRONG>Pod::Text::pod2text(1)</STRONG> written by
+Tom Christiansen &lt;<A HREF="mailto:tchrist@mox.perl.com">tchrist@mox.perl.com</A>&gt;</P>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;podselect - print selected sections of pod documentation on standard output</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

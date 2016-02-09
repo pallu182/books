@@ -1,0 +1,389 @@
+<HTML>
+<HEAD>
+<TITLE>ppm2 - Perl Package Manager: locate, install, upgrade software packages.</TITLE>
+<LINK REL="stylesheet" HREF="../Active.css" TYPE="text/css">
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;ppm2 - Perl Package Manager: locate, install, upgrade software packages.</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<LI><A HREF="#using ppm">Using PPM</A></LI>
+	<LI><A HREF="#examples">EXAMPLES</A></LI>
+	<LI><A HREF="#environment variables">ENVIRONMENT VARIABLES</A></LI>
+	<LI><A HREF="#files">FILES</A></LI>
+	<LI><A HREF="#author">AUTHOR</A></LI>
+	<LI><A HREF="#credits">CREDITS</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>ppm2 - Perl Package Manager: locate, install, upgrade software packages.</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<PRE>
+ ppm2 genconfig
+ ppm2 help [command]
+ ppm2 install [--location=location] package1 [... packageN]
+ ppm2 query [--case|nocase] [--abstract|author] PATTERN
+ ppm2 remove package1 [... packageN]
+ ppm2 search [--case|nocase] [--location=location] [--abstract|author] PATTERN
+ ppm2 set [option]
+ ppm2 verify [--location=location] [--upgrade] [--force] [package1 ... packageN]
+ ppm2 version
+ ppm2 [--location=location]</PRE>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P>PPM is a utility intended to simplify the tasks of locating, installing,
+upgrading and removing software packages.  It is a front-end to the
+functionality provided in PPM.pm.  It can determine if the most recent
+version of a software package is installed on a system, and can install
+or upgrade that package from a local or remote host.</P>
+<PRE>
+    NOTE: This document describes PPM version 2.  There is a newer
+    version of PPM, which may be available on your system as 'ppm3'.
+    The default 'ppm' program may either be the same as 'ppm2' or
+    'ppm3' depending on your version of ActivePerl.</PRE>
+<P>ppm2 runs in one of two modes: an interactive shell from which commands
+may be entered; and command-line mode, in which one specific action is
+performed per invocation of the program.</P>
+<P>ppm2 uses files containing an extended form of the Open Software
+Description (OSD) specification for information about software packages.
+These description files, which are written in Extensible Markup
+Language (XML) code, are referred to as 'PPD' files.  Information about
+OSD can be found at the W3C web site (at the time of this writing,
+<A HREF="http://www.w3.org/TR/NOTE-OSD.html).">http://www.w3.org/TR/NOTE-OSD.html).</A>  The extensions to OSD used by PPM
+are documented in PPM.ppd.</P>
+<P>
+<HR>
+<H1><A NAME="using ppm">Using PPM</A></H1>
+<DL>
+<DT><STRONG><A NAME="item_Interactive_mode">Interactive mode</A></STRONG><BR>
+<DD>
+If ppm2 is invoked with no command specified, it is started in interactive
+mode.  If the '--location' argument is specified, it is used as the
+search location, otherwise the repositories specified in the PPM data file
+are used.
+<P>The syntax of PPM commands is the same in interactive mode as it is in
+command-line mode.  The 'help' command lists the available commands.</P>
+<P>ppm2 commands may be abbreviated to their shortest unique form.</P>
+<P></P>
+<DT><STRONG><A NAME="item_Installing">Installing</A></STRONG><BR>
+<DD>
+<PRE>
+ ppm2 install [--location=location] package1 [... packageN]</PRE>
+<P>Installs the specified software packages. Attempts to install from the 
+URL or directory 'location' if the '--location' option is specfied.</P>
+<P>The 'package' arguments may be either package names ('foo'), pathnames 
+(p:/packages/foo.ppd) or URLs (http://www.ActiveState.com/packages/foo.ppd)
+to specific PPD files.</P>
+<P>In the case where a package name is specified, and the '--location'
+option is not used, ppm2 will refer to the default repository locations.</P>
+<P>See also: 'confirm' option.</P>
+<DT><STRONG><A NAME="item_Removing">Removing</A></STRONG><BR>
+<DD>
+<PRE>
+ ppm2 remove package1 [... packageN]</PRE>
+<P>Reads information from the PPD file for the named software package and
+removes the package from the system.</P>
+<P>See also: 'confirm' option.</P>
+<DT><STRONG><A NAME="item_Verifying">Verifying</A></STRONG><BR>
+<DD>
+<PRE>
+ ppm2 verify [--location=location] [--upgrade] [--force] [package1 ... packageN]</PRE>
+<P>Verifies that the currently installed packages are up to date.  If no
+packages are specified as arguments, all installed packages will be verified.</P>
+<P>If the '--upgrade' option is specified, any package for which an upgrade 
+is available will be upgraded.</P>
+<P>If the '--location' option is specified, upgrades will be looked for at 
+the specified URL or directory.</P>
+<P>If the '--force' option is specified, all currently installed packages will 
+be reinstalled regardless of whether they are out of date or not.</P>
+<P>See also: 'confirm' option.</P>
+<DT><STRONG><A NAME="item_Querying">Querying</A></STRONG><BR>
+<DD>
+<PRE>
+ ppm2 query [--case|nocase] [--abstract|author] PATTERN</PRE>
+<P>Searches for 'PATTERN' (a regular expression) in the name of any installed 
+package.  If a search is successful, information about the matching 
+<A HREF="../lib/Pod/perlfunc.html#item_package"><CODE>package(s)</CODE></A> is displayed.  If 'PATTERN' is omitted, information about
+all installed packages will be displayed.</P>
+<P>If either '--abstract' or '--author' is specified, PATTERN will be 
+searched for in the &lt;ABSTRACT&gt; or &lt;AUTHOR&gt; tags of the installed packages.</P>
+<P>The '--case' and '--nocase' options can be used to override the default
+case-sensitivity search settings.</P>
+<P>See also: 'case' option.</P>
+<DT><STRONG><A NAME="item_Searching">Searching</A></STRONG><BR>
+<DD>
+<PRE>
+ ppm2 search [--case|nocase] [--location=location] [--abstract|author] PATTERN</PRE>
+<P>Displays a list of any packages matching 'PATTERN' (a regular expression)
+available from the specified location.  If 'PATTERN' is omitted, information 
+about all available packages will be displayed.</P>
+<P>If the '--location' option is specified, the specified URL or directory
+will be searched.  If '--location' is not specified, the repository location 
+as specified in the PPM data file will be searched.</P>
+<P>If either '--abstract' or '--author' is specified, PATTERN will be 
+searched for in the &lt;ABSTRACT&gt; or &lt;AUTHOR&gt; tags of the available packages.</P>
+<P>The '--case' and '--nocase' options can be used to override the default
+case-sensitivity search settings.</P>
+<P>See also: 'case' option.</P>
+<DT><STRONG><A NAME="item_Error_Recovery">Error Recovery</A></STRONG><BR>
+<DD>
+<PRE>
+ ppm2 genconfig
+ ppm2 getconfig</PRE>
+<P>The genconfig command will print a valid PPM config file (ppm.xml) to STDOUT.
+This can be useful if the PPM config file ever gets damaged leaving PPM
+unusable.</P>
+<P>If required, this command should be run from a shell prompt:</P>
+<PRE>
+    C:\Perl\site\lib&gt; ppm2 genconfig &gt; ppm.xml</PRE>
+<P>The getconfig command prints the location of the PPM configuration file
+used at PPM startup.</P>
+<DT><STRONG><A NAME="item_Options">Options</A></STRONG><BR>
+<DD>
+<PRE>
+ ppm2 set [option value]</PRE>
+<P>Sets or displays current options.  With no arguments, current option
+settings are displayed.  For options that accept '1' or '0', specifying
+'1' sets the option, and '0' unsets it.</P>
+<P>Available options:</P>
+<PRE>
+    build DIRECTORY
+        - Changes the package build directory.</PRE>
+<PRE>
+    case [1|0]
+        - Sets case-sensitive searches.  If one of '1' or '0' is
+          not specified, the current setting is toggled.</PRE>
+<PRE>
+    clean [1|0]
+        - Sets removal of temporary files from package's build 
+          area, on successful installation of a package.  If one of
+          '1' or '0' is not specified, the current setting is
+          toggled.</PRE>
+<PRE>
+    confirm [1|0]
+        - Sets confirmation of 'install', 'remove' and 'upgrade'.
+          If one of '1' or '0' is not specified, the current
+          setting is toggled.</PRE>
+<PRE>
+    downloadstatus NUMBER
+        - If non-zero, updates the download status after each NUMBER 
+          of bytes transferred during an 'install'.  This can be
+          reassuring when installing a large package (e.g. Tk) over
+          a low-speed connection.</PRE>
+<PRE>
+    force_install [1|0]
+        - Continue installing a package even if a dependency cannot
+          be installed.</PRE>
+<PRE>
+    more NUMBER
+        - Causes output to pause after NUMBER lines have been
+          displayed.  Specifying '0' turns off this capability.</PRE>
+<PRE>
+    rebuildhtml [1|0]
+        - Sets regeneration of HTML documentation after installing
+          a package.  If one of '1' or '0' is not specified, the
+          current setting is toggled.</PRE>
+<PRE>
+    repository --remove NAME
+        - Removes the repository 'NAME' from the list of repositories.</PRE>
+<PRE>
+    repository NAME LOCATION
+        - Adds a repository to the list of PPD repositories for this
+          session.  'NAME' is the name by which this repository will
+          be referred; 'LOCATION' is a URL or directory name.</PRE>
+<PRE>
+    root DIRECTORY
+        - Changes the install root directory.  Packages will be
+          installed under this new root.</PRE>
+<PRE>
+    save
+        - Saves the current options as default options for future
+          sessions.</PRE>
+<PRE>
+    trace
+        - Tracing level--default is 1, maximum is 4, 0 indicates
+          no tracing.</PRE>
+<PRE>
+    tracefile
+        - File to contain tracing information, default is 'PPM.LOG'.</PRE>
+<PRE>
+    verbose [1|0]
+        - Display additional package information for 'query' and
+          'search' commands.</PRE>
+</DL>
+<P>
+<HR>
+<H1><A NAME="examples">EXAMPLES</A></H1>
+<DL>
+<DT><STRONG><A NAME="item_ppm2">ppm2</A></STRONG><BR>
+<DD>
+Starts ppm2 in interactive mode, using the repository locations specified
+in the PPM data file.  A session might look like this:
+<PRE>
+    [show all available packages]
+    PPM&gt; search
+    Packages available from P:\PACKAGES:
+    bar [2.91 ] supplies bar methods for perl5.
+    bax [0.072] module for manipulation of bax archives.
+    baz [1.03 ] Interface to baz library
+    foo [2.23 ] Foo parser class
+</PRE>
+<PRE>
+
+    [list what has already been installed]
+    PPM&gt; query
+    bax [0.071] module for manipulation of bax archives.
+    baz [1.02 ] Interface to baz library</PRE>
+<PRE>
+
+    [install a package]
+    PPM&gt; install foo
+    Install package foo? (y/N): y
+    [...]</PRE>
+<PRE>
+
+    [toggle confirmations]
+    PPM&gt; set confirm
+    Commands will not be confirmed.</PRE>
+<PRE>
+
+    [see if 'baz' is up-to-date]
+    PPM&gt; verify baz
+    An upgrade to package 'baz' is available.</PRE>
+<PRE>
+
+    [upgrade 'baz']
+    PPM&gt; verify --upgrade baz
+    [...]</PRE>
+<PRE>
+
+    [forced upgrade of 'baz']
+    PPM&gt; verify --upgrade --force baz
+    [...]</PRE>
+<PRE>
+
+    [toggle case-sensitive searches]
+    PPM&gt; set case
+    Case-sensitive searches will be performed.</PRE>
+<PRE>
+
+    [display all available packages beginning with 'b']
+    PPM&gt; search ^b
+    bar [2.91 ] supplies bar methods for perl5.
+    bax [0.072] module for manipulation of bax archives.
+    baz [1.03 ] Interface to baz library</PRE>
+<PRE>
+
+    [search for installed packages containing 'baz' in the ABSTRACT tag]
+    PPM&gt; query --abstract baz
+    Matching packages found at P:\PACKAGES:
+    baz [1.03 ] Interface to baz library
+    PPM&gt; quit</PRE>
+<P></P>
+<DT><STRONG><A NAME="item_ppm2_install_http%3A%2F%2Fwww%2EActiveState%2Ecom%">ppm2 install <A HREF="http://www.ActiveState.com/packages/foo.ppd">http://www.ActiveState.com/packages/foo.ppd</A></A></STRONG><BR>
+<DD>
+Installs the software package 'foo' based on the information in the PPD
+obtained from the specified URL.
+<P></P>
+<DT><STRONG><A NAME="item_ppm2_verify_%2D%2Dupgrade_foo">ppm2 verify --upgrade foo</A></STRONG><BR>
+<DD>
+Compares the currently installed version of the software package 'foo'
+to the one available according to the PPD obtained from the location
+specified for this package in the PPM data file, and upgrades
+to a newer version if available.
+<P></P>
+<DT><STRONG><A NAME="item_ppm2_verify_%2D%2Dlocation%3DP%3A%5CPACKAGES_%2D%2">ppm2 verify --location=P:\PACKAGES --upgrade foo</A></STRONG><BR>
+<DD>
+Compares the currently installed version of the software package 'foo'
+to the one available according to the PPD obtained from the specified
+directory, and upgrades to a newer version if available.
+<P></P>
+<DT><STRONG><A NAME="item_ppm2_verify_%2D%2Dupgrade_%2D%2Dforce">ppm2 verify --upgrade --force</A></STRONG><BR>
+<DD>
+Forces verification and reinstalls every installed package on the system, 
+using upgrade locations specified in the PPM data file.
+<P></P>
+<DT><STRONG><A NAME="item_ppm2_search_%2D%2Dlocation%3Dhttp%3A%2F%2Fppm%2EAc">ppm2 search --location=http://ppm.ActiveState.com/PPMpackages/5.6</A></STRONG><BR>
+<DD>
+Displays the packages with PPD files available at the specified location.
+<P></P>
+<DT><STRONG><A NAME="item_ppm2_search_%2D%2Dlocation%3DP%3A%5CPACKAGES_%2D%2">ppm2 search --location=P:\PACKAGES --author ActiveState</A></STRONG><BR>
+<DD>
+Searches the specified location for any package with an &lt;AUTHOR&gt; tag
+containing the string 'ActiveState'.  On a successful search, the package
+name and the matching string are displayed.
+<P></P></DL>
+<P>
+<HR>
+<H1><A NAME="environment variables">ENVIRONMENT VARIABLES</A></H1>
+<DL>
+<DT><STRONG><A NAME="item_HTTP_proxy">HTTP_proxy</A></STRONG><BR>
+<DD>
+If the environment variable 'HTTP_proxy' is set, then it will
+be used as the address of a proxy server for accessing the Internet.
+<P>The value should be of the form: 'http://proxy:port'.</P>
+<P></P></DL>
+<P>
+<HR>
+<H1><A NAME="files">FILES</A></H1>
+<P>The following files are fully described in the 'Files' section of PPM:ppm.</P>
+<DL>
+<DT><STRONG><A NAME="item_package%2Eppd">package.ppd</A></STRONG><BR>
+<DD>
+A description of a software package, in extended Open Software Description
+(OSD) format.  More information on this file format can be found in
+PPM::ppd.
+<P></P>
+<DT><STRONG><A NAME="item_ppm%2Exml_%2D_PPM_data_file%2E">ppm.xml - PPM data file.</A></STRONG><BR>
+<DD>
+An XML format file containing information about the local system,
+specifics regarding the locations from which PPM obtains PPD files, and
+the installation details for any package installed by ppm2.
+<P>This file usually resides in '[perl]/site/lib'.  If the environment 
+variable 'PPM_DAT' is set, its value will be used as the full pathname
+to a PPM data file.  If all else fails, ppm2 will look for a data file
+in the current directory.</P>
+<P></P></DL>
+<P>
+<HR>
+<H1><A NAME="author">AUTHOR</A></H1>
+<P>Murray Nesbitt</P>
+<P>
+<HR>
+<H1><A NAME="credits">CREDITS</A></H1>
+<UL>
+<LI>
+The ``geek-pit'' at ActiveState.
+<P></P>
+<LI>
+Paul Kulchenko for his SOAP-Lite package, and for his enthusiastic
+assistance in getting PPM to work with SOAP-Lite.
+<P></P></UL>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;ppm2 - Perl Package Manager: locate, install, upgrade software packages.</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

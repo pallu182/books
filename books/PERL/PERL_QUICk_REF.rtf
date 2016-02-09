@@ -1,0 +1,554 @@
+{\rtf1\ansi\ansicpg1252\uc1\deff0\stshfdbch0\stshfloch0\stshfhich0\stshfbi0\deflang1033\deflangfe1033{\fonttbl{\f0\froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}
+{\f2\fmodern\fcharset0\fprq1{\*\panose 02070309020205020404}Courier New;}{\f36\froman\fcharset238\fprq2 Times New Roman CE;}{\f37\froman\fcharset204\fprq2 Times New Roman Cyr;}{\f39\froman\fcharset161\fprq2 Times New Roman Greek;}
+{\f40\froman\fcharset162\fprq2 Times New Roman Tur;}{\f41\froman\fcharset177\fprq2 Times New Roman (Hebrew);}{\f42\froman\fcharset178\fprq2 Times New Roman (Arabic);}{\f43\froman\fcharset186\fprq2 Times New Roman Baltic;}
+{\f44\froman\fcharset163\fprq2 Times New Roman (Vietnamese);}{\f56\fmodern\fcharset238\fprq1 Courier New CE;}{\f57\fmodern\fcharset204\fprq1 Courier New Cyr;}{\f59\fmodern\fcharset161\fprq1 Courier New Greek;}
+{\f60\fmodern\fcharset162\fprq1 Courier New Tur;}{\f61\fmodern\fcharset177\fprq1 Courier New (Hebrew);}{\f62\fmodern\fcharset178\fprq1 Courier New (Arabic);}{\f63\fmodern\fcharset186\fprq1 Courier New Baltic;}
+{\f64\fmodern\fcharset163\fprq1 Courier New (Vietnamese);}}{\colortbl;\red0\green0\blue0;\red0\green0\blue255;\red0\green255\blue255;\red0\green255\blue0;\red255\green0\blue255;\red255\green0\blue0;\red255\green255\blue0;\red255\green255\blue255;
+\red0\green0\blue128;\red0\green128\blue128;\red0\green128\blue0;\red128\green0\blue128;\red128\green0\blue0;\red128\green128\blue0;\red128\green128\blue128;\red192\green192\blue192;}{\stylesheet{
+\ql \li0\ri0\widctlpar\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \fs24\lang1033\langfe1033\cgrid\langnp1033\langfenp1033 \snext0 Normal;}{\*\cs10 \additive \ssemihidden Default Paragraph Font;}{\*
+\ts11\tsrowd\trftsWidthB3\trpaddl108\trpaddr108\trpaddfl3\trpaddft3\trpaddfb3\trpaddfr3\trcbpat1\trcfpat1\tscellwidthfts0\tsvertalt\tsbrdrt\tsbrdrl\tsbrdrb\tsbrdrr\tsbrdrdgl\tsbrdrdgr\tsbrdrh\tsbrdrv 
+\ql \li0\ri0\widctlpar\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \fs20\lang1024\langfe1024\cgrid\langnp1024\langfenp1024 \snext11 \ssemihidden Normal Table;}}{\*\rsidtbl \rsid539906\rsid1398051\rsid1530924\rsid2236402\rsid3440324\rsid4588949
+\rsid6116639\rsid6378751\rsid6626976\rsid6686204\rsid8264460\rsid10124793\rsid11798613\rsid12352297\rsid13785390\rsid14114511\rsid14631757\rsid15495255\rsid16322713\rsid16736502}{\*\generator Microsoft Word 10.0.4219;}{\info
+{\author Lookose Joseph (ljoseph)}{\operator Lookose Joseph (ljoseph)}{\creatim\yr2003\mo5\dy22\hr17\min41}{\revtim\yr2003\mo5\dy22\hr17\min58}{\version21}{\edmins17}{\nofpages12}{\nofwords1562}{\nofchars8908}{\*\company Cisco Systems, Inc.}
+{\nofcharsws10450}{\vern16469}}\widowctrl\ftnbj\aenddoc\noxlattoyen\expshrtn\noultrlspc\dntblnsbdb\nospaceforul\hyphcaps0\horzdoc\dghspace120\dgvspace120\dghorigin1701\dgvorigin1984\dghshow0\dgvshow3
+\jcompress\viewkind4\viewscale90\nolnhtadjtbl\rsidroot1530924 \fet0\sectd \linex0\sectdefaultcl\sftnbj {\*\pnseclvl1\pnucrm\pnstart1\pnindent720\pnhang {\pntxta .}}{\*\pnseclvl2\pnucltr\pnstart1\pnindent720\pnhang {\pntxta .}}{\*\pnseclvl3
+\pndec\pnstart1\pnindent720\pnhang {\pntxta .}}{\*\pnseclvl4\pnlcltr\pnstart1\pnindent720\pnhang {\pntxta )}}{\*\pnseclvl5\pndec\pnstart1\pnindent720\pnhang {\pntxtb (}{\pntxta )}}{\*\pnseclvl6\pnlcltr\pnstart1\pnindent720\pnhang {\pntxtb (}{\pntxta )}}
+{\*\pnseclvl7\pnlcrm\pnstart1\pnindent720\pnhang {\pntxtb (}{\pntxta )}}{\*\pnseclvl8\pnlcltr\pnstart1\pnindent720\pnhang {\pntxtb (}{\pntxta )}}{\*\pnseclvl9\pnlcrm\pnstart1\pnindent720\pnhang {\pntxtb (}{\pntxta )}}\pard\plain 
+\qc \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 \fs24\lang1033\langfe1033\cgrid\langnp1033\langfenp1033 {\b\f2\fs36\insrsid13785390 Perl Quick Reference
+\par --------------------}{\b\f2\fs40\insrsid13785390 
+\par 
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\b\f2\fs20\insrsid13785390 String Literals
+\par ----------------}{\f2\fs20\insrsid13785390 
+\par \\l - lowercase next letter
+\par \\L - lowercase all following letters until \\E
+\par \\u - uppercase next letter
+\par \\U - Uppercase all following letters until \\E
+\par \\E - terminates \\L or \\U
+\par 
+\par 
+\par }{\b\f2\fs20\insrsid13785390 Scalar Variables
+\par ----------------}{\f2\fs20\insrsid13785390 
+\par $name = \lquote Mary\rquote ;
+\par 
+\par }{\b\f2\fs20\insrsid13785390 
+\par Arrays/lists
+\par -------------}{\f2\fs20\insrsid13785390 
+\par @names = ("Bush", "Vajpayee", "Musharaff");
+\par $names[1] will return "Vajpayee"
+\par $#names will be 2
+\par 
+\par 
+\par }{\b\f2\fs20\insrsid13785390 Associative Arrays
+\par ------------------}{\f2\fs20\insrsid13785390 
+\par %days_in_month = ( "January" => 31, "February" => 28 \'85);
+\par $days_in_month\{"February"\} will return 28;
+\par }{\f2\fs20\insrsid1530924 \page }{\f2\fs20\insrsid13785390 
+\par }{\f2\fs20\insrsid1530924 
+\par }{\b\f2\fs20\insrsid13785390 Numeric Operators
+\par -----------------}{\f2\fs20\insrsid13785390 
+\par Addition(+)
+\par Subtraction(-)
+\par Multiplication(*)
+\par Division(/)
+\par Exponentiation(**)
+\par Modulus (%)
+\par 
+\par 
+\par }{\b\f2\fs20\insrsid13785390 Numeric Comparison Operator
+\par ---------------------------}{\f2\fs20\insrsid13785390 
+\par <, <=, ==, >=, >, !=
+\par 
+\par 
+\par }{\b\f2\fs20\insrsid13785390 String operators
+\par -----------------}{\f2\fs20\insrsid13785390 
+\par Concatenation(.)\tab 
+\par String repetition(x)
+\par 
+\par }{\b\f2\fs20\insrsid13785390 
+\par String Comparison Operator
+\par ---------------------------}{\f2\fs20\insrsid13785390 
+\par lt, le, eq, ge, gt, ne 
+\par 
+\par 
+\par }{\b\f2\fs20\insrsid13785390 
+\par Binary assignment operators
+\par ---------------------------
+\par }{\f2\fs20\insrsid13785390 $a = $a + 8;
+\par $a += 8;
+\par 
+\par $string = $string . "cat";
+\par $string .= "cat";
+\par 
+\par }{\b\f2\fs20\insrsid13785390 
+\par Autoincrement & Autodecrement operators 
+\par ---------------------------------------}{\f2\fs20\insrsid13785390 
+\par ++, --
+\par 
+\par 
+\par }{\b\f2\fs20\insrsid13785390 File operators 
+\par --------------}{\f2\fs20\insrsid13785390 
+\par -r\tab \tab true if file is readable
+\par -w\tab \tab true if file is write able
+\par -x\tab \tab true if file is executable 
+\par -e\tab \tab true if file or directory exists
+\par -o\tab \tab true if file or directory is owned by user
+\par -z\tab \tab true if file exists and size is zero
+\par -f\tab \tab true if the entry is a file
+\par -d\tab \tab true if the entry is a directory
+\par -s\tab \tab returns the size of file bytes  
+\par }\pard \qc \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\b\f2\fs28\insrsid1530924 \page 
+\par 
+\par }{\b\f2\fs28\insrsid13785390 Control Structures
+\par }{\f2\fs20\insrsid13785390 
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\b\f2\fs20\insrsid13785390 if statement
+\par -----------}{\f2\fs20\insrsid13785390 
+\par if (expression)\{
+\par \tab first statement;
+\par \tab ...
+\par \tab last statement;
+\par \}elsif (expression) \{
+\par \tab first statement;
+\par \tab ...
+\par \tab last statement;
+\par 
+\par \} else \{
+\par 
+\par \tab first statement;
+\par \tab ...
+\par \tab last statement;
+\par \}
+\par 
+\par }{\b\f2\fs20\insrsid13785390 While statement
+\par ---------------   
+\par }{\f2\fs20\insrsid13785390 while (expression)\{
+\par \tab first statement;
+\par \tab ..
+\par \tab last statement;
+\par \}
+\par 
+\par }{\b\f2\fs20\insrsid13785390 for statement
+\par ---------------   }{\f2\fs20\insrsid13785390 
+\par for (initial_exp; test_exp; increment_exp)\{
+\par \tab first statement;
+\par \tab ..
+\par \tab last statement;
+\par \}
+\par 
+\par }{\b\f2\fs20\insrsid13785390 foreach statement
+\par ----------------
+\par }{\f2\fs20\insrsid13785390 foreach $a(@some_list)\{
+\par \tab first statement;
+\par \tab ..
+\par \tab last statement;
+\par \}
+\par 
+\par }{\b\f2\fs20\insrsid13785390 Flow Control
+\par ------------
+\par }{\f2\fs20\insrsid13785390 last\tab Exits a loop
+\par next\tab Begins another loop iteration
+\par }{\f2\fs20\insrsid14631757 
+\par 
+\par 
+\par }{\f2\fs20\insrsid1530924 \page }{\f2\fs20\insrsid13785390 
+\par }{\f2\fs20\insrsid1530924 
+\par }\pard \qc \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\b\f2\fs28\insrsid13785390 Input/Output
+\par }{\f2\fs20\insrsid13785390 
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\b\f2\fs20\insrsid13785390 Input from <STDIN>
+\par ------------------}{\f2\fs20\insrsid13785390 
+\par  while ($_ = <STDIN>) \{
+\par \tab print $_;
+\par  \}
+\par  while (<STDIN>) \{
+\par \tab print $_;
+\par  \}
+\par  
+\par }{\b\f2\fs20\insrsid13785390 Output to STDERR
+\par ------------------ 
+\par }{\f2\fs20\insrsid13785390  die\tab Takes a string argument and terminates the program after sending  it to STDERR
+\par  warn\tab Takes a string argument sends it to STDERR
+\par  
+\par }{\b\f2\fs20\insrsid13785390 Opening a file
+\par ---------------
+\par }{\f2\fs20\insrsid13785390 in read mode
+\par open(FILEHANDLE, "file name");
+\par open(FILEHANDLE, "<file name");
+\par 
+\par in write mode
+\par open(FILEHANDLE, ">file name");
+\par 
+\par in append mode
+\par open(FILEHANDLE, ">>file name");
+\par 
+\par }{\b\f2\fs20\insrsid13785390 Opening in read /write mode
+\par ---------------------------
+\par }{\f2\fs20\insrsid13785390 open(FILEHANDLE, "+>file name");
+\par open(FILEHANDLE, "+<file name");
+\par 
+\par }{\b\f2\fs20\insrsid13785390 Read from a filehandle
+\par ----------------------
+\par }{\f2\fs20\insrsid13785390 @contents = <FILEHANDLE>;
+\par while(<FILEHANDLE>) \{...\}
+\par $bytes_read = read(FILEHANDLE, $buffer, $size);
+\par 
+\par }{\b\f2\fs20\insrsid13785390 Write to a filehandle
+\par ---------------------
+\par }{\f2\fs20\insrsid13785390 print FILEHANDLE "some stuff";
+\par 
+\par }{\b\f2\fs20\insrsid13785390 Close a filehandle
+\par ------------------
+\par }{\f2\fs20\insrsid13785390 close(FILEHANDLE);
+\par }{\f2\fs20\insrsid14631757 
+\par 
+\par 
+\par }{\f2\fs20\insrsid2236402 \page }{\f2\fs20\insrsid13785390 
+\par }{\b\f2\fs20\insrsid13785390 Other useful functions
+\par ----------------------
+\par }{\f2\fs20\insrsid13785390 seek(HANDLE, POSITION, WHENCE)
+\par if WHENCE=0 set FILEHANDLE to position
+\par if WHENCE=1 set FILEHANDLE to current position + position
+\par if WHENCE=2 set FILEHANDLE to EOF + position(usually -ve) 
+\par 
+\par truncate(HANDLE, LENGTH)\tab truncates the file handle to the given length. 
+\par tell(HANDLE)\tab \tab \tab gives the current position of the file handle.
+\par 
+\par }{\b\f2\fs20\insrsid13785390 Dealing with errors in Open
+\par -----------------------------
+\par }{\f2\fs20\insrsid13785390 open(FILEHANDLE, "some_file.txt")|| die ("File could not be opened. $!\\n");
+\par 
+\par }{\b\f2\fs20\insrsid13785390 Opening a directory for reading
+\par -------------------------------
+\par }{\f2\fs20\insrsid13785390 opendir(DIRHANDLE, "some_dir") || die ("Directory could not be opened. $!\\n");
+\par 
+\par }{\b\f2\fs20\insrsid13785390 Reading from directory
+\par -----------------------
+\par }{\f2\fs20\insrsid13785390 @dir_contents = readdir(DIRHANDLE);
+\par 
+\par }{\b\f2\fs20\insrsid13785390 Closing a directory 
+\par -------------------
+\par }{\f2\fs20\insrsid13785390 closedir(DIRHANDLE);
+\par 
+\par }{\b\f2\fs20\insrsid13785390 Creating a directory
+\par --------------------
+\par }{\f2\fs20\insrsid13785390 mkdir ("dir_name", permissions) || die ("Directory could not be created. $!\\n");
+\par }{\f2\fs20\insrsid14631757 
+\par 
+\par 
+\par }{\f2\fs20\insrsid12352297 \page }{\f2\fs20\insrsid13785390 
+\par }\pard \qc \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\b\f2\fs28\insrsid13785390 Functions}{\f2\fs20\insrsid13785390 
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\f2\fs20\insrsid13785390 
+\par }{\b\f2\fs20\insrsid13785390 Defining a function
+\par --------------------
+\par }{\f2\fs20\insrsid13785390 sub sayHello\{
+\par \tab print "Hello World\\n";\tab 
+\par \}
+\par 
+\par }{\b\f2\fs20\insrsid13785390 Invoking a function
+\par -------------------
+\par }{\f2\fs20\insrsid13785390 &sayHello;
+\par sayHello();
+\par 
+\par }{\b\f2\fs20\insrsid13785390 Scopes
+\par ------
+\par }{\f2\fs20\insrsid13785390 local
+\par my
+\par global
+\par 
+\par }\pard \qc \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\b\f2\insrsid13785390 Useful internal functions
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\b\f2\fs20\insrsid13785390 For Scalars or Strings
+\par -----------------------
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0\pararsid16322713 {\f2\fs20\insrsid13785390 chomp($var)}{\f2\fs20\insrsid16322713 \tab \tab \tab \tab \tab \tab }{\f2\fs20\insrsid13785390 removes trailing "\\n"
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\f2\fs20\insrsid1398051 
+\par }{\f2\fs20\insrsid13785390 chop ($var)}{\f2\fs20\insrsid16322713\charrsid16322713  }{\f2\fs20\insrsid16322713 \tab \tab \tab \tab \tab }{\f2\fs20\insrsid13785390 removes the last char
+\par }{\f2\fs20\insrsid1398051 
+\par }{\f2\fs20\insrsid13785390 chr($number)}{\f2\fs20\insrsid16322713\charrsid16322713  }{\f2\fs20\insrsid16322713 \tab \tab \tab \tab \tab }{\f2\fs20\insrsid13785390 char for the ascii value
+\par }{\f2\fs20\insrsid1398051 
+\par }{\f2\fs20\insrsid13785390 ord($char)}{\f2\fs20\insrsid16322713\charrsid16322713  }{\f2\fs20\insrsid16322713 \tab \tab \tab \tab \tab \tab }{\f2\fs20\insrsid13785390 ascii value for the char
+\par }{\f2\fs20\insrsid1398051 
+\par }{\f2\fs20\insrsid13785390 lc ($string)}{\f2\fs20\insrsid16322713 \tab \tab \tab \tab \tab }{\f2\fs20\insrsid13785390 convert to lower case
+\par }{\f2\fs20\insrsid1398051 
+\par }{\f2\fs20\insrsid13785390 uc ($string)}{\f2\fs20\insrsid16322713 \tab \tab \tab \tab \tab }{\f2\fs20\insrsid13785390 convert to upper case
+\par }{\f2\fs20\insrsid1398051 
+\par }{\f2\fs20\insrsid13785390 length ($string)}{\f2\fs20\insrsid16322713\charrsid16322713  }{\f2\fs20\insrsid16322713 \tab \tab \tab \tab \tab }{\f2\fs20\insrsid13785390 length of the string
+\par }{\f2\fs20\insrsid1398051 
+\par }{\f2\fs20\insrsid13785390 substr($string, $offset, $length)}{\f2\fs20\insrsid16322713 \tab \tab }{\f2\fs20\insrsid13785390 subsrting of a given string
+\par }{\f2\fs20\insrsid11798613 
+\par }{\f2\fs20\insrsid13785390 index($string, $substring, $offset)}{\f2\fs20\insrsid16322713 \tab \tab index of one string in
+\par }\pard \ql \fi720\li4320\ri0\nowidctlpar\faauto\rin0\lin4320\itap0\pararsid16322713 {\f2\fs20\insrsid13785390 another
+\par }{\f2\fs20\insrsid11798613 
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\f2\fs20\insrsid13785390 split($using, $string)}{\f2\fs20\insrsid16322713 \tab \tab \tab \tab }{\f2\fs20\insrsid13785390 sp}{\f2\fs20\insrsid16322713 lits a string using a 
+\par \tab \tab \tab \tab \tab \tab \tab delimiter }{\f2\fs20\insrsid13785390 into a list of }{\f2\fs20\insrsid16322713 
+\par \tab \tab \tab \tab \tab \tab \tab }{\f2\fs20\insrsid13785390 strings
+\par }{\f2\fs20\insrsid16736502 \page }{\f2\fs20\insrsid13785390 
+\par }{\b\f2\fs20\insrsid13785390 For Numbers
+\par -------------
+\par }{\f2\fs20\insrsid13785390  \tab rand ($number)\tab \tab \tab \tab generate a random number }{\f2\fs20\insrsid16736502 
+\par \tab \tab \tab \tab \tab \tab \tab }{\f2\fs20\insrsid13785390 between 0 and $number
+\par }{\f2\fs20\insrsid16736502 
+\par }{\f2\fs20\insrsid13785390  \tab srand($number)\tab \tab \tab \tab randomize the sees used by }{\f2\fs20\insrsid16736502 
+\par }\pard \ql \fi720\li4320\ri0\nowidctlpar\faauto\rin0\lin4320\itap0\pararsid16736502 {\f2\fs20\insrsid13785390 the rand function
+\par }{\f2\fs20\insrsid16736502 
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\f2\fs20\insrsid13785390  \tab abs($number)\tab \tab \tab \tab absolute value of a number
+\par }{\f2\fs20\insrsid16736502 
+\par }{\f2\fs20\insrsid13785390  \tab int($number)\tab \tab \tab \tab floor value of a floating }{\f2\fs20\insrsid16736502 
+\par \tab \tab \tab \tab \tab \tab \tab }{\f2\fs20\insrsid13785390 point number
+\par }{\f2\fs20\insrsid16736502 
+\par }{\f2\fs20\insrsid13785390  \tab sqrt($number)\tab \tab \tab \tab square root of $number\tab 
+\par }{\f2\fs20\insrsid16736502 
+\par }{\f2\fs20\insrsid13785390 
+\par }{\b\f2\fs20\insrsid13785390 For Arrays
+\par ----------
+\par }{\f2\fs20\insrsid13785390  \tab push(@list, @input_list)\tab \tab Appends @input_list to @list
+\par }{\f2\fs20\insrsid16736502 
+\par }{\f2\fs20\insrsid13785390  \tab pop (@list)\tab \tab \tab \tab }{\f2\fs20\insrsid16736502 \tab }{\f2\fs20\insrsid13785390 Returns and removes the last }{\f2\fs20\insrsid16736502 
+\par \tab \tab \tab \tab \tab \tab \tab }{\f2\fs20\insrsid13785390 element in @list
+\par }{\f2\fs20\insrsid16736502 
+\par }{\f2\fs20\insrsid13785390  \tab unshift(@list, @input_list)\tab \tab Adds @input_list to the}{\f2\fs20\insrsid16736502 
+\par }\pard \ql \fi720\li4320\ri0\nowidctlpar\faauto\rin0\lin4320\itap0\pararsid16736502 {\f2\fs20\insrsid13785390 begining of @list
+\par }{\f2\fs20\insrsid16736502 
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\f2\fs20\insrsid13785390  \tab shift(@list)\tab \tab \tab \tab Returns and removes the first }{\f2\fs20\insrsid16736502 
+\par \tab \tab \tab \tab \tab \tab \tab }{\f2\fs20\insrsid13785390 element in @list
+\par }{\f2\fs20\insrsid16736502 
+\par }{\f2\fs20\insrsid13785390  \tab grep (regexp, @list)\tab \tab \tab Returns those elements in the }{\f2\fs20\insrsid16736502 
+\par \tab \tab \tab \tab \tab \tab \tab }{\f2\fs20\insrsid13785390 list that match the regexp
+\par }{\f2\fs20\insrsid16736502 
+\par }\pard \ql \fi-4320\li5040\ri0\nowidctlpar\faauto\rin0\lin5040\itap0\pararsid16736502 {\f2\fs20\insrsid13785390 join($str, @list) \tab Joins a list using $str and }{\f2\fs20\insrsid16736502 
+\par \tab }{\f2\fs20\insrsid13785390 returns a string
+\par }{\f2\fs20\insrsid16736502 
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\f2\fs20\insrsid13785390  \tab reverse(@list) \tab \tab \tab \tab reverses a list
+\par }{\f2\fs20\insrsid16736502 
+\par }{\f2\fs20\insrsid13785390 \tab map(function, @list)\tab \tab \tab applies the function to each }{\f2\fs20\insrsid16736502 
+\par \tab \tab \tab \tab \tab \tab \tab }{\f2\fs20\insrsid13785390 element of the list
+\par }{\f2\fs20\insrsid14114511 
+\par }{\f2\fs20\insrsid13785390 
+\par }{\b\f2\fs20\insrsid13785390 For Associative Arrays
+\par ------------------------
+\par }{\f2\fs20\insrsid13785390  \tab keys(%assoc_array)\tab \tab \tab returns all the keys for the }{\f2\fs20\insrsid14114511 
+\par \tab \tab \tab \tab \tab \tab \tab }{\f2\fs20\insrsid13785390 associative arrays
+\par }{\f2\fs20\insrsid14114511 
+\par }{\f2\fs20\insrsid13785390  \tab values (%assoc_array)\tab \tab \tab returns all the values for }{\f2\fs20\insrsid14114511 
+\par \tab \tab \tab \tab \tab \tab \tab }{\f2\fs20\insrsid13785390 the associative arrays
+\par }{\f2\fs20\insrsid6116639 
+\par \page }{\f2\fs20\insrsid13785390 
+\par }{\f2\fs20\insrsid6116639 
+\par }{\b\f2\fs20\insrsid13785390 Executing shell commands
+\par ------------------------
+\par 
+\par }{\f2\fs20\insrsid13785390 \tab exec\tab \tab }{\f2\fs20\insrsid6116639 \tab }{\f2\fs20\insrsid13785390 takes a list as argument doesn\rquote t return unless }{\f2\fs20\insrsid6116639 
+\par \tab \tab \tab \tab }{\f2\fs20\insrsid13785390 the command doesn\rquote t exist.
+\par 
+\par }{\f2\fs20\insrsid6116639 \tab system\tab \tab }{\f2\fs20\insrsid13785390 takes a list as argument and returns after }{\f2\fs20\insrsid6116639 
+\par \tab \tab \tab \tab }{\f2\fs20\insrsid13785390 execution
+\par \tab \tab \tab }{\f2\fs20\insrsid6116639 \tab }{\f2\fs20\insrsid13785390 $exit_value =  $? >> 8;
+\par \tab \tab \tab }{\f2\fs20\insrsid6116639 \tab }{\f2\fs20\insrsid13785390 $signal_num = $? & 127;
+\par \tab \tab \tab }{\f2\fs20\insrsid6116639 \tab }{\f2\fs20\insrsid13785390 $dumped_core = $? &128;
+\par 
+\par \tab ``(backtics)\tab inline execution
+\par \tab 
+\par \tab open(COMMAND_HANDLE, "| <command>");\tab opening a command for }{\f2\fs20\insrsid6116639 
+\par }\pard \ql \fi720\li5040\ri0\nowidctlpar\faauto\rin0\lin5040\itap0\pararsid6116639 {\f2\fs20\insrsid13785390 writing 
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\f2\fs20\insrsid13785390 \tab 
+\par }{\f2\fs20\insrsid6116639 \tab }{\f2\fs20\insrsid13785390 open(COMMAND_HANDLE, "<command> |");}{\f2\fs20\insrsid6116639 \tab }{\f2\fs20\insrsid13785390 opening a command for }{\f2\fs20\insrsid6116639 
+\par \tab \tab \tab \tab \tab \tab \tab \tab }{\f2\fs20\insrsid13785390 reading
+\par 
+\par }{\f2\fs20\insrsid6116639 
+\par }{\b\f2\fs20\insrsid13785390 Special Variables
+\par -----------------
+\par }{\f2\fs20\insrsid13785390 
+\par \tab $_\tab :\tab Default input and pattern searching space
+\par \tab 
+\par \tab $|\tab :\tab output auto flush. Flushes output if set to non zero }{\f2\fs20\insrsid6116639 
+\par \tab \tab \tab }{\f2\fs20\insrsid13785390 value.
+\par \tab 
+\par \tab $?\tab :\tab The status returned by the last backtick(``) or }{\f2\fs20\insrsid6116639 
+\par \tab \tab \tab }{\f2\fs20\insrsid13785390 system() operator.
+\par \tab 
+\par \tab $!\tab :\tab If used in the string context, yields the }{\f2\fs20\insrsid6116639 
+\par \tab \tab \tab }{\f2\fs20\insrsid13785390 corresponding system error}{\f2\fs20\insrsid6116639  }{\f2\fs20\insrsid13785390 string. If used in the }{\f2\fs20\insrsid6116639 
+\par \tab \tab \tab }{\f2\fs20\insrsid13785390 numeric context yields the current value of error
+\par \tab \tab \tab number.
+\par \tab \tab \tab  
+\par \tab $$\tab :\tab PID of the perl running this script. 
+\par 
+\par \tab @ARGV\tab :\tab Command line arguments for the script.
+\par 
+\par \tab @INC\tab :\tab Places where PERL will look for PERL scripts
+\par \tab \tab \tab specified in "use" and "require" constructs.
+\par 
+\par \tab @_\tab :\tab List of arguments passed to a subroutine.
+\par 
+\par \tab %ENV\tab :\tab Contains the current environment.
+\par 
+\par \tab %SIG\tab :\tab May be used to set signal handlers
+\par }{\f2\fs20\insrsid6686204 
+\par 
+\par }{\b\f2\fs28\insrsid6626976 \page 
+\par }{\b\f2\fs28\insrsid13785390 \tab \tab \tab Regular Expressions Quick Reference}{\f2\fs20\insrsid13785390 
+\par 
+\par \tab //\tab :\tab \tab  delimiters for the pattern
+\par \tab 
+\par \tab ^\tab :\tab \tab  begins with when it follows the \lquote /\rquote  delimiter
+\par \tab 
+\par \tab $\tab :\tab \tab  ends with when it precedes \lquote /\rquote  delimiter 
+\par \tab 
+\par \tab |\tab :\tab \tab  or
+\par \tab 
+\par \tab .\tab :\tab \tab  Period stands for any character
+\par \tab 
+\par \tab \\d\tab :\tab \tab  Decimal digit
+\par \tab 
+\par \tab \\D\tab :\tab \tab  Non decimal digit
+\par \tab 
+\par \tab \\w\tab :\tab \tab  alpha numeric characters and underscore
+\par \tab 
+\par \tab \\W\tab :\tab \tab  The set of all characters other than \\w
+\par \tab 
+\par \tab \\s\tab :\tab \tab  White space characters  
+\par \tab 
+\par \tab \\S\tab :\tab \tab  Non white space characters
+\par \tab 
+\par \tab *\tab :\tab \tab  zero or more
+\par \tab 
+\par \tab +\tab :\tab \tab  one or more
+\par \tab 
+\par \tab ?\tab :\tab \tab  zero or one
+\par \tab 
+\par \tab \{n\}\tab :\tab \tab  exactly n
+\par \tab 
+\par \tab \{n,\}\tab :\tab \tab  at least n
+\par \tab 
+\par \tab \{n,m\}\tab :\tab \tab  at least n but not more than m   
+\par 
+\par \tab [abc]\tab :\tab \tab  character class
+\par \tab 
+\par \tab [^a]\tab :\tab \tab  all characters other than \lquote a\rquote 
+\par \tab 
+\par \tab [a-z]\tab :\tab \tab  all characters from a to z
+\par \tab 
+\par \tab ()\tab :\tab \tab  group the set of characters
+\par \tab 
+\par \tab $<n>\tab :\tab \tab  store the n\rquote th match result.
+\par }{\f2\fs20\insrsid6626976 \page }{\f2\fs20\insrsid539906 
+\par }{\f2\fs20\insrsid13785390 \tab 
+\par \tab }{\b\f2\fs20\insrsid13785390 Modifiers}{\f2\fs20\insrsid13785390 
+\par \tab \tab i\tab :\tab  ignore case
+\par \tab \tab 
+\par \tab    \tab m\tab :\tab treat as multi-line}{\f2\fs20\insrsid6686204 .}{\f2\fs20\insrsid13785390  Treat string as multiple }{\f2\fs20\insrsid6686204 
+\par \tab \tab \tab \tab }{\f2\fs20\insrsid8264460 l}{\f2\fs20\insrsid13785390 ines. That is, change ``^'\rquote }{\f2\fs20\insrsid6686204  }{\f2\fs20\insrsid13785390 and ``$'' from }{\f2\fs20\insrsid6686204 
+\par \tab \tab \tab \tab }{\f2\fs20\insrsid13785390 matching at only the very start or end}{\f2\fs20\insrsid6686204  }{\f2\fs20\insrsid13785390 of the}{\f2\fs20\insrsid6686204  
+\par }\pard \ql \fi720\li2160\ri0\nowidctlpar\faauto\rin0\lin2160\itap0\pararsid6686204 {\f2\fs20\insrsid13785390 string to the start or end of any line anywhere
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\f2\fs20\insrsid8264460 \tab \tab \tab \tab }{\f2\fs20\insrsid13785390 within the string, 
+\par \tab \tab 
+\par \tab \tab s\tab : \tab treat as single line. Enable \lquote .\rquote  to match even }{\f2\fs20\insrsid8264460 
+\par \tab \tab \tab \tab }{\f2\fs20\insrsid13785390 \lquote \\n\rquote which it normally wouldn\rquote t match.
+\par 
+\par 
+\par }{\b\f2\fs20\insrsid13785390 \tab Substitution Operator}{\f2\fs20\insrsid13785390 
+\par \tab 
+\par \tab s/<PATTERN>/ <SUBSTITUTE WITH>/<MODIFIERS>
+\par 
+\par \tab <PATTERN>\tab \tab : Pattern to be replaced.
+\par \tab <SUBSTITUTE WITH>\tab : The string to substitute the pattern with.
+\par \tab <MODIFIERS>\tab \tab 
+\par \tab \tab i\tab :\tab ignore case
+\par \tab \tab g\tab :\tab global
+\par \tab \tab e\tab :\tab evaluate the right side as an expression
+\par \tab \tab m\tab :\tab treat as multi-line
+\par \tab \tab s\tab : \tab treat as single line.
+\par 
+\par }{\f2\fs20\insrsid4588949 
+\par }{\b\f2\fs20\insrsid13785390 \tab Transliteration Operator
+\par }{\f2\fs20\insrsid13785390 \tab 
+\par \tab tr/<search list>/<replacement list>/<Modifiers>
+\par \tab <search list>\tab \tab :\tab List of characters to be searched
+\par \tab <replacement list>\tab :\tab  List of replacement characters 
+\par \tab 
+\par \tab <Modifiers>
+\par \tab \tab c\tab :\tab complement the search list
+\par \tab \tab d\tab :\tab delete characters not found in replacement }{\f2\fs20\insrsid4588949 
+\par }\pard \ql \fi720\li2160\ri0\nowidctlpar\faauto\rin0\lin2160\itap0\pararsid4588949 {\f2\fs20\insrsid4588949 l}{\f2\fs20\insrsid13785390 ist.
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\f2\fs20\insrsid13785390 \tab \tab s\tab :\tab Squash duplicate replaced characters
+\par }{\f2\fs20\insrsid4588949 
+\par 
+\par 
+\par 
+\par 
+\par 
+\par }{\f2\fs20\insrsid6626976 \page }{\f2\fs20\insrsid13785390 
+\par }\pard \qc \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\b\f2\fs32\insrsid13785390 CGI
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\f2\fs20\insrsid13785390 \tab \tab \tab 
+\par 
+\par }{\b\f2\fs20\insrsid13785390 \tab HTTP Response Headers}{\f2\fs20\insrsid13785390 
+\par \tab 
+\par \tab Content-type\tab : Specifies the MIME type of the content that }{\f2\fs20\insrsid539906 
+\par \tab \tab \tab \tab   }{\f2\fs20\insrsid13785390 is produced by the CGI script. Usually it }{\f2\fs20\insrsid539906 
+\par \tab \tab \tab \tab   }{\f2\fs20\insrsid13785390 would be "text/html"
+\par 
+\par \tab Location\tab }{\f2\fs20\insrsid539906 \tab }{\f2\fs20\insrsid13785390 : May be used for URL redirections.
+\par \tab 
+\par \tab 
+\par \tab }{\b\f2\fs20\insrsid13785390 Types of Requests}{\f2\fs20\insrsid13785390 
+\par \tab 
+\par \tab GET\tab \tab : The info is passed to the CGI script in the query }{\f2\fs20\insrsid15495255 
+\par \tab \tab \tab   }{\f2\fs20\insrsid13785390 string environment}{\f2\fs20\insrsid15495255  }{\f2\fs20\insrsid13785390 variable. There is a limit to }{\f2\fs20\insrsid15495255 
+\par \tab \tab \tab   }{\f2\fs20\insrsid13785390 the amount of data that can be sent using GET.
+\par \tab \tab \tab   
+\par \tab POST\tab \tab : The info is passed to the CGI script in the STDIN
+\par \tab \tab 
+\par 
+\par \tab }{\b\f2\fs20\insrsid13785390 Important CGI Environment Variables.
+\par }{\f2\fs20\insrsid13785390 
+\par \tab REQUEST_METHOD\tab : Stores the HHTP request method
+\par 
+\par \tab QUERY_STRING\tab : Contains the inputs if the Request Method is }{\f2\fs20\insrsid6378751 
+\par \tab \tab \tab \tab   G}{\f2\fs20\insrsid13785390 ET
+\par 
+\par \tab CONTENT_LENGTH\tab : Contains the size of data to be read if the }{\f2\fs20\insrsid13785390 
+\par \tab \tab \tab \tab   }{\f2\fs20\insrsid13785390 method is POST
+\par \tab }{\f2\fs20\insrsid6626976 
+\par }{\f2\fs20\insrsid13785390 
+\par 
+\par 
+\par }{\f2\fs20\insrsid6626976 \page }{\f2\fs20\insrsid13785390 
+\par \tab 
+\par }\pard \qc \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\b\f2\fs32\insrsid13785390 DBI
+\par 
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\b\f2\fs20\insrsid13785390 Connecting to a database
+\par ------------------------
+\par }{\f2\fs20\insrsid13785390 \tab \tab DBI->connect($url, $user, $pass) method.
+\par \tab \tab 
+\par \tab \tab $url - DBI:database_type:database_location:key=value;... 
+\par \tab \tab $dbh = DBI->connect ("DBI:mysql:testdb", "test", "test");
+\par 
+\par }{\b\f2\fs20\insrsid13785390 Closing the connection to database
+\par ----------------------------------
+\par }{\f2\fs20\insrsid13785390 \tab 
+\par \tab \tab $dbh->disconnect();
+\par 
+\par 
+\par }{\b\f2\fs20\insrsid13785390 Statement Handles
+\par -----------------
+\par }{\f2\fs20\insrsid13785390 \tab \tab $sth = $dbh->prepare("select * from foo");
+\par \tab \tab 
+\par \tab \tab $stmt->execute();
+\par \tab \tab 
+\par \tab \tab $stmt->finish();
+\par 
+\par }{\b\f2\fs20\insrsid13785390 Result Sets
+\par -----------
+\par }{\f2\fs20\insrsid13785390 \tab \tab @rset = $stmt->fetchrow_array();
+\par \tab \tab $rset = $stmt->fetchrow
+\par \tab \tab 
+\par 
+\par }{\b\f2\fs20\insrsid13785390 Bind Values
+\par -----------
+\par }{\f2\fs20\insrsid13785390 \tab 
+\par \tab \tab $dbh = DBI->connect ("DBI:mysql:testDB", "test", "test");
+\par \tab \tab $stmt = $dbh->prepare("select name from test where id=?");
+\par \tab \tab $stmt->bind_param(1, $var);
+\par \tab \tab $stmt->execute();
+\par \tab \tab while ($rset = stmt->fetchrow ()) \{
+\par \tab \tab \tab print ("Name:$rset\\n");
+\par \tab \tab \}
+\par \tab \tab $stmt->finish();
+\par \tab \tab 
+\par }}

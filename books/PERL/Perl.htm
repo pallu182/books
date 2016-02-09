@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr" lang="en"><head>
+
+	
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="keywords" content="Programming:Perl,Beginning Perl TOC,Programming:Perl/Advanced Output,Programming:Perl/Array Variables,Programming:Perl/Beginning exercises,Programming:Perl/CGI,Programming:Perl/CPAN,Programming:Perl/Code Reuse (Modules),Programming:Perl/Data Types,Programming:Perl/Filehandles,Programming:Perl/First programs">
+<link rel="shortcut icon" href="http://en.wikibooks.org/favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="http://en.wikibooks.org/w/opensearch_desc.php" title="Wikibooks (English)">
+<link rel="copyright" href="http://www.gnu.org/copyleft/fdl.html"><title>Programming:Perl - Wikibooks, collection of open-content textbooks</title>
+		
+		<style type="text/css" media="screen,projection">/*<![CDATA[*/ @import "/skins-1.5/monobook/main.css?29"; /*]]>*/</style>
+		<link rel="stylesheet" type="text/css" media="print" href="Perl_files/commonPrint.css"><!--[if lt IE 5.5000]><style type="text/css">@import "/skins-1.5/monobook/IE50Fixes.css?29";</style><![endif]--><!--[if IE 5.5000]><style type="text/css">@import "/skins-1.5/monobook/IE55Fixes.css?29";</style><![endif]--><!--[if IE 6]><style type="text/css">@import "/skins-1.5/monobook/IE60Fixes.css?29";</style><![endif]--><!--[if IE 7]><style type="text/css">@import "/skins-1.5/monobook/IE70Fixes.css?29";</style><![endif]--><!--[if lt IE 7]><script type="text/javascript" src="/skins-1.5/common/IEFixes.js?29"></script>
+		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+		
+		
+		
+		
+		
+		
+		<script type="text/javascript">
+			var skin = "monobook";
+			var stylepath = "/skins-1.5";
+
+			var wgArticlePath = "/wiki/$1";
+			var wgScriptPath = "/w";
+			var wgServer = "http://en.wikibooks.org";
+                        
+			var wgCanonicalNamespace = "";
+			var wgNamespaceNumber = 0;
+			var wgPageName = "Programming:Perl";
+			var wgTitle = "Programming:Perl";
+			var wgArticleId = 517;
+			var wgIsArticle = true;
+                        
+			var wgUserName = null;
+			var wgUserLanguage = "en";
+			var wgContentLanguage = "en";
+		</script>
+		                
+		<script type="text/javascript" src="Perl_files/wikibits.js"><!-- wikibits js --></script>
+		<script type="text/javascript" src="Perl_files/index.php"><!-- site js --></script>
+		<style type="text/css">/*<![CDATA[*/
+@import "/w/index.php?title=MediaWiki:Common.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=2678400";
+@import "/w/index.php?title=MediaWiki:Monobook.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=2678400";
+@import "/w/index.php?title=-&action=raw&gen=css&maxage=2678400";
+/*]]>*/</style><!-- Head Scripts -->
+		
+		<script type="text/javascript" src="Perl_files/ajax.js"></script></head><body class="mediawiki ns-0 ltr page-Programming_Perl">
+	<div id="globalWrapper">
+		<div id="column-content">
+	<div id="content">
+		<a name="top" id="top"></a>
+		<div id="siteNotice"><center style="font-size: 80%;">Your <b><a href="http://wikimediafoundation.org/wiki/Fundraising" class="extiw" title="wikimedia:Fundraising">continued donations</a></b> keep Wikibooks running!&nbsp;&nbsp;&nbsp;&nbsp;</center>
+</div>		<h1 class="firstHeading">Programming:Perl</h1>
+		<div id="bodyContent">
+			<h3 id="siteSub">From Wikibooks, the open-content textbooks collection</h3>
+			<div id="contentSub">(Redirected from <a href="http://en.wikibooks.org/w/index.php?title=Perl&amp;redirect=no" title="Perl">Perl</a>)</div>
+									<div id="jump-to-nav">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>			<!-- start content -->
+			<center class="metadata">
+<table style="border: 1px solid rgb(170, 170, 170); margin: 3px; padding: 0.5em; background: rgb(255, 238, 238) none repeat scroll 0%; width: 60%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">
+<tbody><tr>
+<td style="width: 70px;"><a href="http://en.wikibooks.org/wiki/Image:Icono_listas.png" class="image" title="logo"><img src="Perl_files/60px-Icono_listas.png" alt="logo" longdesc="/wiki/Image:Icono_listas.png" height="60" width="60"></a></td>
+<td><b>This book uses deprecated naming convention and its chapters should be renamed. See <a href="http://en.wikibooks.org/wiki/Wikibooks:Naming_policy" title="Wikibooks:Naming policy">Wikibooks:Naming policy</a> for details.</b><br>
+<small>Please <a href="http://en.wikibooks.org/w/index.php?title=Programming:Perl&amp;action=edit" class="external text" title="http://en.wikibooks.org/w/index.php?title=Programming:Perl&amp;action=edit" rel="nofollow">edit</a> this module to improve it. See <a href="http://en.wikibooks.org/wiki/Talk:Programming:Perl" title="Talk:Programming:Perl">this module's talk page</a> for discussion.</small></td>
+</tr>
+</tbody></table>
+</center>
+<div id="toc"><small><a href="http://en.wikibooks.org/wiki/Wikibooks:All_bookshelves" title="Wikibooks:All bookshelves">All bookshelves</a> &gt; <a href="http://en.wikibooks.org/wiki/Wikibooks:Computer_science_bookshelf" title="Wikibooks:Computer science bookshelf">Computer science</a> &gt; <a href="http://en.wikibooks.org/wiki/Wikibooks:Programming_languages_bookshelf" title="Wikibooks:Programming languages bookshelf">Programming languages</a> &gt; <b>Perl</b></small></div>
+<hr>
+<p><b><a href="http://en.wikipedia.org/wiki/Perl" class="extiw" title="wikipedia:Perl">Perl</a></b> is a programming language designed by <b>Larry Wall</b>,
+known today for its strong community and module archive. It was
+originally developed to process text and produce reports. As a result,
+a <a href="http://en.wikipedia.org/wiki/Backronym" class="extiw" title="wikipedia:Backronym">backronym</a> has been formed from its name: <b>P</b>ractical <b>E</b>xtraction and <b>R</b>eport <b>L</b>anguage.
+It makes extensive use of significant punctuation, and highly
+chaotic-looking code has been written in it. This has resulted in a
+less complimentary backronym (which is still embraced by Perl users): <b>P</b>athologically <b>E</b>clectic <b>R</b>ubbish <b>L</b>ister (said to be a quote from the language designer himself).</p>
+<p>Perl is Free Software, available under the <a href="http://en.wikipedia.org/wiki/Artistic_License" class="extiw" title="wikipedia:Artistic_License">Artistic License</a> and the <a href="http://en.wikipedia.org/wiki/GPL" class="extiw" title="wikipedia:GPL">GPL</a>.
+It was developed on Unix, and its Unix roots are pervasive. Perl is
+available for most operating systems but is particularly prevalent on
+Unix and Unix-like systems, and is growing in popularity on Microsoft
+Windows systems. However, it has been ported to a multitude of
+environments (some say as many as Java). It's a popular systems
+administration tool in Windows. Most of the things done in Perl
+transfer well from one operating system to another (provided suggested
+conventions are followed).</p>
+<p>As an example of Perl in action, until January 2002 the software running Wikipedia was a <a href="http://en.wikipedia.org/wiki/Common_Gateway_Interface" class="extiw" title="wikipedia:Common_Gateway_Interface">CGI</a>
+script written in Perl. Another example is Slashdot, which runs on the
+Perl-based Slashcode software. When used on the web, Perl is often used
+in conjunction with the Apache web server and its mod_perl module. This
+embeds the perl binary into the webserver so the CGI script need not
+fire up a new copy each time it's accessed. Other features such as
+database connection persistence greatly reduce the access times to the
+page.</p>
+<p><a href="http://en.wikibooks.org/wiki/Programming:Perl_history" title="Programming:Perl history">History of Perl</a></p>
+<p><a name="Section_1:_Beginning_Perl" id="Section_1:_Beginning_Perl"></a></p>
+<h2><span class="editsection">[<a href="http://en.wikibooks.org/w/index.php?title=Programming:Perl&amp;action=edit&amp;section=1" title="Edit section: Section 1: Beginning Perl">edit</a>]</span> <span class="mw-headline">Section 1: <a href="http://en.wikibooks.org/wiki/Beginning_Perl_TOC" title="Beginning Perl TOC">Beginning Perl</a></span></h2>
+<dl>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/Getting_started" title="Programming:Perl/Getting started">Getting started</a></dd>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/First_programs" title="Programming:Perl/First programs">First program</a></dd>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/Strings" title="Programming:Perl/Strings">Strings</a></dd>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/Numbers" title="Programming:Perl/Numbers">Numbers</a></dd>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/Variables" title="Programming:Perl/Variables">Variables</a></dd>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/The_if_Control_Structure" title="Programming:Perl/The if Control Structure">Making choices: <tt>if</tt> and <tt>else</tt></a></dd>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/Operators" title="Programming:Perl/Operators">Operators</a></dd>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/Data_Types" title="Programming:Perl/Data Types">Programming:Perl/Data Types</a>
+<dl>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/Scalar_Variables" title="Programming:Perl/Scalar Variables">Scalar Variables</a></dd>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/Array_Variables" title="Programming:Perl/Array Variables">Array Variables</a></dd>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/Hash_Variables" title="Programming:Perl/Hash Variables">Hash Variables</a></dd>
+</dl>
+</dd>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/User_Input-Output" title="Programming:Perl/User Input-Output">User I/O</a></dd>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/Advanced_Output" title="Programming:Perl/Advanced Output">Advanced Output</a></dd>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/Flow_control" title="Programming:Perl/Flow control">Doing things over and over: <tt>while</tt> and <tt>for</tt> loops</a></dd>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/Filehandles" title="Programming:Perl/Filehandles">Filehandles</a></dd>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/Modifiers" title="Programming:Perl/Modifiers">Statement modifiers</a></dd>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/Functions" title="Programming:Perl/Functions">Functions</a></dd>
+<dd><b><a href="http://en.wikibooks.org/wiki/Programming:Perl/Beginning_exercises" title="Programming:Perl/Beginning exercises">Exercises</a></b></dd>
+</dl>
+<p><a name="Section_2:_In-depth_Perl_ideas" id="Section_2:_In-depth_Perl_ideas"></a></p>
+<h2><span class="editsection">[<a href="http://en.wikibooks.org/w/index.php?title=Programming:Perl&amp;action=edit&amp;section=2" title="Edit section: Section 2: In-depth Perl ideas">edit</a>]</span> <span class="mw-headline">Section 2: In-depth Perl ideas</span></h2>
+<dl>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/Structure_and_style" title="Programming:Perl/Structure and style">Programming Structure and style</a></dd>
+<dd><a href="http://en.wikibooks.org/w/index.php?title=Programming:Perl/References_and_Data_Structures&amp;action=edit" class="new" title="Programming:Perl/References and Data Structures">Programming:Perl/References and Data Structures</a></dd>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/Regular_expressions" title="Programming:Perl/Regular expressions">Regular expressions</a></dd>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/Regular_expression_operators" title="Programming:Perl/Regular expression operators">Regular expression operators</a></dd>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/Regular_expressions_reference" title="Programming:Perl/Regular expressions reference">Regular expressions reference</a></dd>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/Code_Reuse_%28Modules%29" title="Programming:Perl/Code Reuse (Modules)">Code reuse (modules)</a></dd>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/Objects" title="Programming:Perl/Objects">Perl Objects</a></dd>
+</dl>
+<p><a name="Section_3:_Interfacing_Perl" id="Section_3:_Interfacing_Perl"></a></p>
+<h2><span class="editsection">[<a href="http://en.wikibooks.org/w/index.php?title=Programming:Perl&amp;action=edit&amp;section=3" title="Edit section: Section 3: Interfacing Perl">edit</a>]</span> <span class="mw-headline">Section 3: Interfacing Perl</span></h2>
+<dl>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/GUI_programming" title="Programming:Perl/GUI programming">GUI and desktop programming</a></dd>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/CPAN" title="Programming:Perl/CPAN">CPAN</a></dd>
+</dl>
+<p><a name="Section_4:_CGI_and_Apache" id="Section_4:_CGI_and_Apache"></a></p>
+<h2><span class="editsection">[<a href="http://en.wikibooks.org/w/index.php?title=Programming:Perl&amp;action=edit&amp;section=4" title="Edit section: Section 4: CGI and Apache">edit</a>]</span> <span class="mw-headline">Section 4: CGI and Apache</span></h2>
+<dl>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/CGI" title="Programming:Perl/CGI">CGI</a></dd>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/mod_perl" title="Programming:Perl/mod perl">mod_perl</a></dd>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/HTML::Mason" title="Programming:Perl/HTML::Mason">HTML::Mason</a></dd>
+</dl>
+<p><a name="Section_5:_Perl_and_beyond" id="Section_5:_Perl_and_beyond"></a></p>
+<h2><span class="editsection">[<a href="http://en.wikibooks.org/w/index.php?title=Programming:Perl&amp;action=edit&amp;section=5" title="Edit section: Section 5: Perl and beyond">edit</a>]</span> <span class="mw-headline">Section 5: Perl and beyond</span></h2>
+<dl>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/Perl_6" title="Programming:Perl/Perl 6">Perl 6</a></dd>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/Humour" title="Programming:Perl/Humour">Humour</a></dd>
+</dl>
+<p><a name="Section_6:_Sample_code" id="Section_6:_Sample_code"></a></p>
+<h2><span class="editsection">[<a href="http://en.wikibooks.org/w/index.php?title=Programming:Perl&amp;action=edit&amp;section=6" title="Edit section: Section 6: Sample code">edit</a>]</span> <span class="mw-headline">Section 6: Sample code</span></h2>
+<dl>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/Simple_examples" title="Programming:Perl/Simple examples">Example code to get you started</a></dd>
+</dl>
+<p><a name="Section_7:_Reference" id="Section_7:_Reference"></a></p>
+<h2><span class="editsection">[<a href="http://en.wikibooks.org/w/index.php?title=Programming:Perl&amp;action=edit&amp;section=7" title="Edit section: Section 7: Reference">edit</a>]</span> <span class="mw-headline">Section 7: Reference</span></h2>
+<dl>
+<dd><b><a href="http://en.wikibooks.org/wiki/Programming:Perl/Function_reference" title="Programming:Perl/Function reference">Function reference</a></b></dd>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/Useful_modules" title="Programming:Perl/Useful modules">Useful modules</a></dd>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/Reference_cards" title="Programming:Perl/Reference cards">Quick-reference cards</a></dd>
+<dd><a href="http://en.wikibooks.org/wiki/Programming:Perl/Websites" title="Programming:Perl/Websites">Websites</a></dd>
+</dl>
+
+<!-- 
+Pre-expand include size: 1217 bytes
+Post-expand include size: 990 bytes
+Template argument size: 4 bytes
+Maximum: 2048000 bytes
+-->
+
+<!-- Saved in parser cache with key enwikibooks:pcache:idhash:517-0!1!0!default!!en!2 and timestamp 20061126034731 -->
+<div class="printfooter">
+Retrieved from "<a href="http://en.wikibooks.org/wiki/Programming:Perl">http://en.wikibooks.org/wiki/Programming:Perl</a>"</div>
+			<div id="catlinks"><p class="catlinks"><a href="http://en.wikibooks.org/wiki/Special:Categories" title="Special:Categories">Categories</a>: <span dir="ltr"><a href="http://en.wikibooks.org/wiki/Category:Naming_convention_change" title="Category:Naming convention change">Naming convention change</a></span> | <span dir="ltr"><a href="http://en.wikibooks.org/wiki/Category:Programming" title="Category:Programming">Programming</a></span> | <span dir="ltr"><a href="http://en.wikibooks.org/wiki/Category:Perl" title="Category:Perl">Perl</a></span></p></div>			<!-- end content -->
+			<div class="visualClear"></div>
+		</div>
+	</div>
+		</div>
+		<div id="column-one">
+	<div id="p-cactions" class="portlet">
+		<h5>Views</h5>
+		<ul>
+				 <li id="ca-nstab-main" class="selected"><a title="View the content page [alt-c]" accesskey="c" href="http://en.wikibooks.org/wiki/Programming:Perl">Module</a></li>
+				 <li id="ca-talk"><a title="Discussion about the content page [alt-t]" accesskey="t" href="http://en.wikibooks.org/wiki/Talk:Programming:Perl">Discussion</a></li>
+				 <li id="ca-edit"><a title="You can edit this page. Please use the preview button before saving. [alt-e]" accesskey="e" href="http://en.wikibooks.org/w/index.php?title=Programming:Perl&amp;action=edit">Edit this page</a></li>
+				 <li id="ca-history"><a title="Past versions of this page. [alt-h]" accesskey="h" href="http://en.wikibooks.org/w/index.php?title=Programming:Perl&amp;action=history">History</a></li>
+		</ul>
+	</div>
+	<div class="portlet" id="p-personal">
+		<h5>Personal tools</h5>
+		<div class="pBody">
+			<ul>
+				<li id="pt-login"><a title="You are encouraged to log in, it is not mandatory however. [alt-o]" accesskey="o" href="http://en.wikibooks.org/w/index.php?title=Special:Userlogin&amp;returnto=Programming:Perl">Log in / create account</a></li>
+			</ul>
+		</div>
+	</div>
+	<div title="Main Page" class="portlet" id="p-logo">
+		<a style="background-image: url(/images/wiki-textbook.png);" href="http://en.wikibooks.org/wiki/Main_Page" title="Main Page"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+		<div class="portlet" id="p-Navigation">
+		<h5>Navigation</h5>
+		<div class="pBody">
+			<ul>
+				<li id="n-mainpage"><a title="Visit the Main Page [alt-z]" accesskey="z" href="http://en.wikibooks.org/wiki/Main_Page">Main Page</a></li>
+				<li title="The place to find out." id="n-help"><a href="http://en.wikibooks.org/wiki/Help:Contents">Help</a></li>
+				<li id="n-Wikijunior"><a href="http://en.wikibooks.org/wiki/Wikijunior">Wikijunior</a></li>
+				<li id="n-Wikistudy"><a href="http://en.wikibooks.org/wiki/Wikistudy">Wikistudy</a></li>
+				<li id="n-Wikiprofessional"><a href="http://en.wikibooks.org/wiki/Wikiprofessional">Wikiprofessional</a></li>
+				<li id="n-Books-by-subject"><a href="http://en.wikibooks.org/wiki/Wikibooks:All_bookshelves">Books by subject</a></li>
+				<li id="n-Books-alphabetically"><a href="http://en.wikibooks.org/wiki/Wikibooks:Alphabetical_classification">Books alphabetically</a></li>
+				<li id="n-Books-near-completion"><a href="http://en.wikibooks.org/wiki/Wikibooks:Featured_books">Books near completion</a></li>
+			</ul>
+		</div>
+	</div>
+		<div class="portlet" id="p-Community">
+		<h5>Community</h5>
+		<div class="pBody">
+			<ul>
+				<li id="n-Staff-lounge"><a href="http://en.wikibooks.org/wiki/Wikibooks:Staff_lounge">Staff lounge</a></li>
+				<li title="About the project, what you can do, where to find things" id="n-portal"><a href="http://en.wikibooks.org/wiki/Wikibooks:Community_Portal">Community portal</a></li>
+				<li title="Support us" id="n-sitesupport"><a href="http://wikimediafoundation.org/wiki/Fundraising">Donations</a></li>
+			</ul>
+		</div>
+	</div>
+		<div class="portlet" id="p-Tools">
+		<h5>Tools</h5>
+		<div class="pBody">
+			<ul>
+				<li id="n-recentchanges"><a title="The list of recent changes in the wiki. [alt-r]" accesskey="r" href="http://en.wikibooks.org/wiki/Special:Recentchanges">Recent changes</a></li>
+				<li id="n-Module-cleanup"><a href="http://en.wikibooks.org/wiki/Wikibooks:Wikibooks_maintenance">Module cleanup</a></li>
+				<li id="n-Catalogue"><a href="http://en.wikibooks.org/wiki/Wikibooks:Card_Catalog_Office">Catalogue</a></li>
+			</ul>
+		</div>
+	</div>
+		<div id="p-search" class="portlet">
+		<h5><label for="searchInput">Search</label></h5>
+		<div id="searchBody" class="pBody">
+			<form action="/wiki/Special:Search" id="searchform"><div>
+				<input id="searchInput" name="search" accesskey="f" value="" type="text">
+				<input name="go" class="searchButton" id="searchGoButton" value="Go" type="submit">&nbsp;
+				<input name="fulltext" class="searchButton" id="mw-searchButton" value="Search" type="submit">
+			</div></form>
+		</div>
+	</div>
+	<div class="portlet" id="p-tb">
+		<h5>Toolbox</h5>
+		<div class="pBody">
+			<ul><li id="google-trick-search"><a href="http://www.google.com/custom?sa=Google+Search&amp;domains=en.wikibooks.org/wiki/Programming:Perl&amp;sitesearch=en.wikibooks.org/wiki/Programming:Perl">Search this book</a></li>
+				<li id="t-whatlinkshere"><a title="List of all wiki pages that link here [alt-j]" accesskey="j" href="http://en.wikibooks.org/wiki/Special:Whatlinkshere/Programming:Perl">What links here</a></li>
+				<li id="t-recentchangeslinked"><a title="Recent changes in pages linked from this page [alt-k]" accesskey="k" href="http://en.wikibooks.org/wiki/Special:Recentchangeslinked/Programming:Perl">Related changes</a></li>
+<li id="t-upload"><a title="Upload images or media files [alt-u]" accesskey="u" href="http://en.wikibooks.org/wiki/Special:Upload">Upload file</a></li>
+<li id="t-specialpages"><a title="List of all special pages [alt-q]" accesskey="q" href="http://en.wikibooks.org/wiki/Special:Specialpages">Special pages</a></li>
+				<li id="t-print"><a href="http://en.wikibooks.org/w/index.php?title=Programming:Perl&amp;printable=yes">Printable version</a></li>				<li id="t-permalink"><a href="http://en.wikibooks.org/w/index.php?title=Programming:Perl&amp;oldid=602045">Permanent link</a></li>			</ul>
+		</div>
+	</div>
+	<div id="p-lang" class="portlet">
+		<h5>In other languages</h5>
+		<div class="pBody">
+			<ul>
+				<li class="interwiki-de"><a href="http://de.wikibooks.org/wiki/Perl-Programmierung">Deutsch</a></li>
+				<li class="interwiki-es"><a href="http://es.wikibooks.org/wiki/Programaci%C3%B3n_en_Perl">Español</a></li>
+				<li class="interwiki-fr"><a href="http://fr.wikibooks.org/wiki/Programmation_Perl">Français</a></li>
+				<li class="interwiki-it"><a href="http://it.wikibooks.org/wiki/Linguaggio_Perl">Italiano</a></li>
+				<li class="interwiki-ja"><a href="http://ja.wikibooks.org/wiki/Perl">日本語</a></li>
+				<li class="interwiki-pl"><a href="http://pl.wikibooks.org/wiki/Programowanie:Perl">Polski</a></li>
+			</ul>
+		</div>
+	</div>
+		</div><!-- end of the left (by default at least) column -->
+			<div class="visualClear"></div>
+			<div id="footer">
+				<div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="Perl_files/poweredby_mediawiki_88x31.png" alt="MediaWiki"></a></div>
+				<div id="f-copyrightico"><a href="http://wikimediafoundation.org/"><img src="Perl_files/wikimedia-button.png" alt="Wikimedia Foundation" border="0"></a></div>
+			<ul id="f-list">
+				<li id="lastmod"> This page was last modified 03:12, 4 October 2006.</li>
+				<li id="copyright">All text is available under the terms of the <a class="internal" href="http://en.wikibooks.org/wiki/GNU_Free_Documentation_License">GNU Free Documentation License</a> (see <b><a class="internal" href="http://en.wikibooks.org/wiki/Wikibooks:Copyrights">Copyrights</a></b> for details).<br>
+Wikibooks® is a registered trademark of the Wikimedia Foundation, Inc.<br></li>
+				<li id="privacy"><a href="http://en.wikibooks.org/wiki/Wikibooks:Privacy_policy" title="Wikibooks:Privacy policy">Privacy policy</a></li>
+				<li id="about"><a href="http://en.wikibooks.org/wiki/Wikibooks:About" title="Wikibooks:About">About Wikibooks</a></li>
+				<li id="disclaimer"><a href="http://en.wikibooks.org/wiki/Wikibooks:General_disclaimer" title="Wikibooks:General disclaimer">Disclaimers</a></li>
+			</ul>
+		</div>
+		
+	
+		<script type="text/javascript">if (window.runOnloadHook) runOnloadHook();</script>
+</div>
+<!-- Served by srv89 in 0.114 secs. --></body></html>

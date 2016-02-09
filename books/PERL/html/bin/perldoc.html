@@ -1,0 +1,152 @@
+<HTML>
+<HEAD>
+<TITLE>perldoc - Look up Perl documentation in pod format.</TITLE>
+<LINK REL="stylesheet" HREF="../Active.css" TYPE="text/css">
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;perldoc - Look up Perl documentation in pod format.</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<LI><A HREF="#options">OPTIONS</A></LI>
+	<LI><A HREF="#environment">ENVIRONMENT</A></LI>
+	<LI><A HREF="#version">VERSION</A></LI>
+	<LI><A HREF="#author">AUTHOR</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>perldoc - Look up Perl documentation in pod format.</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<P><STRONG>perldoc</STRONG> [<STRONG>-h</STRONG>] [<STRONG>-v</STRONG>] [<STRONG>-t</STRONG>] [<STRONG>-u</STRONG>] [<STRONG>-m</STRONG>] [<STRONG>-l</STRONG>] [<STRONG>-F</STRONG>]  [<STRONG>-X</STRONG>] PageName|ModuleName|ProgramName</P>
+<P><STRONG>perldoc</STRONG> <STRONG>-f</STRONG> BuiltinFunction</P>
+<P><STRONG>perldoc</STRONG> <STRONG>-q</STRONG> FAQ Keyword</P>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P><EM>perldoc</EM> looks up a piece of documentation in .pod format that is embedded
+in the perl installation tree or in a perl script, and displays it via
+<CODE>pod2man | nroff -man | $PAGER</CODE>. (In addition, if running under HP-UX,
+<CODE>col -x</CODE> will be used.) This is primarily used for the documentation for
+the perl library modules.</P>
+<P>Your system may also have man pages installed for those modules, in
+which case you can probably just use the <CODE>man(1)</CODE> command.</P>
+<P>
+<HR>
+<H1><A NAME="options">OPTIONS</A></H1>
+<DL>
+<DT><STRONG><A NAME="item_%2Dh_help"><STRONG>-h</STRONG> help</A></STRONG><BR>
+<DD>
+Prints out a brief help message.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dv_verbose"><STRONG>-v</STRONG> verbose</A></STRONG><BR>
+<DD>
+Describes search for the item in detail.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dt_text_output"><STRONG>-t</STRONG> text output</A></STRONG><BR>
+<DD>
+Display docs using plain text converter, instead of nroff. This may be faster,
+but it won't look as nice.
+<P></P>
+<DT><STRONG><A NAME="item_%2Du_unformatted"><STRONG>-u</STRONG> unformatted</A></STRONG><BR>
+<DD>
+Find docs only; skip reformatting by pod2*
+<P></P>
+<DT><STRONG><A NAME="item_%2Dm_module"><STRONG>-m</STRONG> module</A></STRONG><BR>
+<DD>
+Display the entire module: both code and unformatted pod documentation.
+This may be useful if the docs don't explain a function in the detail
+you need, and you'd like to inspect the code directly; perldoc will find
+the file for you and simply hand it off for display.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dl_file_name_only"><STRONG>-l</STRONG> file name only</A></STRONG><BR>
+<DD>
+Display the file name of the module found.
+<P></P>
+<DT><STRONG><A NAME="item_%2DF_file_names"><STRONG>-F</STRONG> file names</A></STRONG><BR>
+<DD>
+Consider arguments as file names, no search in directories will be performed.
+<P></P>
+<DT><STRONG><A NAME="item_%2Df_perlfunc"><STRONG>-f</STRONG> perlfunc</A></STRONG><BR>
+<DD>
+The <STRONG>-f</STRONG> option followed by the name of a perl built in function will
+extract the documentation of this function from <A HREF="../lib/Pod/perlfunc.html">the perlfunc manpage</A>.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dq_perlfaq"><STRONG>-q</STRONG> perlfaq</A></STRONG><BR>
+<DD>
+The <STRONG>-q</STRONG> option takes a regular expression as an argument.  It will search
+the question headings in perlfaq[1-9] and print the entries matching
+the regular expression.
+<P></P>
+<DT><STRONG><A NAME="item_%2DX_use_an_index_if_present"><STRONG>-X</STRONG> use an index if present</A></STRONG><BR>
+<DD>
+The <STRONG>-X</STRONG> option looks for a entry whose basename matches the name given on the
+command line in the file <CODE>$Config{archlib}/pod.idx</CODE>.  The pod.idx file should
+contain fully qualified filenames, one per line.
+<P></P>
+<DT><STRONG><A NAME="item_%2DU_run_insecurely"><STRONG>-U</STRONG> run insecurely</A></STRONG><BR>
+<DD>
+Because <STRONG>perldoc</STRONG> does not run properly tainted, and is known to
+have security issues, it will not normally execute as the superuser.
+If you use the <STRONG>-U</STRONG> flag, it will do so, but only after setting
+the effective and real IDs to nobody's or nouser's account, or -2
+if unavailable.  If it cannot relinguish its privileges, it will not
+run.
+<P></P>
+<DT><STRONG><A NAME="item_PageName%7CModuleName%7CProgramName"><STRONG>PageName|ModuleName|ProgramName</STRONG></A></STRONG><BR>
+<DD>
+The item you want to look up.  Nested modules (such as <CODE>File::Basename</CODE>)
+are specified either as <CODE>File::Basename</CODE> or <CODE>File/Basename</CODE>.  You may also
+give a descriptive name of a page, such as <CODE>perlfunc</CODE>. You may also give a
+partial or wrong-case name, such as ``basename'' for ``File::Basename'', but
+this will be slower, if there is more then one page with the same partial
+name, you will only get the first one.
+<P></P></DL>
+<P>
+<HR>
+<H1><A NAME="environment">ENVIRONMENT</A></H1>
+<P>Any switches in the <CODE>PERLDOC</CODE> environment variable will be used before the
+command line arguments.  <CODE>perldoc</CODE> also searches directories
+specified by the <A HREF="../lib/Pod/perlrun.html#item_PERL5LIB"><CODE>PERL5LIB</CODE></A> (or <A HREF="../lib/Pod/perlrun.html#item_PERLLIB"><CODE>PERLLIB</CODE></A> if <A HREF="../lib/Pod/perlrun.html#item_PERL5LIB"><CODE>PERL5LIB</CODE></A> is not
+defined) and <A HREF="../lib/Pod/perlrun.html#item_PATH"><CODE>PATH</CODE></A> environment variables.
+(The latter is so that embedded pods for executables, such as
+<CODE>perldoc</CODE> itself, are available.)  <CODE>perldoc</CODE> will use, in order of
+preference, the pager defined in <CODE>PERLDOC_PAGER</CODE>, <CODE>MANPAGER</CODE>, or
+<CODE>PAGER</CODE> before trying to find a pager on its own.  (<CODE>MANPAGER</CODE> is not
+used if <CODE>perldoc</CODE> was told to display plain text or unformatted pod.)</P>
+<P>One useful value for <CODE>PERLDOC_PAGER</CODE> is <CODE>less -+C -E</CODE>.</P>
+<P>
+<HR>
+<H1><A NAME="version">VERSION</A></H1>
+<P>This is perldoc v2.03.</P>
+<P>
+<HR>
+<H1><A NAME="author">AUTHOR</A></H1>
+<P>Kenneth Albanowski &lt;<A HREF="mailto:kjahds@kjahds.com">kjahds@kjahds.com</A>&gt;</P>
+<P>Minor updates by Andy Dougherty &lt;<A HREF="mailto:doughera@lafcol.lafayette.edu">doughera@lafcol.lafayette.edu</A>&gt;,
+and others.</P>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;perldoc - Look up Perl documentation in pod format.</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

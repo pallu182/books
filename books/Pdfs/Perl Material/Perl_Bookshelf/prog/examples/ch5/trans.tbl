@@ -1,0 +1,16 @@
+F AUTOLOAD.;1                       	autoload
+F GARBAGE_.;1                       	garbage_collect
+F HINTS-CO.;1                       	hints-constructor_inherit
+F HINTS-CO.000;1                    	hints-context
+F HINTS-CO.001;1                    	hints-containment
+F HINTS-DE.;1                       	hints-delegation
+F HINTS-IM.;1                       	hints-implementation
+F HINTS-IN.;1                       	hints-instance_inherit
+F HINTS-IN.000;1                    	hints-instance_vars
+F HINTS-OV.;1                       	hints-overriding
+F HINTS-RE.;1                       	hints-reuse
+F HINTS-SC.;1                       	hints-scalar_vars
+F MISC.;1                           	MISC
+F TYING_AR.;1                       	tying_arrays
+F TYING_HA.;1                       	tying_hashes
+F TYING_SC.;1                       	tying_scalars

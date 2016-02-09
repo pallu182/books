@@ -1,0 +1,158 @@
+<HTML>
+<HEAD>
+<TITLE>h2ph - convert .h C header files to .ph Perl header files</TITLE>
+<LINK REL="stylesheet" HREF="../Active.css" TYPE="text/css">
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;h2ph - convert .h C header files to .ph Perl header files</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<LI><A HREF="#options">OPTIONS</A></LI>
+	<LI><A HREF="#environment">ENVIRONMENT</A></LI>
+	<LI><A HREF="#files">FILES</A></LI>
+	<LI><A HREF="#author">AUTHOR</A></LI>
+	<LI><A HREF="#see also">SEE ALSO</A></LI>
+	<LI><A HREF="#diagnostics">DIAGNOSTICS</A></LI>
+	<LI><A HREF="#bugs">BUGS</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>h2ph - convert .h C header files to .ph Perl header files</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<P><STRONG>h2ph [-d destination directory] [-r | -a] [-l] [headerfiles]</STRONG></P>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P><EM>h2ph</EM>
+converts any C header files specified to the corresponding Perl header file
+format.
+It is most easily run while in /usr/include:</P>
+<PRE>
+        cd /usr/include; h2ph * sys/*</PRE>
+<P>or</P>
+<PRE>
+        cd /usr/include; h2ph -r -l .</PRE>
+<P>The output files are placed in the hierarchy rooted at Perl's
+architecture dependent library directory.  You can specify a different
+hierarchy with a <STRONG>-d</STRONG> switch.</P>
+<P>If run with no arguments, filters standard input to standard output.</P>
+<P>
+<HR>
+<H1><A NAME="options">OPTIONS</A></H1>
+<DL>
+<DT><STRONG><A NAME="item_%2Dd_destination_dir">-d destination_dir</A></STRONG><BR>
+<DD>
+Put the resulting <STRONG>.ph</STRONG> files beneath <STRONG>destination_dir</STRONG>, instead of
+beneath the default Perl library location (<CODE>$Config{'installsitsearch'}</CODE>).
+<P></P>
+<DT><STRONG><A NAME="item_%2Dr">-r</A></STRONG><BR>
+<DD>
+Run recursively; if any of <STRONG>headerfiles</STRONG> are directories, then run <EM>h2ph</EM>
+on all files in those directories (and their subdirectories, etc.).  <STRONG>-r</STRONG>
+and <STRONG>-a</STRONG> are mutually exclusive.
+<P></P>
+<DT><STRONG><A NAME="item_%2Da">-a</A></STRONG><BR>
+<DD>
+Run automagically; convert <STRONG>headerfiles</STRONG>, as well as any <STRONG>.h</STRONG> files
+which they include.  This option will search for <STRONG>.h</STRONG> files in all
+directories which your C compiler ordinarily uses.  <STRONG>-a</STRONG> and <STRONG>-r</STRONG> are
+mutually exclusive.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dl">-l</A></STRONG><BR>
+<DD>
+Symbolic links will be replicated in the destination directory.  If <STRONG>-l</STRONG>
+is not specified, then links are skipped over.
+<P></P>
+<DT><STRONG><A NAME="item_%2Dh">-h</A></STRONG><BR>
+<DD>
+Put ``hints'' in the .ph files which will help in locating problems with
+<EM>h2ph</EM>.  In those cases when you <STRONG>require</STRONG> a <STRONG>.ph</STRONG> file containing syntax
+errors, instead of the cryptic
+<PRE>
+        [ some error condition ] at (eval mmm) line nnn</PRE>
+<P>you will see the slightly more helpful</P>
+<PRE>
+        [ some error condition ] at filename.ph line nnn</PRE>
+<P>However, the <STRONG>.ph</STRONG> files almost double in size when built using <STRONG>-h</STRONG>.</P>
+<P></P>
+<DT><STRONG><A NAME="item_%2DD">-D</A></STRONG><BR>
+<DD>
+Include the code from the <STRONG>.h</STRONG> file as a comment in the <STRONG>.ph</STRONG> file.
+This is primarily used for debugging <EM>h2ph</EM>.
+<P></P>
+<DT><STRONG><A NAME="item_%2DQ">-Q</A></STRONG><BR>
+<DD>
+``Quiet'' mode; don't print out the names of the files being converted.
+<P></P></DL>
+<P>
+<HR>
+<H1><A NAME="environment">ENVIRONMENT</A></H1>
+<P>No environment variables are used.</P>
+<P>
+<HR>
+<H1><A NAME="files">FILES</A></H1>
+<PRE>
+ /usr/include/*.h
+ /usr/include/sys/*.h</PRE>
+<P>etc.</P>
+<P>
+<HR>
+<H1><A NAME="author">AUTHOR</A></H1>
+<P>Larry Wall</P>
+<P>
+<HR>
+<H1><A NAME="see also">SEE ALSO</A></H1>
+<P><CODE>perl(1)</CODE></P>
+<P>
+<HR>
+<H1><A NAME="diagnostics">DIAGNOSTICS</A></H1>
+<P>The usual warnings if it can't read or write the files involved.</P>
+<P>
+<HR>
+<H1><A NAME="bugs">BUGS</A></H1>
+<P>Doesn't construct the %sizeof array for you.</P>
+<P>It doesn't handle all C constructs, but it does attempt to isolate
+definitions inside evals so that you can get at the definitions
+that it can translate.</P>
+<P>It's only intended as a rough tool.
+You may need to dicker with the files produced.</P>
+<P>You have to run this program by hand; it's not run as part of the Perl
+installation.</P>
+<P>Doesn't handle complicated expressions built piecemeal, a la:</P>
+<PRE>
+    enum {
+        FIRST_VALUE,
+        SECOND_VALUE,
+    #ifdef ABC
+        THIRD_VALUE
+    #endif
+    };</PRE>
+<P>Doesn't necessarily locate all of your C compiler's internally-defined
+symbols.</P>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;h2ph - convert .h C header files to .ph Perl header files</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>
